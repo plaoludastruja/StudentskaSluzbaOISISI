@@ -25,11 +25,11 @@ public class MainFrame extends JFrame{
 		setLocationRelativeTo(null);
 		
 		
-		/*MenuBar menu = new MenuBar();
+		MenuBar menu = new MenuBar();
 		this.setJMenuBar(menu);
 		
 		ToolBar toolbar = new ToolBar();
-		add(toolbar,BorderLayout.NORTH);*/
+		add(toolbar,BorderLayout.NORTH);
 	
 	}
 }
