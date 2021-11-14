@@ -50,7 +50,13 @@ public class Department {
 	public String toString() {
 		return "Department [departmentCode=" + departmentCode + ", departmentName=" + departmentName
 				+ ", departmentBoss=" + departmentBoss + ", departmentProffesor=" + departmentProffesor + "]";
+
 	}
+
+	}	
 	
 	
-}
+
+	
+	
+
