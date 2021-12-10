@@ -8,8 +8,30 @@ import javax.swing.JFrame;
 
 public class MainFrame extends JFrame{
 
-	public MainFrame() {
+	private static MainFrame instance = null;
+	
+	public static MainFrame getInstance() {
+		if (instance == null) {
+			instance = new MainFrame();
+		}
+		return instance;
+	}
+	
+	private MainFrame() {
 
+		// inicijalne postavke prozora
+		this.initPosition();
+		// menu
+		MenuBar menu = new MenuBar();
+		this.setJMenuBar(menu);
+		// toolbar
+		ToolBar toolbar = new ToolBar();
+		add(toolbar,BorderLayout.NORTH);
+	
+	}
+	
+	private void initPosition() {
+		
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height;
@@ -18,13 +40,6 @@ public class MainFrame extends JFrame{
 		setTitle("Studentska sluzba");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		
-		
-		MenuBar menu = new MenuBar();
-		this.setJMenuBar(menu);
-		
-		ToolBar toolbar = new ToolBar();
-		add(toolbar,BorderLayout.NORTH);
-	
+		setVisible(true);
 	}
 }
