@@ -49,7 +49,7 @@ public class ToolBar extends JToolBar {
 		addSeparator();
 //////////////////////////////////	
 		JTextField searchField = new JTextField("Unesi pretragu...", 20);
-		searchField.setMaximumSize(new Dimension(100,28));
+		searchField.setMaximumSize(new Dimension(100,32));
 		searchField.setToolTipText("Unesi pretragu");
 //////////////////////////////////		
 		JButton btnSearch = new JButton();

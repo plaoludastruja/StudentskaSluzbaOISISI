@@ -41,6 +41,11 @@ public class MenuBar extends JMenuBar {
 		JMenuItem profesori = new JMenuItem("Profesori", KeyEvent.VK_F);
 		JMenuItem katedre = new JMenuItem("Katedre", KeyEvent.VK_K);
 		
+		studenti.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK));
+		predmeti.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.CTRL_MASK));
+		profesori.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_3, ActionEvent.CTRL_MASK));
+		katedre.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4, ActionEvent.CTRL_MASK));
+		
 		studenti.setIcon(new ImageIcon("images/menubar/student.png"));
 		predmeti.setIcon(new ImageIcon("images/menubar/bookshelf.png"));
 		profesori.setIcon(new ImageIcon("images/menubar/professor.png"));

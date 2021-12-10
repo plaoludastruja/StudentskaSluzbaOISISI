@@ -7,7 +7,7 @@ public class Department {
 
 	private String departmentCode;
 	private String departmentName;
-	private String departmentBoss;
+	private Professor departmentBoss;
 	private List<Professor> departmentProffesor = new ArrayList<Professor>();
 	
 	public Department() {
@@ -30,11 +30,11 @@ public class Department {
 		this.departmentName = departmentName;
 	}
 
-	public String getDepartmentBoss() {
+	public Professor getDepartmentBoss() {
 		return departmentBoss;
 	}
 
-	public void setDepartmentBoss(String departmentBoss) {
+	public void setDepartmentBoss(Professor departmentBoss) {
 		this.departmentBoss = departmentBoss;
 	}
 

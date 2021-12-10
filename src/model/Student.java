@@ -13,7 +13,7 @@ public class Student {
 	private String lastName;
 	private String firstName;
 	private LocalDate dateOfBirth;
-	private String adress;
+	private Address address;
 	private String phone;
 	private String email;
 	private String index;
@@ -52,12 +52,12 @@ public class Student {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getAdress() {
-		return adress;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAdress(Address adress) {
+		this.address = address;
 	}
 
 	public String getPhone() {
@@ -135,7 +135,7 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [lastName=" + lastName + ", firstName=" + firstName + ", dateOfBirth=" + dateOfBirth
-				+ ", adress=" + adress + ", phone=" + phone + ", email=" + email + ", index=" + index + ", indexYear="
+				+ ", address=" + address + ", phone=" + phone + ", email=" + email + ", index=" + index + ", indexYear="
 				+ indexYear + ", currentYear=" + currentYear + ", studentStatus=" + studentStatus + ", averageGrade="
 				+ averageGrade + ", passedExams=" + passedExams + ", otherExams=" + otherExams + "]";
 	}
