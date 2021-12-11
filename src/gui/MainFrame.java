@@ -28,8 +28,9 @@ public class MainFrame extends JFrame{
 		ToolBar toolbar = new ToolBar();
 		add(toolbar,BorderLayout.NORTH);
 		// tabbedpane
-		TabbedPane tabbedPane = new TabbedPane();
-		add(tabbedPane,BorderLayout.CENTER);
+		//TabbedPane tabbedPane = new TabbedPane();
+		TabbedPaneMainFrame.getInstance();
+		add(TabbedPaneMainFrame.getInstance(),BorderLayout.CENTER);
 	
 	}
 	

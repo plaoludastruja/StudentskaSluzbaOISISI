@@ -3,6 +3,8 @@ package gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -11,6 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
+
+import gui.dialog.AddStudentDialog;
+import listener.addEntity;
+//import listener.addEntity;
 
 public class ToolBar extends JToolBar {
 
@@ -54,6 +60,22 @@ public class ToolBar extends JToolBar {
 		btnSearch.setIcon(new ImageIcon("images/toolbar/search.png"));
 		
 // ************************************* //	
+		
+		btnNew.addActionListener(new addEntity());
+		/*btnNew.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				AddStudentDialog dialog = new AddStudentDialog(parent, "Primer modalnog prozora", true);
+				dialog.setVisible(true);
+
+			}
+		});*/
+		
+		
+		
+		
+// ************************************* //			
 		//dodavanje
 		add(btnNew);
 		addSeparator();

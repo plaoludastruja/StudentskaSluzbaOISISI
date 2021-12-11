@@ -9,6 +9,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import listener.addEntity;
+
 public class MenuBar extends JMenuBar {
 	
 	public MenuBar() {
@@ -66,7 +68,12 @@ public class MenuBar extends JMenuBar {
 		about.setIcon(new ImageIcon("images/menubar/info.png"));
 
 		
-// ************************************* //		
+// ************************************* //
+		
+		MBnew.addActionListener(new addEntity());
+		
+		
+// ************************************* //
 		file.add(MBnew);
 		file.addSeparator();
 		file.add(save);
