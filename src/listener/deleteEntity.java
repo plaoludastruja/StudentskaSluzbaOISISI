@@ -14,16 +14,16 @@ public class deleteEntity implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		switch (TabbedPaneMainFrame.getInstance().getSelectedIndex()) {
 			case 0:	// STUDENT
-				DeleteStudentDialog deleteStudentDialog = new DeleteStudentDialog(MainFrame.getInstance(), "Brisanje studenta", false);
+				DeleteStudentDialog deleteStudentDialog = new DeleteStudentDialog(MainFrame.getInstance(), "Brisanje studenta", true);
 				deleteStudentDialog.setVisible(true);
 				break;
 			case 1:	// PROFESOR
-				/*AddProfessorDialog addProfessorDialog = new AddProfessortDialog(MainFrame.getInstance(), "Dodavanje profesora", false);
-				addProfessorDialog.setVisible(true);*/
+				/*DeleteProfessorDialog deleteProfessorDialog = new DeleteProfessortDialog(MainFrame.getInstance(), "Brisanje profesora", false);
+				deleteProfessorDialog.setVisible(true);*/
 				break;
 			case 2:	// PREDMET
-				/*AddSubjectDialog addSubjectDialog = new AddSubjectDialog(MainFrame.getInstance(), "Dodavanje predmeta", false);
-				addSubjectDialog.setVisible(true);*/
+				/*DeleteSubjectDialog deleteSubjectDialog = new DeleteSubjectDialog(MainFrame.getInstance(), "Brisanje predmeta", false);
+				deleteSubjectDialog.setVisible(true);*/
 				break;
 			default:
 				break;

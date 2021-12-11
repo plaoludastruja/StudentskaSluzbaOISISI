@@ -14,7 +14,7 @@ public class addEntity implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		switch (TabbedPaneMainFrame.getInstance().getSelectedIndex()) {
 			case 0:	// STUDENT
-				AddStudentDialog addStudentDialog = new AddStudentDialog(MainFrame.getInstance(), "Dodavanje studenta", false);
+				AddStudentDialog addStudentDialog = new AddStudentDialog(MainFrame.getInstance(), "Dodavanje studenta", true);
 				addStudentDialog.setVisible(true);
 				break;
 			case 1:	// PROFESOR
