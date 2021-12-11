@@ -10,6 +10,7 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import listener.addEntity;
+import listener.deleteEntity;
 
 public class MenuBar extends JMenuBar {
 	
@@ -71,6 +72,7 @@ public class MenuBar extends JMenuBar {
 // ************************************* //
 		
 		MBnew.addActionListener(new addEntity());
+		delete.addActionListener(new deleteEntity());
 		
 		
 // ************************************* //

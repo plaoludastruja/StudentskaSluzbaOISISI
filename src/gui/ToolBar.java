@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import gui.dialog.AddStudentDialog;
 import listener.addEntity;
 //import listener.addEntity;
+import listener.deleteEntity;
 
 public class ToolBar extends JToolBar {
 
@@ -58,10 +59,12 @@ public class ToolBar extends JToolBar {
 		btnSearch.setToolTipText("Pretrazi");		
 		btnSearch.setBackground(toolbarBg);		
 		btnSearch.setIcon(new ImageIcon("images/toolbar/search.png"));
-		
+		 
 // ************************************* //	
 		
 		btnNew.addActionListener(new addEntity());
+		btnDelete.addActionListener(new deleteEntity());
+		
 		/*btnNew.addActionListener(new ActionListener() {
 
 			@Override
