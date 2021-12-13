@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import gui.MainFrame;
 import gui.TabbedPaneMainFrame;
 import gui.dialog.AddStudentDialog;
+import gui.dialog.DeleteProfessorDialog;
 import gui.dialog.DeleteStudentDialog;
 
 public class deleteEntity implements ActionListener {
@@ -18,8 +19,8 @@ public class deleteEntity implements ActionListener {
 				deleteStudentDialog.setVisible(true);
 				break;
 			case 1:	// PROFESOR
-				/*DeleteProfessorDialog deleteProfessorDialog = new DeleteProfessortDialog(MainFrame.getInstance(), "Brisanje profesora", false);
-				deleteProfessorDialog.setVisible(true);*/
+				DeleteProfessorDialog deleteProfessorDialog = new DeleteProfessorDialog(MainFrame.getInstance(), "Brisanje profesora", false);
+				deleteProfessorDialog.setVisible(true);
 				break;
 			case 2:	// PREDMET
 				/*DeleteSubjectDialog deleteSubjectDialog = new DeleteSubjectDialog(MainFrame.getInstance(), "Brisanje predmeta", false);
