@@ -3,8 +3,16 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
+
+import gui.StatusBar;
+//import rs.ac.uns.ftn.oisisi.listeners.window.MyWindowListener;
 
 public class MainFrame extends JFrame{
 
@@ -31,6 +39,11 @@ public class MainFrame extends JFrame{
 		//TabbedPane tabbedPane = new TabbedPane();
 		TabbedPaneMainFrame.getInstance();
 		add(TabbedPaneMainFrame.getInstance(),BorderLayout.CENTER);
+		//statusbar
+		StatusBar statusbar = new StatusBar();
+		add(statusbar, BorderLayout.SOUTH);
+		//window listener
+		addWindowListener(new MyWindowListener());
 	
 	}
 	
@@ -46,4 +59,58 @@ public class MainFrame extends JFrame{
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
+	
+	
+	public class MyWindowListener implements WindowListener {
+
+		@Override
+		public void windowActivated(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void windowClosed(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void windowClosing(WindowEvent arg0) {
+			JFrame frame = (JFrame) arg0.getComponent();
+			int code = JOptionPane.showConfirmDialog(frame, "Da li ste sigurni da želite da zatvorite aplikaciju?",
+					"Zatvaranje aplikacije?", JOptionPane.YES_NO_OPTION);
+			if (code != JOptionPane.YES_OPTION) {
+				frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+			} else {
+				frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			}
+
+		}
+
+		@Override
+		public void windowDeactivated(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void windowDeiconified(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void windowIconified(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void windowOpened(WindowEvent arg0) {
+		}
+	}
+	
+
+	
 }

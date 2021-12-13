@@ -9,6 +9,8 @@ public class Main {
 		//MainFrame studentskaSluzba = new MainFrame();
 		//studentskaSluzba.setVisible(true);
 		MainFrame.getInstance();
+		
+		
 	}
 
 }
