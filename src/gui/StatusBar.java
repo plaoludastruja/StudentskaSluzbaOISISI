@@ -51,8 +51,5 @@ public class StatusBar extends JPanel{
 		
 	}
 	
-	//public void initComponents() {
-	///	name.setText(MainFrame.getInstance()..getString("naslovAplikacije"));
-//	}
 	
 }

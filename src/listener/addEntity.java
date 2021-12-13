@@ -3,6 +3,7 @@ package listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import gui.dialog.AddProfessorDialog;
 import gui.dialog.AddStudentDialog;
 import gui.MainFrame;
 import gui.TabbedPaneMainFrame;
@@ -18,8 +19,8 @@ public class addEntity implements ActionListener{
 				addStudentDialog.setVisible(true);
 				break;
 			case 1:	// PROFESOR
-				/*AddProfessorDialog addProfessorDialog = new AddProfessortDialog(MainFrame.getInstance(), "Dodavanje profesora", false);
-				addProfessorDialog.setVisible(true);*/
+				AddProfessorDialog addProfessorDialog = new AddProfessorDialog(MainFrame.getInstance(), "Dodavanje profesora", true);
+				addProfessorDialog.setVisible(true);
 				break;
 			case 2:	// PREDMET
 				/*AddSubjectDialog addSubjectDialog = new AddSubjectDialog(MainFrame.getInstance(), "Dodavanje predmeta", false);
