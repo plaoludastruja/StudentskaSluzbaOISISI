@@ -11,6 +11,7 @@ import javax.swing.table.TableCellRenderer;
 public class StudentTable extends JTable {
 
 	private static StudentTable instance = null;
+	
 	public static StudentTable getInstance() {
 		if(instance == null) {
 			instance = new StudentTable();

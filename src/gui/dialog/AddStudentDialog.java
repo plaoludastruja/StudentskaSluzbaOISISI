@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import gui.MainFrame;
 import gui.ToolBar;
+import model.Student;
 
 public class AddStudentDialog extends JDialog {
 
@@ -122,7 +123,26 @@ public class AddStudentDialog extends JDialog {
 		
 		panDugmad.add(potvrdiBtn);
 		panDugmad.add(odustaniBtn);
-
+		
+// ************************************* //	
+		
+		
+		/*txtIme.setPreferredSize(dim);
+		txtPrezime.setPreferredSize(dim);
+		txtDatumRodjenja.setPreferredSize(dim);
+		txtAdresaStanovanja.setPreferredSize(dim);
+		txtBrojTelefona.setPreferredSize(dim);
+		txtEmailAdresa.setPreferredSize(dim);
+		txtBrojIndeksa.setPreferredSize(dim);
+		txtGodinaUpisa.setPreferredSize(dim);
+		txtTrenutnaGodinaStudija.setPreferredSize(dim);
+		txtNacinFinansiranja.setPreferredSize(dim);*/
+		
+		
+		
+		
+		
+// ************************************* //	
 		
 		
 		Box boxCentar = Box.createVerticalBox();

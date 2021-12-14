@@ -28,8 +28,7 @@ public class Student {
 		super();
 	}
 
-	public Student(String lastName, String firstName, String index, int currentYear, Status studentStatus,
-			double averageGrade) {
+	public Student( String index, String firstName, String lastName, int currentYear, Status studentStatus, double averageGrade) {
 		super();
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -87,7 +86,7 @@ public class Student {
 		return address;
 	}
 
-	public void setAdress(Address adress) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 

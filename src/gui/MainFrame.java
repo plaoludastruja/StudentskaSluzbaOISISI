@@ -13,7 +13,6 @@ import javax.swing.WindowConstants;
 
 import gui.StatusBar;
 import listener.MyWindowListener;
-//import rs.ac.uns.ftn.oisisi.listeners.window.MyWindowListener;
 
 public class MainFrame extends JFrame{
 
@@ -44,7 +43,7 @@ public class MainFrame extends JFrame{
 		StatusBar statusbar = new StatusBar();
 		add(statusbar, BorderLayout.SOUTH);
 		//window listener
-		addWindowListener(new MyWindowListener());
+		//addWindowListener(new MyWindowListener());
 	
 	}
 	

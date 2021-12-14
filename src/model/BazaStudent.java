@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +34,9 @@ public class BazaStudent {
 	// ne
 	private void initStudent() {
 		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student("RA45/2019", "Marko", "Markovic", 3, Status.B, 8.5));
-		studenti.add(new Student("RA182/2021", "Jovan", "Jovanovic", 2, Status.S, 7.25));
-		studenti.add(new Student("RA32/2018", "Janko", "Jankovic", 3, Status.B, 9.75));
+		studenti.add(new Student("RA125/2019", "Đorđe", "Lipovcic", 3, Status.B, 8.5));
+		studenti.add(new Student("RA126/2021", "Sandra", "Jovanovic", 2, Status.B, 7.25));
+		studenti.add(new Student("RA32/2018", "Janko", "Jankovic", 3, Status.S, 9.75));
 	}
 	
 	public List<Student> getStudent() {
@@ -91,20 +92,7 @@ public class BazaStudent {
 		}
 	}
 
-	/*public void dodajIgraca(String ime, String prezime, String klub) {
-		this.igraci.add(new Student(generateId(), ime, prezime, klub));
-	}
-
-	public void izbrisiIgraca(long id) {
-		for (Student i : igraci) {
-			if (i.getId() == id) {
-				igraci.remove(i);
-				break;
-			}
-		}
-	}
-
-	public void izmeniIgraca(long id, String ime, String prezime, String klub) {
+	/*public void izmeniIgraca(long id, String ime, String prezime, String klub) {
 		for (Student i : igraci) {
 			if (i.getId() == id) {
 				i.setIme(ime);
@@ -114,36 +102,36 @@ public class BazaStudent {
 		}
 	}*/
 		
-		public void addStudent(String index, String name, String surname, int year, Status st, Double avg) {
-			this.studenti.add(new Student(index, name, surname, year, st, avg));
+		public void addStudent(String index, String firstName, String lastName, int currentYear, Status studentStatus, double averageGrade) {
+			this.studenti.add(new Student(index, firstName, lastName, currentYear, studentStatus, averageGrade));
 		}
 
-		public void deleteStudent(String numIndex) {
+		public void deleteStudent(String index) {
 			for (Student i : studenti) {
-				if (i.getIndex() == numIndex) {
+				if (i.getIndex() == index) {
 					studenti.remove(i);
 					break;
 				}
 			}
 		}
 
-		/*public void changeStudent(String name, String surname, LocalDate birthDate, Address address, String phoneNum, String mail, String index, int yearIn, int currentYear, Status status) {
+		/*public void changeStudent(String firstName, String lastName, LocalDate dateOfBirth, Address address, String phone, String email, String index, int indexYear, int currentYear, Status studentStatus) {
 			for (Student i : studenti) {
-				if (i.getNumberOfIndex().equals(index)) {
-					i.setName(name);
-					i.setSurname(surname);
-					i.setBirthDate(birthDate);
+				if (i.getIndex().equals(index)) {
+					i.setFirstName(firstName);
+					i.setLastName(lastName);
+					i.setDateOfBirth(dateOfBirth);
 					i.setAddress(address);
-					i.setPhoneNumber(phoneNum);
-					i.setEnrollmentYear(yearIn);
+					i.setPhone(phone);
+					i.setIndexYear(indexYear);
 					i.setCurrentYear(currentYear);
-					i.setStatus(status);
+					i.setStudentStatus(studentStatus);
 					i.setAverageGrade(0.0);
 				}
 			}
-		}
+		}*/
 		
-		public boolean checkIfExists(String index) {
+		/*public boolean checkIfExists(String index) {
 			for(Student i : students) {
 				if(i.getNumberOfIndex() == index) {
 					return true;

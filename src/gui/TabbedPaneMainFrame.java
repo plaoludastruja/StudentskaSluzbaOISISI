@@ -22,16 +22,18 @@ public class TabbedPaneMainFrame extends JTabbedPane {
 	}
 	private TabbedPaneMainFrame() {
 		
-		JTable tabelaStudent = new StudentTable();
-		JScrollPane scrollPane = new JScrollPane(StudentTable.getInstance());
-		
-		
-		//addTab("Student",scrollPane);
-		addTab("Student",scrollPane);
+		addTab("Student",new JScrollPane(StudentTable.getInstance()));
 		addTab("Profesor",new JLabel("Profesor"));
 		addTab("Predmet",new JLabel("Predmet"));
 		//addTab("Student", null, new JScrollPane());
 		
+	}
+	
+	public void azurirajPrikaz(String akcija, int vrednost) {
+		AbstractTableModelStudent model = (AbstractTableModelStudent) StudentTable.getInstance().getModel();
+		// azuriranje modela tabele, kao i njenog prikaza
+		model.fireTableDataChanged();
+		validate();
 	}
 	
 }
