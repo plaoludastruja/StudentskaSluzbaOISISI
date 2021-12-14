@@ -28,6 +28,37 @@ public class Student {
 		super();
 	}
 
+	public Student(String lastName, String firstName, String index, int currentYear, Status studentStatus,
+			double averageGrade) {
+		super();
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.index = index;
+		this.currentYear = currentYear;
+		this.studentStatus = studentStatus;
+		this.averageGrade = averageGrade;
+	}
+
+	public Student(String lastName, String firstName, LocalDate dateOfBirth, Address address, String phone,
+			String email, String index, int indexYear, int currentYear, Status studentStatus, double averageGrade,
+			List<Grade> passedExams, List<Subject> otherExams) {
+		super();
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.dateOfBirth = dateOfBirth;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+		this.index = index;
+		this.indexYear = indexYear;
+		this.currentYear = currentYear;
+		this.studentStatus = studentStatus;
+		this.averageGrade = averageGrade;
+		this.passedExams = passedExams;
+		this.otherExams = otherExams;
+	}
+
+
 	public String getLastName() {
 		return lastName;
 	}
