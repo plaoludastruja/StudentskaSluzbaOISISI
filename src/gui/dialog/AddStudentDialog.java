@@ -5,6 +5,10 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -14,9 +18,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.StudentController;
 import gui.MainFrame;
 import gui.ToolBar;
+import model.Address;
 import model.Student;
+import model.Student.Status;
 
 public class AddStudentDialog extends JDialog {
 
@@ -63,7 +70,17 @@ public class AddStudentDialog extends JDialog {
 		JTextField txtBrojIndeksa = new JTextField();
 		JTextField txtGodinaUpisa = new JTextField();
 		JComboBox txtTrenutnaGodinaStudija = new JComboBox();
-		JComboBox txtNacinFinansiranja = new JComboBox();
+		JComboBox txtNacinFinansiranja = new JComboBox(Status.values());
+		
+		txtTrenutnaGodinaStudija.addItem(1);
+		txtTrenutnaGodinaStudija.addItem(2);
+		txtTrenutnaGodinaStudija.addItem(3);
+		txtTrenutnaGodinaStudija.addItem(4);
+		txtTrenutnaGodinaStudija.addItem(5);
+		txtTrenutnaGodinaStudija.addItem(6);
+		
+		
+		
 		
 		JButton potvrdiBtn = new JButton("Potvrdi");
 		JButton odustaniBtn = new JButton("Odustani");
@@ -123,6 +140,41 @@ public class AddStudentDialog extends JDialog {
 		
 		panDugmad.add(potvrdiBtn);
 		panDugmad.add(odustaniBtn);
+		
+		potvrdiBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int intGodinaUpisa = Integer.parseInt(txtGodinaUpisa.getText());
+				
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM.yyyy.");
+				LocalDate dateDatumRodjenja = LocalDate.parse(txtDatumRodjenja.getText(), formatter);
+				
+				Address addressAdresaStanovanja = new Address();
+		        String[] addressPart = txtAdresaStanovanja.getText().split(",", 4);
+		        addressAdresaStanovanja.setStreet(addressPart[0]);
+		        addressAdresaStanovanja.setStreetNum(addressPart[1]);
+		        addressAdresaStanovanja.setCity(addressPart[2]);
+		        addressAdresaStanovanja.setCountry(addressPart[3]);
+
+				Status status = Status.values()[txtNacinFinansiranja.getSelectedIndex()];
+				
+				StudentController.getInstance().addStudent(txtIme.getText(), txtPrezime.getText(),
+						dateDatumRodjenja, addressAdresaStanovanja, txtBrojTelefona.getText(),
+						txtEmailAdresa.getText(), txtBrojIndeksa.getText(), intGodinaUpisa,
+						txtTrenutnaGodinaStudija.getSelectedIndex() + 1, 10.00, status);
+			}
+		});
+		
+		odustaniBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//StudentController.getInstance().addStudent();
+			}
+		});
+		
 		
 // ************************************* //	
 		

@@ -28,6 +28,7 @@ public class Student {
 		super();
 	}
 
+	// za dodavanje u tabelu
 	public Student( String index, String firstName, String lastName, int currentYear, Status studentStatus, double averageGrade) {
 		super();
 		this.lastName = lastName;
@@ -36,6 +37,23 @@ public class Student {
 		this.currentYear = currentYear;
 		this.studentStatus = studentStatus;
 		this.averageGrade = averageGrade;
+	}
+	
+	
+	// za dodavanje u bazu
+	public Student(String firstName, String lastName, LocalDate dateOfBirth, Address address, String phone,
+			String email, String index, int indexYear, int currentYear, Status studentStatus) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+		this.index = index;
+		this.indexYear = indexYear;
+		this.currentYear = currentYear;
+		this.studentStatus = studentStatus;
 	}
 
 	public Student(String lastName, String firstName, LocalDate dateOfBirth, Address address, String phone,

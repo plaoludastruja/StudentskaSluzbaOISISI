@@ -3,7 +3,7 @@ package model;
 public class Address {
 
 	private String street;
-	private int streetNum;
+	private String streetNum;
 	private String city;
 	private String country;
 	
@@ -19,11 +19,11 @@ public class Address {
 		this.street = street;
 	}
 
-	public int getStreetNum() {
+	public String getStreetNum() {
 		return streetNum;
 	}
 
-	public void setStreetNum(int streetNum) {
+	public void setStreetNum(String streetNum) {
 		this.streetNum = streetNum;
 	}
 
