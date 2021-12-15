@@ -14,6 +14,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -29,7 +30,7 @@ public class AddStudentDialog extends JDialog {
 
 	public AddStudentDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
-
+		
 		setSize(400, 420);
 		setLocationRelativeTo(MainFrame.getInstance());
 		setResizable(false);
@@ -171,7 +172,7 @@ public class AddStudentDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//StudentController.getInstance().addStudent();
+				dispose();
 			}
 		});
 		

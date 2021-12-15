@@ -46,6 +46,7 @@ private static StudentController instance = null;
 			String email, String index, int indexYear,
 			int currentYear,double averageGrade, Status studentStatus) {
 		// izmena modela
+		
 		//Student studentBaza = new Student(txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresaStanovanja.getText(), txtBrojTelefona.getText(), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtGodinaUpisa.getText(), txtTrenutnaGodinaStudija.getText(), txtNacinFinansiranja.getText());
 		BazaStudent.getInstance().addStudent(index, firstName, lastName, currentYear, studentStatus, averageGrade);
 		// azuriranje prikaza
