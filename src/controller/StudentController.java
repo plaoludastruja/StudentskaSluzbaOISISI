@@ -53,7 +53,7 @@ private static StudentController instance = null;
 		TabbedPaneMainFrame.getInstance().azurirajPrikaz("DODAT", -1);
 	}
 	
-    public void izbrisiIgraca(int rowSelectedIndex) {
+    public void deleteStudent(int rowSelectedIndex) {
     	if (rowSelectedIndex < 0) {
 			return;
 		}
