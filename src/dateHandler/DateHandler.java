@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-//https://mkyong.com/java8/java-8-how-to-convert-string-to-localdate/ koristena stranica
+//https://mkyong.com/java8/java-8-how-to-convert-string-to-localdate/  koristena stranica
 public class DateHandler {
 
 	private static DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm dd.MM.yyyy.");
