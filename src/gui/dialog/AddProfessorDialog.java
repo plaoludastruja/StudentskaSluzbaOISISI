@@ -41,16 +41,16 @@ public class AddProfessorDialog extends JDialog {
 			JPanel panZvanje = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
 			
-			JLabel lblIme = new JLabel("Ime*:");
-			JLabel lblPrezime = new JLabel("Prezime*:");
-			JLabel lblDatumRodjenja = new JLabel("Datum rodjenja*:");
-			JLabel lblAdresaStanovanja = new JLabel("Adresa stanovanja*:");
-			JLabel lblBrojTelefona = new JLabel("Broj telefona*:");
-			JLabel lblEmailAdresa = new JLabel("E-mail adresa*:");
-			JLabel lblBrojLicneKarte = new JLabel("Broj licne karte*:");
-			JLabel lblAdresaKancelarije = new JLabel("Adresa kancelarije*:");
-			JLabel lblTitula = new JLabel("Titula*:");
-			JLabel lblZvanje = new JLabel("Zvanje*:");
+			JLabel lblIme = new JLabel("Ime*");
+			JLabel lblPrezime = new JLabel("Prezime*");
+			JLabel lblDatumRodjenja = new JLabel("Datum rodjenja*");
+			JLabel lblAdresaStanovanja = new JLabel("Adresa stanovanja*");
+			JLabel lblBrojTelefona = new JLabel("Broj telefona*");
+			JLabel lblEmailAdresa = new JLabel("E-mail adresa*");
+			JLabel lblBrojLicneKarte = new JLabel("Broj licne karte*");
+			JLabel lblAdresaKancelarije = new JLabel("Adresa kancelarije*");
+			JLabel lblTitula = new JLabel("Titula*");
+			JLabel lblZvanje = new JLabel("Zvanje*");
 			
 			JTextField txtIme = new JTextField();
 			JTextField txtPrezime = new JTextField();
@@ -60,8 +60,8 @@ public class AddProfessorDialog extends JDialog {
 			JTextField txtEmailAdresa = new JTextField();
 			JTextField txtBrojLicneKarte = new JTextField();
 			JTextField txtAdresaKancelarije = new JTextField();
-			JComboBox txtTitula = new JComboBox();
-			JComboBox txtZvanje = new JComboBox();
+			JTextField txtTitula = new JTextField();
+			JTextField txtZvanje = new JTextField();
 			
 			JButton potvrdiBtn = new JButton("Potvrdi");
 			JButton odustaniBtn = new JButton("Odustani");

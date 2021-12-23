@@ -7,18 +7,18 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
-
 public class StudentTable extends JTable {
 
 	private static StudentTable instance = null;
-	
+
 	public static StudentTable getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new StudentTable();
 		}
-		
+
 		return instance;
 	}
+
 	public StudentTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
@@ -26,7 +26,7 @@ public class StudentTable extends JTable {
 		// Sama JTable komponenta je implementirana postujuci MVC arhitekturu.
 		this.setModel(new AbstractTableModelStudent());
 		this.getTableHeader();
-		}
+	}
 
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
