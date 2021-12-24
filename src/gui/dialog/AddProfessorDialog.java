@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -13,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.ProfessorController;
 import gui.MainFrame;
 
 public class AddProfessorDialog extends JDialog {
@@ -37,20 +40,18 @@ public class AddProfessorDialog extends JDialog {
 			JPanel panEmailAdresa = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			JPanel panBrojLicneKarte = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			JPanel panAdresaKancelarije = new JPanel(new FlowLayout(FlowLayout.LEFT));
-			JPanel panTitula = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			JPanel panZvanje = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
 			
-			JLabel lblIme = new JLabel("Ime*:");
-			JLabel lblPrezime = new JLabel("Prezime*:");
-			JLabel lblDatumRodjenja = new JLabel("Datum rodjenja*:");
-			JLabel lblAdresaStanovanja = new JLabel("Adresa stanovanja*:");
-			JLabel lblBrojTelefona = new JLabel("Broj telefona*:");
-			JLabel lblEmailAdresa = new JLabel("E-mail adresa*:");
-			JLabel lblBrojLicneKarte = new JLabel("Broj licne karte*:");
-			JLabel lblAdresaKancelarije = new JLabel("Adresa kancelarije*:");
-			JLabel lblTitula = new JLabel("Titula*:");
-			JLabel lblZvanje = new JLabel("Zvanje*:");
+			JLabel lblIme = new JLabel("Ime*");
+			JLabel lblPrezime = new JLabel("Prezime*");
+			JLabel lblDatumRodjenja = new JLabel("Datum rodjenja*");
+			JLabel lblAdresaStanovanja = new JLabel("Adresa stanovanja*");
+			JLabel lblBrojTelefona = new JLabel("Broj telefona*");
+			JLabel lblEmailAdresa = new JLabel("E-mail adresa*");
+			JLabel lblBrojLicneKarte = new JLabel("Broj licne karte*");
+			JLabel lblAdresaKancelarije = new JLabel("Adresa kancelarije*");
+			JLabel lblZvanje = new JLabel("Zvanje*");
 			
 			JTextField txtIme = new JTextField();
 			JTextField txtPrezime = new JTextField();
@@ -60,8 +61,7 @@ public class AddProfessorDialog extends JDialog {
 			JTextField txtEmailAdresa = new JTextField();
 			JTextField txtBrojLicneKarte = new JTextField();
 			JTextField txtAdresaKancelarije = new JTextField();
-			JComboBox txtTitula = new JComboBox();
-			JComboBox txtZvanje = new JComboBox();
+			JTextField txtZvanje = new JTextField();
 			
 			JButton potvrdiBtn = new JButton("Potvrdi");
 			JButton odustaniBtn = new JButton("Odustani");
@@ -75,7 +75,6 @@ public class AddProfessorDialog extends JDialog {
 			lblEmailAdresa.setPreferredSize(dim);
 			lblBrojLicneKarte.setPreferredSize(dim);
 			lblAdresaKancelarije.setPreferredSize(dim);
-			lblTitula.setPreferredSize(dim);
 			lblZvanje.setPreferredSize(dim);
 			
 			txtIme.setPreferredSize(dim);
@@ -86,7 +85,6 @@ public class AddProfessorDialog extends JDialog {
 			txtEmailAdresa.setPreferredSize(dim);
 			txtBrojLicneKarte.setPreferredSize(dim);
 			txtAdresaKancelarije.setPreferredSize(dim);
-			txtTitula.setPreferredSize(dim);
 			txtZvanje.setPreferredSize(dim);
 			
 			panIme.add(lblIme);
@@ -113,9 +111,6 @@ public class AddProfessorDialog extends JDialog {
 			panAdresaKancelarije.add(lblAdresaKancelarije);
 			panAdresaKancelarije.add(txtAdresaKancelarije);
 			
-			panTitula.add(lblTitula);
-			panTitula.add(txtTitula);
-			
 			panZvanje.add(lblZvanje);
 			panZvanje.add(txtZvanje);
 			
@@ -134,7 +129,6 @@ public class AddProfessorDialog extends JDialog {
 			boxCentar.add(panEmailAdresa);
 			boxCentar.add(panBrojLicneKarte);
 			boxCentar.add(panAdresaKancelarije);
-			boxCentar.add(panTitula);
 			boxCentar.add(panZvanje);
 			boxCentar.add(Box.createGlue());
 			
@@ -143,24 +137,28 @@ public class AddProfessorDialog extends JDialog {
 			add(panDugmad,BorderLayout.SOUTH);
 			
 
+			
+			potvrdiBtn.addActionListener(new ActionListener(){
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					String name = txtIme.getText();
+					String lastName = txtPrezime.getText();
+					String phone = txtBrojTelefona.getText();
+					String email = txtEmailAdresa.getText();
+					String idCard = txtBrojLicneKarte.getText();
+					String position = txtZvanje.getText();
+					
+					ProfessorController.getInstance().dodajProfesora(name, lastName, null, null, phone, email, null, idCard, position, null);
+				}
+				
+			});
+			
+			
+			pack();
+			
+			
+			
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
-import gui.StatusBar;
+
 import listener.MyWindowListener;
 
 public class MainFrame extends JFrame{
@@ -39,10 +39,11 @@ public class MainFrame extends JFrame{
 		//TabbedPane tabbedPane = new TabbedPane();
 		TabbedPaneMainFrame.getInstance();
 		add(TabbedPaneMainFrame.getInstance(),BorderLayout.CENTER);
-		//statusbar
+//		//statusbar
 		StatusBar statusbar = new StatusBar();
 		add(statusbar, BorderLayout.SOUTH);
-		//window listener
+		validate();
+//		//window listener
 		//addWindowListener(new MyWindowListener());
 	
 	}

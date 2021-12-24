@@ -1,55 +1,46 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import java.time.LocalDateTime;
+import java.util.TimerTask;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import dateHandler.DateHandler;
 
-public class StatusBar extends JPanel{
-
-	/**
-	 * 
-	 */
-	JLabel name;
+public class StatusBar extends JPanel {
 
 	public StatusBar() {
-		
-		super();
-		setLayout(new BorderLayout());
-		name = new JLabel(" Studentska služba");
-		add(name, BorderLayout.WEST);
-		setBackground(Color.LIGHT_GRAY);
-		
-		
-		Date date = new Date();
-		DateFormat izgled = new SimpleDateFormat("HH:mm:ss   dd.MM.yyyy.");
-		JLabel dateTime = new JLabel(izgled.format(date));
-		
-		ActionListener actionListener = new ActionListener() {
+		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-			@Override
+		JLabel appName = new JLabel("Studentska služba");
+
+		JLabel dateLab = new JLabel();
+
+		LocalDateTime date = LocalDateTime.now();
+		dateLab.setText(DateHandler.dateTimeToString(date));
+
+		add(Box.createHorizontalStrut(10));
+		add(appName);
+		add(Box.createGlue());
+		add(dateLab);
+		add(Box.createHorizontalStrut(30));
+
+		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				date.setTime(System.currentTimeMillis());
-				dateTime.setText(izgled.format(date));
-				
+				LocalDateTime date = LocalDateTime.now();
+				dateLab.setText(DateHandler.dateTimeToString(date));
 			}
-			
 		};
 		
-		Timer timer = new Timer(0, actionListener);
+		Timer timer = new Timer(10000 ,taskPerformer);
+		timer.setRepeats(true);
 		timer.start();
-		
-		add(dateTime, BorderLayout.EAST);
-		
+
+
 	}
-	
-	
 }

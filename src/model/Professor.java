@@ -22,6 +22,26 @@ public class Professor {
 		super();
 	}
 
+
+	public Professor(String firstName, String lastName, LocalDate dateOfBirth, Address homeAddress, String phone,
+			String email, Address officeAddress, String idCard, String position, String workingYear,
+			List<Subject> listofSubjects) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.homeAddress = homeAddress;
+		this.phone = phone;
+		this.email = email;
+		this.officeAddress = officeAddress;
+		this.idCard = idCard;
+		this.position = position;
+		this.workingYear = workingYear;
+		this.listofSubjects = listofSubjects;
+	}
+
+
+
 	public String getFirstName() {
 		return firstName;
 	}
