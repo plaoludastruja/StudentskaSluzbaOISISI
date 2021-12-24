@@ -1,16 +1,19 @@
 package gui;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import listener.addEntity;
-import listener.deleteEntity;
+import listener.AddEntity;
+import listener.DeleteEntity;
+import listener.EditEntity;
 
 public class MenuBar extends JMenuBar {
 	
@@ -18,7 +21,7 @@ public class MenuBar extends JMenuBar {
 
 // ************************************* //	
 		JMenu file = new JMenu("File");
-		JMenuItem MBnew = new JMenuItem("New", KeyEvent.VK_N);
+		JMenuItem mbnew = new JMenuItem("New", KeyEvent.VK_N);
 		JMenuItem save = new JMenuItem("Save", KeyEvent.VK_S);
 		JMenu open = new JMenu("Open");
 		JMenuItem close = new JMenuItem("Close", KeyEvent.VK_C);
@@ -43,7 +46,7 @@ public class MenuBar extends JMenuBar {
 		help.setMnemonic(KeyEvent.VK_H);
 		
 // ************************************* //	
-		MBnew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+		mbnew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		close.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 		studenti.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK));
@@ -55,7 +58,7 @@ public class MenuBar extends JMenuBar {
 		help1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		
 // ************************************* //		
-		MBnew.setIcon(new ImageIcon("images/menubar/plus.png"));
+		mbnew.setIcon(new ImageIcon("images/menubar/plus.png"));
 		save.setIcon(new ImageIcon("images/menubar/diskette.png"));
 		open.setIcon(new ImageIcon("images/menubar/share.png"));
 		close.setIcon(new ImageIcon("images/menubar/close.png"));
@@ -71,12 +74,19 @@ public class MenuBar extends JMenuBar {
 		
 // ************************************* //
 		
-		MBnew.addActionListener(new addEntity());
-		delete.addActionListener(new deleteEntity());
-		
+		mbnew.addActionListener(new AddEntity());
+		delete.addActionListener(new DeleteEntity());
+		edit1.addActionListener(new EditEntity());
+		close.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.getInstance().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			}
+		});
 		
 // ************************************* //
-		file.add(MBnew);
+		file.add(mbnew);
 		file.addSeparator();
 		file.add(save);
 		file.addSeparator();

@@ -9,7 +9,7 @@ import gui.dialog.AddStudentDialog;
 import gui.dialog.DeleteProfessorDialog;
 import gui.dialog.DeleteStudentDialog;
 
-public class deleteEntity implements ActionListener {
+public class DeleteEntity implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

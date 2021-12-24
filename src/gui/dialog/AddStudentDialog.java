@@ -165,6 +165,7 @@ public class AddStudentDialog extends JDialog {
 						dateDatumRodjenja, addressAdresaStanovanja, txtBrojTelefona.getText(),
 						txtEmailAdresa.getText(), txtBrojIndeksa.getText(), intGodinaUpisa,
 						txtTrenutnaGodinaStudija.getSelectedIndex() + 1, 10.00, status);
+				dispose();
 			}
 		});
 		

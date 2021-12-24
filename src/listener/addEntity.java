@@ -9,7 +9,7 @@ import gui.MainFrame;
 import gui.TabbedPaneMainFrame;
 import gui.ToolBar;
 
-public class addEntity implements ActionListener{
+public class AddEntity implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
