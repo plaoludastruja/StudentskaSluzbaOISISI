@@ -20,6 +20,7 @@ import listener.AddEntity;
 import listener.DeleteEntity;
 import listener.EditEntity;
 
+
 public class ToolBar extends JToolBar {
 
 	Color toolbarBg = new Color(193, 223, 230);
@@ -63,9 +64,11 @@ public class ToolBar extends JToolBar {
 		 
 // ************************************* //	
 		
+
 		btnNew.addActionListener(new AddEntity());
 		btnDelete.addActionListener(new DeleteEntity());
 		btnEdit.addActionListener(new EditEntity());		
+
 		
 		
 // ************************************* //			

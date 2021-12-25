@@ -9,8 +9,10 @@ import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.WindowConstants;
-
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import listener.MyWindowListener;
 
@@ -42,6 +44,21 @@ public class MainFrame extends JFrame{
 //		//statusbar
 		StatusBar statusbar = new StatusBar();
 		add(statusbar, BorderLayout.SOUTH);
+		TabbedPaneMainFrame.getInstance().addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				if(TabbedPaneMainFrame.getInstance().getSelectedIndex() == 0) {
+					statusbar.getTabName().setText("Student");
+				}else if(TabbedPaneMainFrame.getInstance().getSelectedIndex() == 1) {
+					statusbar.getTabName().setText("Profesor");
+				}else  {
+					statusbar.getTabName().setText("Predmet");
+					
+				}
+				
+			}
+		});
 		validate();
 //		//window listener
 		addWindowListener(new MyWindowListener());
@@ -59,6 +76,17 @@ public class MainFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
+	}
+
+	public JTable getTable() {
+		if(TabbedPaneMainFrame.getInstance().getSelectedIndex() == 0) {
+			return StudentTable.getInstance();
+		}else if(TabbedPaneMainFrame.getInstance().getSelectedIndex() == 1) {
+			return ProfessorTable.getInstance();
+		}else {
+			return SubjectTable.getInstance();
+		}
+		
 	}
 	
 	

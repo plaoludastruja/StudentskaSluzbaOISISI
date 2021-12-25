@@ -22,10 +22,11 @@ import javax.swing.JTextField;
 import controller.ProfessorController;
 import dateHandler.DateHandler;
 import gui.MainFrame;
-import model.Address;
+import model.Professor;
 
-public class AddProfessorDialog extends JDialog {
-
+public class EditProfessorDialog extends JDialog {
+	
+	Professor forEdit;
 	private JTextField txtIme;
 	private JTextField txtPrezime;
 	private JTextField txtDatumRodjenja;
@@ -35,10 +36,9 @@ public class AddProfessorDialog extends JDialog {
 	private JTextField txtBrojLicneKarte;
 	private JTextField txtAdresaKancelarije;
 	private JTextField txtZvanje;
-	JButton potvrdiBtn;
-	JButton odustaniBtn;
 
-	public AddProfessorDialog(Frame parent, String title, boolean modal) {
+
+	public EditProfessorDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 
 		setSize(400, 420);
@@ -80,9 +80,8 @@ public class AddProfessorDialog extends JDialog {
 		txtAdresaKancelarije = new JTextField();
 		txtZvanje = new JTextField();
 
-		potvrdiBtn = new JButton("Potvrdi");
-		potvrdiBtn.setEnabled(false);
-		odustaniBtn = new JButton("Odustani");
+		JButton potvrdiBtn = new JButton("Potvrdi");
+		JButton odustaniBtn = new JButton("Odustani");
 
 		lblIme.setPreferredSize(dim);
 		lblPrezime.setPreferredSize(dim);
@@ -163,44 +162,27 @@ public class AddProfessorDialog extends JDialog {
 				String dateOfBirth = txtDatumRodjenja.getText();
 				String homeAddress = txtAdresaStanovanja.getText();
 				String officeAddress = txtAdresaKancelarije.getText();
-
 				LocalDate dateOfb = null;
 				try {
-					dateOfb = DateHandler.stringToDate(dateOfBirth);
-				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "Pogresan format datuma", "Hey!", JOptionPane.ERROR_MESSAGE);
+					dateOfb = DateHandler.stringToDate(dateOfBirth);					
+				}catch(Exception ex){
+					JOptionPane.showMessageDialog(null, "Pogresan format datuma",
+						      "Hey!", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
-				String adress = txtAdresaStanovanja.getText();
-				String[] adressArray = adress.split(",");
-				String[] ulicaBr = adressArray[0].split(" ");
-				Address adressStanovanja = new Address(ulicaBr[0], ulicaBr[1], adressArray[1], adressArray[2]);
-				
-				String oAddress = txtAdresaKancelarije.getText();
-				String[] oAdressArray = adress.split(",");
-				String[] ulicaBr1 = adressArray[0].split(" ");
-				Address adressKancelarije = new Address(ulicaBr1[0], ulicaBr1[1], oAdressArray[1], oAdressArray[2]);
-
-				ProfessorController.getInstance().dodajProfesora(name, lastName, dateOfb, adressStanovanja, phone,
-						email, adressKancelarije, idCard, position, null);
+				ProfessorController.getInstance().izmeniProfesora(forEdit, name, lastName, dateOfb, null, phone, email, null, idCard,
+						position, null);
 			}
-
+ 
 		});
 
-		odustaniBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-
+		
 		KeyListener keyListener = new KeyListener() {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
+				
 
 			}
 
@@ -220,7 +202,7 @@ public class AddProfessorDialog extends JDialog {
 
 			}
 		};
-
+		
 		txtIme.addKeyListener(keyListener);
 		txtPrezime.addKeyListener(keyListener);
 		txtDatumRodjenja.addKeyListener(keyListener);
@@ -231,9 +213,13 @@ public class AddProfessorDialog extends JDialog {
 		txtAdresaKancelarije.addKeyListener(keyListener);
 		txtZvanje.addKeyListener(keyListener);
 
-		pack();
-	}
 
+		pack();
+
+	}
+	
+	
+	
 	private boolean validateInputInfo() {
 		if (txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatumRodjenja.getText().equals("")
 				|| txtAdresaStanovanja.getText().equals("") || txtBrojTelefona.getText().equals("")
@@ -241,7 +227,7 @@ public class AddProfessorDialog extends JDialog {
 				|| txtAdresaKancelarije.getText().equals("") || txtZvanje.getText().equals("")) {
 			return false;
 		}
-
+		
 		LocalDate dateOfb;
 		try {
 			dateOfb = DateHandler.stringToDate(txtDatumRodjenja.getText());
@@ -251,14 +237,19 @@ public class AddProfessorDialog extends JDialog {
 
 		String adress = txtAdresaStanovanja.getText();
 		String[] adressArray = adress.split(",");
+		//System.out.println(adressArray.length);
+		
 		if (adressArray.length != 3) {
+			return false;
+		}
+		if(adressArray[0].equals("") || adressArray[1].equals("") || adressArray[2].equals("")) {
 			return false;
 		}
 		String[] ulicaBr = adressArray[0].split(" ");
 		if (ulicaBr.length != 2) {
 			return false;
 		}
-
+		
 		String oAdress = txtAdresaKancelarije.getText();
 		String[] oAdressArray = oAdress.split(",");
 		if (oAdressArray.length != 3) {
@@ -268,8 +259,30 @@ public class AddProfessorDialog extends JDialog {
 		if (oUlicaBr.length != 2) {
 			return false;
 		}
-		return true;
 
+		return true;
+	}
+
+	
+	
+	public Professor getForEdit() {
+		return forEdit;
+	}
+	
+	public void setForEdit(Professor forEdit) {
+		this.forEdit = forEdit;
+		
+		txtIme.setText(forEdit.getFirstName());
+		txtPrezime.setText(forEdit.getLastName());
+		txtBrojTelefona.setText(forEdit.getPhone());
+		txtEmailAdresa.setText(forEdit.getEmail());
+		txtBrojLicneKarte.setText(forEdit.getIdCard());
+		txtZvanje.setText(forEdit.getPosition());
+		
+		txtDatumRodjenja.setText(DateHandler.dateToString((forEdit.getDateOfBirth())));
+		txtAdresaStanovanja.setText(forEdit.getHomeAddress().adressForDisplay());
+		txtAdresaKancelarije.setText(forEdit.getOfficeAddress().adressForDisplay());
+		
 	}
 
 }

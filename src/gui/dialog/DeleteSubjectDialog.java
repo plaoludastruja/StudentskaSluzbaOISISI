@@ -13,13 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.ProfessorController;
+import controller.SubjectController;
 import gui.MainFrame;
 
-public class DeleteProfessorDialog extends JDialog{
+public class DeleteSubjectDialog extends JDialog{
 
-	private int index;
+	private int index1;
 
-	public DeleteProfessorDialog(Frame parent, String title, boolean modal) {
+	public DeleteSubjectDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 
 		setSize(400, 100);
@@ -32,7 +33,7 @@ public class DeleteProfessorDialog extends JDialog{
 		JPanel panPitanje = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		
-		JLabel lblPitanje = new JLabel("Da li ste sigurni da zelite da obrisete profesora?");
+		JLabel lblPitanje = new JLabel("Da li ste sigurni da zelite da obrisete predmet?");
 		JButton daBtn = new JButton("DA");
 		JButton neBtn = new JButton("NE");
 		
@@ -40,7 +41,7 @@ public class DeleteProfessorDialog extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ProfessorController.getInstance().izbrisiProfesora(index);
+				SubjectController.getInstance().izbrisiPredmet(index1);
 				dispose();
 			}
 		});
@@ -63,16 +64,10 @@ public class DeleteProfessorDialog extends JDialog{
 	
 	
 	
-	
-	
-	
-	
-	
-	
 	}
 
-	public void setRowIndex(int index) {
-		this.index = index;
+	public void setRowIndex(int index1) {
+		this.index1 = index1;
 		
 	}
 }

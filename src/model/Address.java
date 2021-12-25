@@ -10,6 +10,16 @@ public class Address {
 	public Address() {
 		super();
 	}
+	
+	
+	public Address(String street, String streetNum, String city, String country) {
+		super();
+		this.street = street;
+		this.streetNum = streetNum;
+		this.city = city;
+		this.country = country;
+	}
+
 
 	public String getStreet() {
 		return street;
@@ -46,6 +56,10 @@ public class Address {
 	@Override
 	public String toString() {
 		return  street + ", " + streetNum + ", " + city + ", " + country;
+	}
+	
+	public String adressForDisplay() {
+		return street + " " + streetNum + ", " + city + ", " + country;
 	}
 
 	

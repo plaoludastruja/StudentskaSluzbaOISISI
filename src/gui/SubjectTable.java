@@ -7,25 +7,25 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
-public class ProfessorTable extends JTable{
+public class SubjectTable extends JTable{
 
 	
-	private static ProfessorTable instance = null;
+	private static SubjectTable instance = null;
 
-	public static ProfessorTable getInstance() {
+	public static SubjectTable getInstance() {
 		if (instance == null) {
-			instance = new ProfessorTable();
+			instance = new SubjectTable();
 		}
 
 		return instance;
 	}
 	
-	public ProfessorTable() {
+	public SubjectTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		this.setModel(new AbstractTableModelProfessor());
+		this.setModel(new AbstractTableModelSubject());
 	}
 	
 	

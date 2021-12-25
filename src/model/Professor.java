@@ -16,7 +16,7 @@ public class Professor {
 		private String idCard;
 		private String position; //titula
 		private String workingYear; //godine radnog staza
-		private List<Subject> listofSubjects = new ArrayList();
+		private List<Subject> listofSubjects = new ArrayList<Subject>();
 	
 	public Professor() {
 		super();
