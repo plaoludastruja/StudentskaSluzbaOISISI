@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,10 +35,46 @@ public class BazaStudent {
 		kolone.add("PROSJEK");
 	}
 	// ne
+	// firstName, lastName, dateOfBirth, address, phone,email, index, indexYear, currentYear, averageGrade, studentStatus
 	private void initStudent() {
-		/*studenti.add(new Student("RA125/2019", "Đorđe", "Lipovcic", 3, Status.B, 8.5));
-		studenti.add(new Student("RA126/2021", "Sandra", "Jovanovic", 2, Status.B, 7.25));
-		studenti.add(new Student("RA32/2018", "Janko", "Jankovic", 3, Status.S, 9.75));*/
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM.yyyy.");
+		LocalDate datumDjordje = LocalDate.parse("29.02.2000.", formatter);
+		LocalDate datumSandra = LocalDate.parse("27.12.1999.", formatter);
+		Address adresaDjordje = new Address();
+		adresaDjordje.setStreet("Karadjordjeva");
+		adresaDjordje.setStreetNum("L1D");
+		adresaDjordje.setCity("Teslic");
+		adresaDjordje.setCountry("BIH");
+		
+		Student djordje = new Student();
+		djordje.setFirstName("Đorđe");
+		djordje.setLastName("Lipovčić");
+		djordje.setDateOfBirth(datumDjordje);
+		djordje.setAddress(adresaDjordje);
+		djordje.setPhone("+387644479985");
+		djordje.setEmail("the2922000@gmail.com");
+		djordje.setIndex("RA125/2019");
+		djordje.setIndexYear(2019);
+		djordje.setCurrentYear(3);
+		djordje.setAverageGrade(8.53);
+		djordje.setStudentStatus(Status.B);
+		
+		Student sandra = new Student();
+		sandra.setFirstName("Sandra");
+		sandra.setLastName("Jovanović");
+		sandra.setDateOfBirth(datumSandra);
+		sandra.setAddress(adresaDjordje);
+		sandra.setPhone("+387644479985");
+		sandra.setEmail("jovanovic.ra126.2019@uns.ac.rs");
+		sandra.setIndex("RA126/2019");
+		sandra.setIndexYear(2019);
+		sandra.setCurrentYear(3);
+		sandra.setAverageGrade(8.53);
+		sandra.setStudentStatus(Status.B);
+		
+		studenti.add(djordje);
+		studenti.add(sandra);
 	}
 	
 	public List<Student> getStudent() {
@@ -99,10 +136,12 @@ public class BazaStudent {
 	}
 		
 		//public void addStudent(String index, String firstName, String lastName, int currentYear, Status studentStatus, double averageGrade) {
-	public void addStudent(String firstName, String lastName, LocalDate dateOfBirth, Address address, String phone,
-			String email, String index, int indexYear, int currentYear, double averageGrade, Status studentStatus) {
+	public void addStudent(Student noviStudent) {
 		
-			this.studenti.add(new Student(firstName, lastName, dateOfBirth, address, phone,email, index, indexYear, currentYear, averageGrade, studentStatus));
+		if(checkIfExists(noviStudent.getIndex())) {
+			
+		}
+			this.studenti.add(noviStudent);
 		}
 
 		public void deleteStudent(String index) {
@@ -114,14 +153,13 @@ public class BazaStudent {
 			}
 		}
 
-		public void changeStudent(String firstName, String lastName, LocalDate dateOfBirth, Address address, String phone,
-				String email, String index, int indexYear, int currentYear, double averageGrade, Status studentStatus) {
+		public void changeStudent(Student izmjenaStudent) {
 			
 			for (Student i : studenti) {
 				
 				if (i.getIndex().equals(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getIndex())) {
 					
-					i.setFirstName(firstName);
+					/*i.setFirstName(firstName);
 					i.setLastName(lastName);
 					i.setDateOfBirth(dateOfBirth);
 					i.setAddress(address);
@@ -131,18 +169,31 @@ public class BazaStudent {
 					i.setCurrentYear(currentYear);
 					i.setStudentStatus(studentStatus);
 					i.setAverageGrade(0.0);
-					i.setIndex(index);
+					i.setIndex(index);*/
+					
+					i.setFirstName(izmjenaStudent.getFirstName());
+					i.setLastName(izmjenaStudent.getLastName());
+					i.setDateOfBirth(izmjenaStudent.getDateOfBirth());
+					i.setAddress(izmjenaStudent.getAddress());
+					i.setPhone(izmjenaStudent.getPhone());
+					i.setEmail(izmjenaStudent.getEmail());
+					i.setIndexYear(izmjenaStudent.getIndexYear());
+					i.setCurrentYear(izmjenaStudent.getCurrentYear());
+					i.setStudentStatus(izmjenaStudent.getStudentStatus());
+					i.setAverageGrade(izmjenaStudent.getAverageGrade());
+					i.setIndex(izmjenaStudent.getIndex());
+					
 				}
 			}
 		}
 		
-		/*public boolean checkIfExists(String index) {
-			for(Student i : students) {
-				if(i.getNumberOfIndex() == index) {
+		public boolean checkIfExists(String index) {
+			for(Student i : studenti) {
+				if(i.getIndex() == index) {
 					return true;
 				}
 			}
 			return false;
-		}*/
+		}
 	
 }

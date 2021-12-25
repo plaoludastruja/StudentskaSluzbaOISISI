@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -20,6 +22,7 @@ import javax.swing.JTextField;
 import controller.StudentController;
 import gui.MainFrame;
 import gui.StudentTable;
+import listener.StudentFocusListener;
 import model.Address;
 import model.Student;
 import model.Student.Status;
@@ -142,30 +145,30 @@ public class EditStudentDialog extends JDialog {
 		panDugmad.add(odustaniBtn);
 		
 		
-		/*JTextField txtIme = new JTextField();
-		JTextField txtPrezime = new JTextField();
-		JTextField txtDatumRodjenja = new JTextField();
-		JTextField txtAdresaStanovanja = new JTextField();
-		JTextField txtBrojTelefona = new JTextField();
-		JTextField txtEmailAdresa = new JTextField();
-		JTextField txtBrojIndeksa = new JTextField();
-		JTextField txtGodinaUpisa = new JTextField();
-		JComboBox txtTrenutnaGodinaStudija = new JComboBox();
-		JComboBox txtNacinFinansiranja = new JComboBox(Status.values());*/
+		/*potvrdiBtn.setEnabled(true);
+		txtIme.addFocusListener(new StudentFocusListener());
+		txtPrezime.addFocusListener(new StudentFocusListener());
+		txtDatumRodjenja.addFocusListener(new StudentFocusListener());
+		txtAdresaStanovanja.addFocusListener(new StudentFocusListener());
+		txtBrojTelefona.addFocusListener(new StudentFocusListener());
+		txtEmailAdresa.addFocusListener(new StudentFocusListener());
+		txtBrojIndeksa.addFocusListener(new StudentFocusListener());
+		txtGodinaUpisa.addFocusListener(new StudentFocusListener());*/
 		
 		
-		txtIme.setText(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getFirstName());
-		txtPrezime.setText(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getLastName());
-		txtDatumRodjenja.setText(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getDateOfBirth().format(DateTimeFormatter.ofPattern("dd.MM.yyyy.")));
-		txtAdresaStanovanja.setText(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getAddress().toString());
-		txtBrojTelefona.setText(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getPhone());
-		txtEmailAdresa.setText(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getEmail());
-		txtBrojIndeksa.setText(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getIndex());
-		txtGodinaUpisa.setText(Integer.toString(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getIndexYear()));
-		txtTrenutnaGodinaStudija.setSelectedItem(Integer.toString(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getCurrentYear()));
-		txtNacinFinansiranja.setSelectedItem((Status)(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getStudentStatus()));
+		txtIme.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getFirstName());
+		txtPrezime.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getLastName());
+		txtDatumRodjenja.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getDateOfBirth().format(DateTimeFormatter.ofPattern("dd.MM.yyyy.")));
+		txtAdresaStanovanja.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getAddress().toString());
+		txtBrojTelefona.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getPhone());
+		txtEmailAdresa.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getEmail());
+		txtBrojIndeksa.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getIndex());
+		txtGodinaUpisa.setText(Integer.toString(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getIndexYear()));
+		txtTrenutnaGodinaStudija.setSelectedItem((Integer)(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getCurrentYear()));
+		txtNacinFinansiranja.setSelectedItem((Status)(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getStudentStatus()));
 
 	
+		
 		
 		potvrdiBtn.addActionListener(new ActionListener() {
 
@@ -186,10 +189,20 @@ public class EditStudentDialog extends JDialog {
 
 				Status status = Status.values()[txtNacinFinansiranja.getSelectedIndex()];
 				
-				StudentController.getInstance().editStudent(StudentTable.getInstance().getSelectedRow(),txtIme.getText(), txtPrezime.getText(),
-						dateDatumRodjenja, addressAdresaStanovanja, txtBrojTelefona.getText(),
-						txtEmailAdresa.getText(), txtBrojIndeksa.getText(), intGodinaUpisa,
-						txtTrenutnaGodinaStudija.getSelectedIndex() + 1, 10.00, status);
+				Student izmjenaStudent = new Student();
+				izmjenaStudent.setFirstName(txtIme.getText());
+				izmjenaStudent.setLastName(txtPrezime.getText());
+				izmjenaStudent.setDateOfBirth(dateDatumRodjenja);
+				izmjenaStudent.setAddress(addressAdresaStanovanja);
+				izmjenaStudent.setPhone(txtBrojTelefona.getText());
+				izmjenaStudent.setEmail(txtEmailAdresa.getText());
+				izmjenaStudent.setIndex(txtBrojIndeksa.getText());
+				izmjenaStudent.setIndexYear(intGodinaUpisa);
+				izmjenaStudent.setCurrentYear(txtTrenutnaGodinaStudija.getSelectedIndex() + 1);
+				izmjenaStudent.setAverageGrade(10.00);
+				izmjenaStudent.setStudentStatus(status);
+				
+				StudentController.getInstance().editStudent(StudentTable.getInstance().getSelectedRow(), izmjenaStudent);
 				dispose();
 			}
 		});

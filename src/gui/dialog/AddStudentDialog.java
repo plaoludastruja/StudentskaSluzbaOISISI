@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -18,8 +20,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import controller.StudentController;
+import listener.StudentFocusListener;
 import gui.MainFrame;
 import gui.ToolBar;
 import model.Address;
@@ -28,6 +33,11 @@ import model.Student.Status;
 
 public class AddStudentDialog extends JDialog {
 
+	public static JTextField txtIme, txtPrezime, txtDatumRodjenja, txtAdresaStanovanja, txtBrojTelefona, txtEmailAdresa,
+	txtBrojIndeksa, txtGodinaUpisa;
+	public static JButton potvrdiBtn;
+	
+	
 	public AddStudentDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		
@@ -62,14 +72,14 @@ public class AddStudentDialog extends JDialog {
 		JLabel lblTrenutnaGodinaStudija = new JLabel("Trenutna godina studija*:");
 		JLabel lblNacinFinansiranja = new JLabel("Način finansiranja*:");
 		
-		JTextField txtIme = new JTextField();
-		JTextField txtPrezime = new JTextField();
-		JTextField txtDatumRodjenja = new JTextField();
-		JTextField txtAdresaStanovanja = new JTextField();
-		JTextField txtBrojTelefona = new JTextField();
-		JTextField txtEmailAdresa = new JTextField();
-		JTextField txtBrojIndeksa = new JTextField();
-		JTextField txtGodinaUpisa = new JTextField();
+		txtIme = new JTextField();
+		txtPrezime = new JTextField();
+		txtDatumRodjenja = new JTextField();
+		txtAdresaStanovanja = new JTextField();
+		txtBrojTelefona = new JTextField();
+		txtEmailAdresa = new JTextField();
+		txtBrojIndeksa = new JTextField();
+		txtGodinaUpisa = new JTextField();
 		JComboBox txtTrenutnaGodinaStudija = new JComboBox();
 		JComboBox txtNacinFinansiranja = new JComboBox(Status.values());
 		
@@ -83,7 +93,7 @@ public class AddStudentDialog extends JDialog {
 		
 		
 		
-		JButton potvrdiBtn = new JButton("Potvrdi");
+		potvrdiBtn = new JButton("Potvrdi");
 		JButton odustaniBtn = new JButton("Odustani");
 		
 		
@@ -108,6 +118,15 @@ public class AddStudentDialog extends JDialog {
 		txtGodinaUpisa.setPreferredSize(dim);
 		txtTrenutnaGodinaStudija.setPreferredSize(dim);
 		txtNacinFinansiranja.setPreferredSize(dim);
+		
+		txtIme.setName("txtIme");
+		txtPrezime.setName("txtPrezime");
+		txtDatumRodjenja.setName("txtDatumRodjenja");
+		txtAdresaStanovanja.setName("txtAdresaStanovanja");
+		txtBrojTelefona.setName("txtBrojTelefona");
+		txtEmailAdresa.setName("txtEmailAdresa");
+		txtBrojIndeksa.setName("txtBrojIndeksa");
+		txtGodinaUpisa.setName("txtGodinaUpisa");
 		
 		panIme.add(lblIme);
 		panIme.add(txtIme);
@@ -142,6 +161,20 @@ public class AddStudentDialog extends JDialog {
 		panDugmad.add(potvrdiBtn);
 		panDugmad.add(odustaniBtn);
 		
+		
+		
+		
+		potvrdiBtn.setEnabled(false);
+		txtIme.addFocusListener(new StudentFocusListener());
+		txtPrezime.addFocusListener(new StudentFocusListener());
+		txtDatumRodjenja.addFocusListener(new StudentFocusListener());
+		txtAdresaStanovanja.addFocusListener(new StudentFocusListener());
+		txtBrojTelefona.addFocusListener(new StudentFocusListener());
+		txtEmailAdresa.addFocusListener(new StudentFocusListener());
+		txtBrojIndeksa.addFocusListener(new StudentFocusListener());
+		txtGodinaUpisa.addFocusListener(new StudentFocusListener());
+
+		
 		potvrdiBtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -149,7 +182,7 @@ public class AddStudentDialog extends JDialog {
 				
 				int intGodinaUpisa = Integer.parseInt(txtGodinaUpisa.getText());
 				
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM.yyyy.");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 				LocalDate dateDatumRodjenja = LocalDate.parse(txtDatumRodjenja.getText(), formatter);
 				
 				Address addressAdresaStanovanja = new Address();
@@ -161,10 +194,20 @@ public class AddStudentDialog extends JDialog {
 
 				Status status = Status.values()[txtNacinFinansiranja.getSelectedIndex()];
 				
-				StudentController.getInstance().addStudent(txtIme.getText(), txtPrezime.getText(),
-						dateDatumRodjenja, addressAdresaStanovanja, txtBrojTelefona.getText(),
-						txtEmailAdresa.getText(), txtBrojIndeksa.getText(), intGodinaUpisa,
-						txtTrenutnaGodinaStudija.getSelectedIndex() + 1, 10.00, status);
+				Student noviStudent = new Student();
+				noviStudent.setFirstName(txtIme.getText());
+				noviStudent.setLastName(txtPrezime.getText());
+				noviStudent.setDateOfBirth(dateDatumRodjenja);
+				noviStudent.setAddress(addressAdresaStanovanja);
+				noviStudent.setPhone(txtBrojTelefona.getText());
+				noviStudent.setEmail(txtEmailAdresa.getText());
+				noviStudent.setIndex(txtBrojIndeksa.getText());
+				noviStudent.setIndexYear(intGodinaUpisa);
+				noviStudent.setCurrentYear(txtTrenutnaGodinaStudija.getSelectedIndex() + 1);
+				noviStudent.setAverageGrade(10.00);
+				noviStudent.setStudentStatus(status);
+				
+				StudentController.getInstance().addStudent(noviStudent);
 				dispose();
 			}
 		});
