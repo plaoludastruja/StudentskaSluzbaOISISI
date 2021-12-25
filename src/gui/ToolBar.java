@@ -18,6 +18,7 @@ import gui.dialog.AddStudentDialog;
 import listener.addEntity;
 //import listener.addEntity;
 import listener.deleteEntity;
+import listener.editEntity;
 
 public class ToolBar extends JToolBar {
 
@@ -64,6 +65,7 @@ public class ToolBar extends JToolBar {
 		
 		btnNew.addActionListener(new addEntity());
 		btnDelete.addActionListener(new deleteEntity());
+		btnEdit.addActionListener(new editEntity());
 		
 		/*btnNew.addActionListener(new ActionListener() {
 

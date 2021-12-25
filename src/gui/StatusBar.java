@@ -13,11 +13,12 @@ import javax.swing.Timer;
 import dateHandler.DateHandler;
 
 public class StatusBar extends JPanel {
-
+	private JLabel tabName;
 	public StatusBar() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-		JLabel appName = new JLabel("Studentska služba");
+		tabName = new JLabel("Student");
+		JLabel appName = new JLabel("Studentska služba - ");
 
 		JLabel dateLab = new JLabel();
 
@@ -26,6 +27,7 @@ public class StatusBar extends JPanel {
 
 		add(Box.createHorizontalStrut(10));
 		add(appName);
+		add(tabName);
 		add(Box.createGlue());
 		add(dateLab);
 		add(Box.createHorizontalStrut(30));
@@ -40,7 +42,11 @@ public class StatusBar extends JPanel {
 		Timer timer = new Timer(10000 ,taskPerformer);
 		timer.setRepeats(true);
 		timer.start();
-
-
+		
 	}
+	public JLabel getTabName() {
+		return tabName;
+	}
+	
+	
 }

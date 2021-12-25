@@ -20,6 +20,11 @@ public class deleteEntity implements ActionListener {
 				break;
 			case 1:	// PROFESOR
 				DeleteProfessorDialog deleteProfessorDialog = new DeleteProfessorDialog(MainFrame.getInstance(), "Brisanje profesora", false);
+				int index = MainFrame.getInstance().getTable().getSelectedRow();
+				if(index == -1) {
+					return;
+				}
+				deleteProfessorDialog.setRowIndex(index);
 				deleteProfessorDialog.setVisible(true);
 				break;
 			case 2:	// PREDMET

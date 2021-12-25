@@ -10,6 +10,16 @@ public class Address {
 	public Address() {
 		super();
 	}
+	
+	
+	public Address(String street, String streetNum, String city, String country) {
+		super();
+		this.street = street;
+		this.streetNum = streetNum;
+		this.city = city;
+		this.country = country;
+	}
+
 
 	public String getStreet() {
 		return street;
@@ -47,6 +57,10 @@ public class Address {
 	public String toString() {
 		return "Address [street=" + street + ", streetNum=" + streetNum + ", city=" + city + ", country=" + country
 				+ "]";
+	}
+	
+	public String adressForDisplay() {
+		return street + " " + streetNum + ", " + city + ", " + country;
 	}
 
 	
