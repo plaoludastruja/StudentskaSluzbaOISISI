@@ -7,7 +7,6 @@ import gui.MainFrame;
 import gui.StudentTable;
 import gui.TabbedPaneMainFrame;
 import gui.dialog.AddEditStudentDialog;
-import gui.dialog.EditStudentDialog;
 
 
 public class EditEntity implements ActionListener{
