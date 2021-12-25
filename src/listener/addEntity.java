@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import gui.dialog.AddProfessorDialog;
-import gui.dialog.AddStudentDialog;
+import gui.dialog.AddEditStudentDialog;
 import gui.MainFrame;
 import gui.TabbedPaneMainFrame;
 import gui.ToolBar;
@@ -15,7 +15,7 @@ public class AddEntity implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		switch (TabbedPaneMainFrame.getInstance().getSelectedIndex()) {
 			case 0:	// STUDENT
-				AddStudentDialog addStudentDialog = new AddStudentDialog(MainFrame.getInstance(), "Dodavanje studenta", true);
+				AddEditStudentDialog addStudentDialog = new AddEditStudentDialog(MainFrame.getInstance(), "Dodavanje studenta", true, true);
 				addStudentDialog.setVisible(true);
 				break;
 			case 1:	// PROFESOR

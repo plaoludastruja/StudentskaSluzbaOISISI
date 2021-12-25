@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import gui.MainFrame;
+import gui.StudentTable;
 import gui.TabbedPaneMainFrame;
+import gui.dialog.AddEditStudentDialog;
 import gui.dialog.EditStudentDialog;
 
 
@@ -14,8 +16,11 @@ public class EditEntity implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		switch (TabbedPaneMainFrame.getInstance().getSelectedIndex()) {
 			case 0:	// STUDENT
-				EditStudentDialog editStudentDialog = new EditStudentDialog(MainFrame.getInstance(), "Izmjena studenta", true);
-				editStudentDialog.setVisible(true);
+				if(StudentTable.getInstance().getSelectedRow()!=-1) {
+					AddEditStudentDialog editStudentDialog = new AddEditStudentDialog(MainFrame.getInstance(), "Izmjena studenta", true, false);
+					editStudentDialog.setVisible(true);
+				}
+				
 				break;
 			case 1:	// PROFESOR
 				//EditProfessorDialog editProfessorDialog = new EditProfessorDialog(MainFrame.getInstance(), "Izmjena profesora", true);

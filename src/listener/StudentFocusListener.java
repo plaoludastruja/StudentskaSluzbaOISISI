@@ -6,7 +6,7 @@ import java.awt.event.FocusListener;
 import javax.swing.JTextField;
 
 import controller.CheckInputStudent;
-import gui.dialog.AddStudentDialog;
+import gui.dialog.AddEditStudentDialog;
 
 
 public class StudentFocusListener implements FocusListener {
@@ -32,35 +32,35 @@ public class StudentFocusListener implements FocusListener {
 		String fieldName = textField.getName();
 		
 		boolean check = (
-				(CheckInputStudent.checkFirstLastName(inputText) && (fieldName.equals(AddStudentDialog.txtIme.getName())))
-				|| (CheckInputStudent.checkFirstLastName(inputText) && (fieldName.equals(AddStudentDialog.txtPrezime.getName())))
-				|| (CheckInputStudent.checkDate(inputText) && (fieldName.equals(AddStudentDialog.txtDatumRodjenja.getName())))
-				|| (CheckInputStudent.checkAddress(inputText) && (fieldName.equals(AddStudentDialog.txtAdresaStanovanja.getName())))
-				|| (CheckInputStudent.checkPhone(inputText) && (fieldName.equals(AddStudentDialog.txtBrojTelefona.getName())))
-				|| (CheckInputStudent.checkEmail(inputText) && (fieldName.equals(AddStudentDialog.txtEmailAdresa.getName())))
-				|| (CheckInputStudent.checkIndex(inputText) && (fieldName.equals(AddStudentDialog.txtBrojIndeksa.getName())))
-				|| (CheckInputStudent.checkIndexYear(inputText) && (fieldName.equals(AddStudentDialog.txtGodinaUpisa.getName())))
+				(CheckInputStudent.checkFirstLastName(inputText) && (fieldName.equals(AddEditStudentDialog.txtIme.getName())))
+				|| (CheckInputStudent.checkFirstLastName(inputText) && (fieldName.equals(AddEditStudentDialog.txtPrezime.getName())))
+				|| (CheckInputStudent.checkDate(inputText) && (fieldName.equals(AddEditStudentDialog.txtDatumRodjenja.getName())))
+				|| (CheckInputStudent.checkAddress(inputText) && (fieldName.equals(AddEditStudentDialog.txtAdresaStanovanja.getName())))
+				|| (CheckInputStudent.checkPhone(inputText) && (fieldName.equals(AddEditStudentDialog.txtBrojTelefona.getName())))
+				|| (CheckInputStudent.checkEmail(inputText) && (fieldName.equals(AddEditStudentDialog.txtEmailAdresa.getName())))
+				|| (CheckInputStudent.checkIndex(inputText) && (fieldName.equals(AddEditStudentDialog.txtBrojIndeksa.getName())))
+				|| (CheckInputStudent.checkIndexYear(inputText) && (fieldName.equals(AddEditStudentDialog.txtGodinaUpisa.getName())))
 		);
 		if(!check) {
 			textField.setForeground(Color.RED);
 		}
 
-		if( (AddStudentDialog.txtIme.getText().isEmpty()) || (AddStudentDialog.txtPrezime.getText().isEmpty())
-			|| (AddStudentDialog.txtDatumRodjenja.getText().isEmpty()) || (AddStudentDialog.txtAdresaStanovanja.getText().isEmpty())
-			|| (AddStudentDialog.txtBrojTelefona.getText().isEmpty()) || (AddStudentDialog.txtEmailAdresa.getText().isEmpty())
-			|| (AddStudentDialog.txtBrojIndeksa.getText().isEmpty()) || (AddStudentDialog.txtGodinaUpisa.getText().isEmpty())
+		if( (AddEditStudentDialog.txtIme.getText().isEmpty()) || (AddEditStudentDialog.txtPrezime.getText().isEmpty())
+			|| (AddEditStudentDialog.txtDatumRodjenja.getText().isEmpty()) || (AddEditStudentDialog.txtAdresaStanovanja.getText().isEmpty())
+			|| (AddEditStudentDialog.txtBrojTelefona.getText().isEmpty()) || (AddEditStudentDialog.txtEmailAdresa.getText().isEmpty())
+			|| (AddEditStudentDialog.txtBrojIndeksa.getText().isEmpty()) || (AddEditStudentDialog.txtGodinaUpisa.getText().isEmpty())
 				
 		){
-			AddStudentDialog.potvrdiBtn.setEnabled(false);
-		}else if( (AddStudentDialog.txtIme.getForeground() == Color.RED) || (AddStudentDialog.txtPrezime.getForeground() == Color.RED)
-				|| (AddStudentDialog.txtDatumRodjenja.getForeground() == Color.RED) || (AddStudentDialog.txtAdresaStanovanja.getForeground() == Color.RED)
-				|| (AddStudentDialog.txtBrojTelefona.getForeground() == Color.RED) || (AddStudentDialog.txtEmailAdresa.getForeground() == Color.RED)
-				|| (AddStudentDialog.txtBrojIndeksa.getForeground() == Color.RED) || (AddStudentDialog.txtGodinaUpisa.getForeground() == Color.RED)
+			AddEditStudentDialog.potvrdiBtn.setEnabled(false);
+		}else if( (AddEditStudentDialog.txtIme.getForeground() == Color.RED) || (AddEditStudentDialog.txtPrezime.getForeground() == Color.RED)
+				|| (AddEditStudentDialog.txtDatumRodjenja.getForeground() == Color.RED) || (AddEditStudentDialog.txtAdresaStanovanja.getForeground() == Color.RED)
+				|| (AddEditStudentDialog.txtBrojTelefona.getForeground() == Color.RED) || (AddEditStudentDialog.txtEmailAdresa.getForeground() == Color.RED)
+				|| (AddEditStudentDialog.txtBrojIndeksa.getForeground() == Color.RED) || (AddEditStudentDialog.txtGodinaUpisa.getForeground() == Color.RED)
 		){
-				AddStudentDialog.potvrdiBtn.setEnabled(false);
+				AddEditStudentDialog.potvrdiBtn.setEnabled(false);
 		}else {
 		
-			AddStudentDialog.potvrdiBtn.setEnabled(true);
+			AddEditStudentDialog.potvrdiBtn.setEnabled(true);
 		}
 	}
 

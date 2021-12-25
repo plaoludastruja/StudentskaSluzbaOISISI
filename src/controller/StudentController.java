@@ -10,7 +10,7 @@ import model.Address;
 import model.BazaStudent;
 import model.Student;
 import model.Student.Status;
-import gui.dialog.AddStudentDialog;
+import gui.dialog.AddEditStudentDialog;
 public class StudentController {
 
 	

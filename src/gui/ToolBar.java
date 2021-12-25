@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
-import gui.dialog.AddStudentDialog;
+import gui.dialog.AddEditStudentDialog;
 import listener.AddEntity;
 //import listener.addEntity;
 import listener.DeleteEntity;

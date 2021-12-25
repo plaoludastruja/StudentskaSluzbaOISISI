@@ -26,19 +26,20 @@ import javax.swing.event.DocumentListener;
 import controller.StudentController;
 import listener.StudentFocusListener;
 import gui.MainFrame;
+import gui.StudentTable;
 import gui.ToolBar;
 import model.Address;
 import model.Student;
 import model.Student.Status;
 
-public class AddStudentDialog extends JDialog {
+public class AddEditStudentDialog extends JDialog {
 
 	public static JTextField txtIme, txtPrezime, txtDatumRodjenja, txtAdresaStanovanja, txtBrojTelefona, txtEmailAdresa,
 	txtBrojIndeksa, txtGodinaUpisa;
 	public static JButton potvrdiBtn;
 	
 	
-	public AddStudentDialog(Frame parent, String title, boolean modal) {
+	public AddEditStudentDialog(Frame parent, String title, boolean modal, boolean add) {
 		super(parent, title, modal);
 		
 		setSize(400, 420);
@@ -175,6 +176,38 @@ public class AddStudentDialog extends JDialog {
 		txtGodinaUpisa.addFocusListener(new StudentFocusListener());
 
 		
+			
+			
+			
+		if(add==false) {
+			// AKO JE EDIT, TJ ADDEDIT==2 TREBA SETOVATI VRIJEDNOSTI
+			potvrdiBtn.setEnabled(true);
+			
+			StudentController controllerInstance = StudentController.getInstance();
+			int row = StudentTable.getInstance().getSelectedRow();
+			
+			txtIme.setText(controllerInstance.getStudentByID(row).getFirstName());
+			txtPrezime.setText(controllerInstance.getStudentByID(row).getLastName());
+			txtDatumRodjenja.setText(controllerInstance.getStudentByID(row).getDateOfBirth().format(DateTimeFormatter.ofPattern("dd.MM.yyyy.")));
+			txtAdresaStanovanja.setText(controllerInstance.getStudentByID(row).getAddress().toString());
+			txtBrojTelefona.setText(controllerInstance.getStudentByID(row).getPhone());
+			txtEmailAdresa.setText(controllerInstance.getStudentByID(row).getEmail());
+			txtBrojIndeksa.setText(controllerInstance.getStudentByID(row).getIndex());
+			txtGodinaUpisa.setText(Integer.toString(controllerInstance.getStudentByID(row).getIndexYear()));
+			txtTrenutnaGodinaStudija.setSelectedItem((Integer)(controllerInstance.getStudentByID(row).getCurrentYear()));
+			txtNacinFinansiranja.setSelectedItem((Status)(controllerInstance.getStudentByID(row).getStudentStatus()));
+		}
+			
+			/*txtIme.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getFirstName());
+			txtPrezime.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getLastName());
+			txtDatumRodjenja.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getDateOfBirth().format(DateTimeFormatter.ofPattern("dd.MM.yyyy.")));
+			txtAdresaStanovanja.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getAddress().toString());
+			txtBrojTelefona.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getPhone());
+			txtEmailAdresa.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getEmail());
+			txtBrojIndeksa.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getIndex());
+			txtGodinaUpisa.setText(Integer.toString(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getIndexYear()));
+			txtTrenutnaGodinaStudija.setSelectedItem((Integer)(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getCurrentYear()));
+			txtNacinFinansiranja.setSelectedItem((Status)(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getStudentStatus()));*/
 		potvrdiBtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -206,11 +239,54 @@ public class AddStudentDialog extends JDialog {
 				noviStudent.setCurrentYear(txtTrenutnaGodinaStudija.getSelectedIndex() + 1);
 				noviStudent.setAverageGrade(10.00);
 				noviStudent.setStudentStatus(status);
-				
+			if(add==true) {
 				StudentController.getInstance().addStudent(noviStudent);
+			}else if(add==false) {
+				StudentController.getInstance().editStudent(StudentTable.getInstance().getSelectedRow(), noviStudent);
+
+			}
 				dispose();
 			}
 		});
+		
+			/*potvrdiBtn.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					int intGodinaUpisa = Integer.parseInt(txtGodinaUpisa.getText());
+					
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+					LocalDate dateDatumRodjenja = LocalDate.parse(txtDatumRodjenja.getText(), formatter);
+					
+					Address addressAdresaStanovanja = new Address();
+			        String[] addressPart = txtAdresaStanovanja.getText().split(",", 4);
+			        addressAdresaStanovanja.setStreet(addressPart[0]);
+			        addressAdresaStanovanja.setStreetNum(addressPart[1]);
+			        addressAdresaStanovanja.setCity(addressPart[2]);
+			        addressAdresaStanovanja.setCountry(addressPart[3]);
+
+					Status status = Status.values()[txtNacinFinansiranja.getSelectedIndex()];
+					
+					Student izmjenaStudent = new Student();
+					izmjenaStudent.setFirstName(txtIme.getText());
+					izmjenaStudent.setLastName(txtPrezime.getText());
+					izmjenaStudent.setDateOfBirth(dateDatumRodjenja);
+					izmjenaStudent.setAddress(addressAdresaStanovanja);
+					izmjenaStudent.setPhone(txtBrojTelefona.getText());
+					izmjenaStudent.setEmail(txtEmailAdresa.getText());
+					izmjenaStudent.setIndex(txtBrojIndeksa.getText());
+					izmjenaStudent.setIndexYear(intGodinaUpisa);
+					izmjenaStudent.setCurrentYear(txtTrenutnaGodinaStudija.getSelectedIndex() + 1);
+					izmjenaStudent.setAverageGrade(10.00);
+					izmjenaStudent.setStudentStatus(status);
+					
+					StudentController.getInstance().editStudent(StudentTable.getInstance().getSelectedRow(), izmjenaStudent);
+					dispose();
+				}
+			});*/
+		
+		
 		
 		odustaniBtn.addActionListener(new ActionListener() {
 
@@ -222,21 +298,6 @@ public class AddStudentDialog extends JDialog {
 		
 		
 // ************************************* //	
-		
-		
-		/*txtIme.setPreferredSize(dim);
-		txtPrezime.setPreferredSize(dim);
-		txtDatumRodjenja.setPreferredSize(dim);
-		txtAdresaStanovanja.setPreferredSize(dim);
-		txtBrojTelefona.setPreferredSize(dim);
-		txtEmailAdresa.setPreferredSize(dim);
-		txtBrojIndeksa.setPreferredSize(dim);
-		txtGodinaUpisa.setPreferredSize(dim);
-		txtTrenutnaGodinaStudija.setPreferredSize(dim);
-		txtNacinFinansiranja.setPreferredSize(dim);*/
-		
-		
-		
 		
 		
 // ************************************* //	

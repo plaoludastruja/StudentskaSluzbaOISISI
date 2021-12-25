@@ -145,7 +145,7 @@ public class EditStudentDialog extends JDialog {
 		panDugmad.add(odustaniBtn);
 		
 		
-		/*potvrdiBtn.setEnabled(true);
+		potvrdiBtn.setEnabled(true);
 		txtIme.addFocusListener(new StudentFocusListener());
 		txtPrezime.addFocusListener(new StudentFocusListener());
 		txtDatumRodjenja.addFocusListener(new StudentFocusListener());
@@ -153,7 +153,7 @@ public class EditStudentDialog extends JDialog {
 		txtBrojTelefona.addFocusListener(new StudentFocusListener());
 		txtEmailAdresa.addFocusListener(new StudentFocusListener());
 		txtBrojIndeksa.addFocusListener(new StudentFocusListener());
-		txtGodinaUpisa.addFocusListener(new StudentFocusListener());*/
+		txtGodinaUpisa.addFocusListener(new StudentFocusListener());
 		
 		
 		txtIme.setText(StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getFirstName());
