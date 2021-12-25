@@ -19,6 +19,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -183,6 +184,7 @@ public class AddEditStudentDialog extends JDialog {
 			// AKO JE EDIT, TJ ADDEDIT==2 TREBA SETOVATI VRIJEDNOSTI
 			potvrdiBtn.setEnabled(true);
 			
+			
 			StudentController controllerInstance = StudentController.getInstance();
 			int row = StudentTable.getInstance().getSelectedRow();
 			
@@ -249,42 +251,7 @@ public class AddEditStudentDialog extends JDialog {
 			}
 		});
 		
-			/*potvrdiBtn.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-					int intGodinaUpisa = Integer.parseInt(txtGodinaUpisa.getText());
-					
-					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
-					LocalDate dateDatumRodjenja = LocalDate.parse(txtDatumRodjenja.getText(), formatter);
-					
-					Address addressAdresaStanovanja = new Address();
-			        String[] addressPart = txtAdresaStanovanja.getText().split(",", 4);
-			        addressAdresaStanovanja.setStreet(addressPart[0]);
-			        addressAdresaStanovanja.setStreetNum(addressPart[1]);
-			        addressAdresaStanovanja.setCity(addressPart[2]);
-			        addressAdresaStanovanja.setCountry(addressPart[3]);
-
-					Status status = Status.values()[txtNacinFinansiranja.getSelectedIndex()];
-					
-					Student izmjenaStudent = new Student();
-					izmjenaStudent.setFirstName(txtIme.getText());
-					izmjenaStudent.setLastName(txtPrezime.getText());
-					izmjenaStudent.setDateOfBirth(dateDatumRodjenja);
-					izmjenaStudent.setAddress(addressAdresaStanovanja);
-					izmjenaStudent.setPhone(txtBrojTelefona.getText());
-					izmjenaStudent.setEmail(txtEmailAdresa.getText());
-					izmjenaStudent.setIndex(txtBrojIndeksa.getText());
-					izmjenaStudent.setIndexYear(intGodinaUpisa);
-					izmjenaStudent.setCurrentYear(txtTrenutnaGodinaStudija.getSelectedIndex() + 1);
-					izmjenaStudent.setAverageGrade(10.00);
-					izmjenaStudent.setStudentStatus(status);
-					
-					StudentController.getInstance().editStudent(StudentTable.getInstance().getSelectedRow(), izmjenaStudent);
-					dispose();
-				}
-			});*/
+		
 		
 		
 		
@@ -317,10 +284,19 @@ public class AddEditStudentDialog extends JDialog {
 		boxCentar.add(panNacinFinansiranja);
 		boxCentar.add(Box.createGlue());
 		
+		if(add==true) {
+			add(boxCentar, BorderLayout.NORTH);
+			add(panDugmad,BorderLayout.SOUTH);
+		} else if(add==false) {
+			JTabbedPane tabbedPanneEditStudent = new JTabbedPane();
+			panCentar.add(boxCentar, BorderLayout.CENTER);
+			panCentar.add(panDugmad,BorderLayout.SOUTH);
+			tabbedPanneEditStudent.add("Informacije", panCentar);
+			tabbedPanneEditStudent.add("Polozeni", new JPanel());
+			tabbedPanneEditStudent.add("Nepolozeni",new JPanel());
+			add(tabbedPanneEditStudent, BorderLayout.NORTH);
+		}
 		
-		add(boxCentar, BorderLayout.NORTH);
-		add(panDugmad,BorderLayout.SOUTH);
 		
-
 	}
 }

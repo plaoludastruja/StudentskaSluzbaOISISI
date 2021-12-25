@@ -7,7 +7,7 @@ import javax.swing.JTextField;
 
 import controller.CheckInputStudent;
 import gui.dialog.AddEditStudentDialog;
-
+import model.BazaStudent;
 
 public class StudentFocusListener implements FocusListener {
 
@@ -38,8 +38,9 @@ public class StudentFocusListener implements FocusListener {
 				|| (CheckInputStudent.checkAddress(inputText) && (fieldName.equals(AddEditStudentDialog.txtAdresaStanovanja.getName())))
 				|| (CheckInputStudent.checkPhone(inputText) && (fieldName.equals(AddEditStudentDialog.txtBrojTelefona.getName())))
 				|| (CheckInputStudent.checkEmail(inputText) && (fieldName.equals(AddEditStudentDialog.txtEmailAdresa.getName())))
-				|| (CheckInputStudent.checkIndex(inputText) && (fieldName.equals(AddEditStudentDialog.txtBrojIndeksa.getName())))
+				|| (CheckInputStudent.checkIndex(inputText) && (fieldName.equals(AddEditStudentDialog.txtBrojIndeksa.getName())) &&  (!(BazaStudent.getInstance().checkIfExists(AddEditStudentDialog.txtBrojIndeksa.getText()))) )
 				|| (CheckInputStudent.checkIndexYear(inputText) && (fieldName.equals(AddEditStudentDialog.txtGodinaUpisa.getName())))
+				
 		);
 		if(!check) {
 			textField.setForeground(Color.RED);

@@ -44,7 +44,7 @@ public class MainFrame extends JFrame{
 		add(statusbar, BorderLayout.SOUTH);
 		validate();
 //		//window listener
-		//addWindowListener(new MyWindowListener());
+		addWindowListener(new MyWindowListener());
 	
 	}
 	

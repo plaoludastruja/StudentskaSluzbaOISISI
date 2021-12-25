@@ -17,7 +17,7 @@ public class StatusBar extends JPanel {
 	public StatusBar() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-		JLabel appName = new JLabel("Studentska služba");
+		JLabel appName = new JLabel("Studentska sluzba");
 
 		JLabel dateLab = new JLabel();
 

@@ -38,21 +38,15 @@ private static StudentController instance = null;
 	// BazaStudent.getInstance().addStudent("Zucko", "Korac", "OKK Beograd");
 	// ovo mi poziva metodu iz BazaStudent i dodaje u listu, ali trebam tu proslijediti txtIme.getText();
 	// a to mi je u addStudentDialog
-	
+
 	
 	public Student getStudentByID(int id) {
 		return BazaStudent.getInstance().getStudentByID(id);
 	}
-	
-	/*public void addStudent(String firstName, String lastName,
-			LocalDate dateOfBirth, Address address, String phone,
-			String email, String index, int indexYear,
-			int currentYear,double averageGrade, Status studentStatus) {*/
+
 	public void addStudent(Student noviStudent) {
-		// izmena modela
 		
-		//Student studentBaza = new Student(txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresaStanovanja.getText(), txtBrojTelefona.getText(), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtGodinaUpisa.getText(), txtTrenutnaGodinaStudija.getText(), txtNacinFinansiranja.getText());
-		//BazaStudent.getInstance().addStudent(index, firstName, lastName, currentYear, studentStatus, averageGrade);
+		// izmena modela
 		BazaStudent.getInstance().addStudent(noviStudent);
 		// azuriranje prikaz
 		TabbedPaneMainFrame.getInstance().azurirajPrikaz("DODAT", -1);

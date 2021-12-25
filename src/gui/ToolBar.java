@@ -22,7 +22,7 @@ import listener.EditEntity;
 
 public class ToolBar extends JToolBar {
 
-	Color toolbarBg = new Color(208, 182, 255);
+	Color toolbarBg = new Color(193, 223, 230);
 	public ToolBar() {
 		
 		super(SwingConstants.HORIZONTAL);

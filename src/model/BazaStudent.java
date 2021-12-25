@@ -130,6 +130,14 @@ public class BazaStudent {
 		}
 	}
 
+	public boolean checkIfExists(String index) {
+		for(Student i : studenti) {
+			if(i.getIndex().equals(index)) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	public Student getStudentByID(int id) {
 		return studenti.get(id);
@@ -137,11 +145,8 @@ public class BazaStudent {
 		
 		//public void addStudent(String index, String firstName, String lastName, int currentYear, Status studentStatus, double averageGrade) {
 	public void addStudent(Student noviStudent) {
+				this.studenti.add(noviStudent);
 		
-		if(checkIfExists(noviStudent.getIndex())) {
-			
-		}
-			this.studenti.add(noviStudent);
 		}
 
 		public void deleteStudent(String index) {
@@ -187,13 +192,6 @@ public class BazaStudent {
 			}
 		}
 		
-		public boolean checkIfExists(String index) {
-			for(Student i : studenti) {
-				if(i.getIndex() == index) {
-					return true;
-				}
-			}
-			return false;
-		}
+		
 	
 }
