@@ -27,22 +27,11 @@ public class Student {
 	public Student() {
 		super();
 	}
-
-	// za dodavanje u tabelu
-	public Student( String index, String firstName, String lastName, int currentYear, Status studentStatus, double averageGrade) {
-		super();
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.index = index;
-		this.currentYear = currentYear;
-		this.studentStatus = studentStatus;
-		this.averageGrade = averageGrade;
-	}
 	
 	
 	// za dodavanje u bazu
 	public Student(String firstName, String lastName, LocalDate dateOfBirth, Address address, String phone,
-			String email, String index, int indexYear, int currentYear, Status studentStatus) {
+			String email, String index, int indexYear, int currentYear,double averageGrade, Status studentStatus) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -53,27 +42,13 @@ public class Student {
 		this.index = index;
 		this.indexYear = indexYear;
 		this.currentYear = currentYear;
+		this.averageGrade = averageGrade;
 		this.studentStatus = studentStatus;
 	}
 
-	public Student(String lastName, String firstName, LocalDate dateOfBirth, Address address, String phone,
-			String email, String index, int indexYear, int currentYear, Status studentStatus, double averageGrade,
-			List<Grade> passedExams, List<Subject> otherExams) {
-		super();
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.dateOfBirth = dateOfBirth;
-		this.address = address;
-		this.phone = phone;
-		this.email = email;
-		this.index = index;
-		this.indexYear = indexYear;
-		this.currentYear = currentYear;
-		this.studentStatus = studentStatus;
-		this.averageGrade = averageGrade;
-		this.passedExams = passedExams;
-		this.otherExams = otherExams;
-	}
+	/*public Student(String string, String string2, String string3, int i, Status b, double d) {
+		// TODO Auto-generated constructor stub
+	}*/
 
 
 	public String getLastName() {

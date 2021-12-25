@@ -48,8 +48,9 @@ private static StudentController instance = null;
 		// izmena modela
 		
 		//Student studentBaza = new Student(txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresaStanovanja.getText(), txtBrojTelefona.getText(), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtGodinaUpisa.getText(), txtTrenutnaGodinaStudija.getText(), txtNacinFinansiranja.getText());
-		BazaStudent.getInstance().addStudent(index, firstName, lastName, currentYear, studentStatus, averageGrade);
-		// azuriranje prikaza
+		//BazaStudent.getInstance().addStudent(index, firstName, lastName, currentYear, studentStatus, averageGrade);
+		BazaStudent.getInstance().addStudent(firstName, lastName, dateOfBirth, address, phone,email, index, indexYear, currentYear, averageGrade, studentStatus);
+		// azuriranje prikaz
 		TabbedPaneMainFrame.getInstance().azurirajPrikaz("DODAT", -1);
 	}
 	
@@ -64,13 +65,16 @@ private static StudentController instance = null;
     	TabbedPaneMainFrame.getInstance().azurirajPrikaz("UKLONJEN", rowSelectedIndex);
     }
 	
-	public void izmeniIgraca(int rowSelectedIndex) {
+	public void editStudent(int rowSelectedIndex, String firstName, String lastName,
+			LocalDate dateOfBirth, Address address, String phone,
+			String email, String index, int indexYear,
+			int currentYear,double averageGrade, Status studentStatus) {
 		if (rowSelectedIndex < 0) {
 			return;
 		}
 		// izmena modela
 		Student student = BazaStudent.getInstance().getRow(rowSelectedIndex);
-		//BazaStudent.getInstance().izmeniIgraca(student.getIndex(), "Radivoj", "Korac", "OKK Beograd");
+		BazaStudent.getInstance().changeStudent(firstName, lastName, dateOfBirth, address, phone,email, index, indexYear, currentYear, averageGrade, studentStatus);
 		
 		// azuriranje prikaza
 		TabbedPaneMainFrame.getInstance().azurirajPrikaz(null, -1);

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import gui.StudentTable;
 import model.Student.Status;
 
 
@@ -18,7 +19,8 @@ public class BazaStudent {
 		return instance;
 	}
 	
-	private List<Student> studenti;
+	private List<Student> studenti = new ArrayList<Student>();
+	//private List<Student> studentiBaza = new ArrayList<Student>();
 	private List<String> kolone = new ArrayList<String>();;
 	
 	public BazaStudent() {
@@ -33,10 +35,9 @@ public class BazaStudent {
 	}
 	// ne
 	private void initStudent() {
-		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student("RA125/2019", "Đorđe", "Lipovcic", 3, Status.B, 8.5));
+		/*studenti.add(new Student("RA125/2019", "Đorđe", "Lipovcic", 3, Status.B, 8.5));
 		studenti.add(new Student("RA126/2021", "Sandra", "Jovanovic", 2, Status.B, 7.25));
-		studenti.add(new Student("RA32/2018", "Janko", "Jankovic", 3, Status.S, 9.75));
+		studenti.add(new Student("RA32/2018", "Janko", "Jankovic", 3, Status.S, 9.75));*/
 	}
 	
 	public List<Student> getStudent() {
@@ -72,7 +73,7 @@ public class BazaStudent {
 		return this.studenti.get(rowIndex);
 	}
 
-	public String getValueAt(int row, int column) {
+	public Object getValueAt(int row, int column) {
 		Student student = this.studenti.get(row);
 		switch (column) {
 		case 0:
@@ -82,28 +83,26 @@ public class BazaStudent {
 		case 2:
 			return student.getLastName();
 		case 3:
-			return Long.toString(student.getCurrentYear());
+			return student.getCurrentYear();
 		case 4:
-			return student.getStudentStatus().toString();
+			return student.getStudentStatus();
 		case 5:
-			return Double.toString(student.getAverageGrade());
+			return student.getAverageGrade();
 		default:
 			return null;
 		}
 	}
 
-	/*public void izmeniIgraca(long id, String ime, String prezime, String klub) {
-		for (Student i : igraci) {
-			if (i.getId() == id) {
-				i.setIme(ime);
-				i.setPrezime(prezime);
-				i.setKlub(klub);
-			}
-		}
-	}*/
+	
+	public Student getStudentByID(int id) {
+		return studenti.get(id);
+	}
 		
-		public void addStudent(String index, String firstName, String lastName, int currentYear, Status studentStatus, double averageGrade) {
-			this.studenti.add(new Student(index, firstName, lastName, currentYear, studentStatus, averageGrade));
+		//public void addStudent(String index, String firstName, String lastName, int currentYear, Status studentStatus, double averageGrade) {
+	public void addStudent(String firstName, String lastName, LocalDate dateOfBirth, Address address, String phone,
+			String email, String index, int indexYear, int currentYear, double averageGrade, Status studentStatus) {
+		
+			this.studenti.add(new Student(firstName, lastName, dateOfBirth, address, phone,email, index, indexYear, currentYear, averageGrade, studentStatus));
 		}
 
 		public void deleteStudent(String index) {
@@ -115,21 +114,27 @@ public class BazaStudent {
 			}
 		}
 
-		/*public void changeStudent(String firstName, String lastName, LocalDate dateOfBirth, Address address, String phone, String email, String index, int indexYear, int currentYear, Status studentStatus) {
+		public void changeStudent(String firstName, String lastName, LocalDate dateOfBirth, Address address, String phone,
+				String email, String index, int indexYear, int currentYear, double averageGrade, Status studentStatus) {
+			
 			for (Student i : studenti) {
-				if (i.getIndex().equals(index)) {
+				
+				if (i.getIndex().equals(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getIndex())) {
+					
 					i.setFirstName(firstName);
 					i.setLastName(lastName);
 					i.setDateOfBirth(dateOfBirth);
 					i.setAddress(address);
 					i.setPhone(phone);
+					i.setEmail(email);
 					i.setIndexYear(indexYear);
 					i.setCurrentYear(currentYear);
 					i.setStudentStatus(studentStatus);
 					i.setAverageGrade(0.0);
+					i.setIndex(index);
 				}
 			}
-		}*/
+		}
 		
 		/*public boolean checkIfExists(String index) {
 			for(Student i : students) {

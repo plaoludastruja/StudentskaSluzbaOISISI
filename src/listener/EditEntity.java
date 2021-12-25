@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import gui.MainFrame;
 import gui.TabbedPaneMainFrame;
+import gui.dialog.EditStudentDialog;
 
 
 public class EditEntity implements ActionListener{

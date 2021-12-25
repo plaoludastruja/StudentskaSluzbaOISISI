@@ -18,6 +18,7 @@ import gui.dialog.AddStudentDialog;
 import listener.AddEntity;
 //import listener.addEntity;
 import listener.DeleteEntity;
+import listener.EditEntity;
 
 public class ToolBar extends JToolBar {
 
@@ -64,18 +65,7 @@ public class ToolBar extends JToolBar {
 		
 		btnNew.addActionListener(new AddEntity());
 		btnDelete.addActionListener(new DeleteEntity());
-		
-		/*btnNew.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				AddStudentDialog dialog = new AddStudentDialog(parent, "Primer modalnog prozora", true);
-				dialog.setVisible(true);
-
-			}
-		});*/
-		
-		
+		btnEdit.addActionListener(new EditEntity());		
 		
 		
 // ************************************* //			
