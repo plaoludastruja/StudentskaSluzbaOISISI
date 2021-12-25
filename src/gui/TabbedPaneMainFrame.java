@@ -27,7 +27,7 @@ public class TabbedPaneMainFrame extends JTabbedPane {
 		
 		addTab("Student",new JScrollPane(StudentTable.getInstance()));
 		addTab("Profesor",new JScrollPane(ProfessorTable.getInstance()));
-		addTab("Predmet",new JLabel("Predmet"));
+		addTab("Predmet",new JScrollPane(SubjectTable.getInstance()));
 		//addTab("Student", null, new JScrollPane());
 		
 		
@@ -37,11 +37,11 @@ public class TabbedPaneMainFrame extends JTabbedPane {
 		AbstractTableModelStudent model = (AbstractTableModelStudent) StudentTable.getInstance().getModel();
 		// azuriranje modela tabele, kao i njenog prikaza
 		AbstractTableModelProfessor modelP = (AbstractTableModelProfessor) ProfessorTable.getInstance().getModel();
-//		AbstractTableModelSubject modelPR = (AbstractTableModelSubject) SubjectTable.getInstance().getModel();
+		AbstractTableModelSubject modelPR = (AbstractTableModelSubject) SubjectTable.getInstance().getModel();
 
 		model.fireTableDataChanged();
 		modelP.fireTableDataChanged();
-//		modelPR.fireDataChanged();
+		modelPR.fireTableDataChanged();
 		validate();
 	}
 	

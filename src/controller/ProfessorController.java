@@ -34,7 +34,7 @@ public class ProfessorController {
 		}
 
 		BazaProfessor.getInstance().izbrisiProfesora(rowSelectedIndex);
-		TabbedPaneMainFrame.getInstance().azurirajPrikaz("DODAT", -1);
+		TabbedPaneMainFrame.getInstance().azurirajPrikaz("IZBRISAN", -1);
 	}
 
 	public void izmeniProfesora(Professor forEdit, String firstName, String lastName, LocalDate dateOdBirth,

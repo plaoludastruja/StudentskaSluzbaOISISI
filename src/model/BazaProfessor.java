@@ -31,10 +31,12 @@ public class BazaProfessor {
 
 		this.profesori = new ArrayList<Professor>();
 
-		profesori.add(new Professor("ime1", "prezime1", LocalDate.now(), new Address("adresa","1","Novi Sad","Srbija"), "069/2903456",
-				"email@gmai", new Address("adresa","2","Beograd","Srbija"), "cardid","position 1","work1",null));
-		profesori.add(new Professor());
-		profesori.add(new Professor()); // dodala 3 prazne tabele(popuniti konstruktore)
+		profesori.add(new Professor("Nebojsa", "Ralevic", LocalDate.now(), new Address("Zmaj Jovina","1","Novi Sad","Srbija"), "069/2903456",
+				"email@gmai", new Address("Strazilovska","2","Novi Sad","Srbija"), "ID3457","prof dr","15",null));
+		profesori.add(new Professor("Rade", "Doroslovacki", LocalDate.now(), new Address("Jevrejska","1","Novi Sad","Srbija"), "069/00022",
+				"email1@gmai", new Address("Futoska","2","Novi Sad","Srbija"), "ID1157","prof dr","20",null));
+		profesori.add(new Professor("Milan", "Rapaic", LocalDate.now(), new Address("Dunavska","7","Novi Sad","Srbija"), "069/299996",
+				"email2@gmai", new Address("Kosovska","2","Novi Sad","Srbija"), "ID300000","prof dr","10",null)); 
 	}
 
 	public List<Professor> getProfesori() {

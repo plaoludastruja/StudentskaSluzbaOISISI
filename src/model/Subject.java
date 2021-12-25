@@ -20,6 +20,22 @@ public class Subject {
 		super();
 	}
 
+
+	public Subject(String subjectCode, String subjectName, Semester subjectSemester, int subjectYear,
+			Professor professor, int espb, List<Student> passedSubject, List<Student> didntPassSubject) {
+		super();
+		this.subjectCode = subjectCode;
+		this.subjectName = subjectName;
+		this.subjectSemester = subjectSemester;
+		this.subjectYear = subjectYear;
+		this.professor = professor;
+		this.espb = espb;
+		this.passedSubject = passedSubject;
+		this.didntPassSubject = didntPassSubject;
+	}
+
+
+
 	public String getSubjectCode() {
 		return subjectCode;
 	}

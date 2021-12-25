@@ -84,10 +84,9 @@ public class MainFrame extends JFrame{
 		}else if(TabbedPaneMainFrame.getInstance().getSelectedIndex() == 1) {
 			return ProfessorTable.getInstance();
 		}else {
-			//return PredmetTable.getInstance();
+			return SubjectTable.getInstance();
 		}
 		
-		return null;
 	}
 	
 	

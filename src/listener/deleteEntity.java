@@ -8,6 +8,7 @@ import gui.TabbedPaneMainFrame;
 import gui.dialog.AddStudentDialog;
 import gui.dialog.DeleteProfessorDialog;
 import gui.dialog.DeleteStudentDialog;
+import gui.dialog.DeleteSubjectDialog;
 
 public class deleteEntity implements ActionListener {
 
@@ -28,8 +29,13 @@ public class deleteEntity implements ActionListener {
 				deleteProfessorDialog.setVisible(true);
 				break;
 			case 2:	// PREDMET
-				/*DeleteSubjectDialog deleteSubjectDialog = new DeleteSubjectDialog(MainFrame.getInstance(), "Brisanje predmeta", false);
-				deleteSubjectDialog.setVisible(true);*/
+				DeleteSubjectDialog deleteSubjectDialog = new DeleteSubjectDialog(MainFrame.getInstance(), "Brisanje predmeta", false);
+				int index1 = MainFrame.getInstance().getTable().getSelectedRow();
+				if(index1 == -1) {
+					return;
+				}
+				deleteSubjectDialog.setRowIndex(index1);
+				deleteSubjectDialog.setVisible(true);
 				break;
 			default:
 				break;

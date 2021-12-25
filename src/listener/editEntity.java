@@ -25,7 +25,7 @@ public class editEntity implements ActionListener{
 				}
 				editProfessorDialog.setForEdit(BazaProfessor.getInstance().getRow(index));
 				editProfessorDialog.setVisible(true);
-				editProfessorDialog.validate();
+//				editProfessorDialog.validate();
 				
 				break;
 //			case 2:	// PREDMET
