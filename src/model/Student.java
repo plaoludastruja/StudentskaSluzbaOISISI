@@ -13,7 +13,7 @@ public class Student {
 	private String lastName;
 	private String firstName;
 	private LocalDate dateOfBirth;
-	private String adress;
+	private Address address;
 	private String phone;
 	private String email;
 	private String index;
@@ -27,6 +27,29 @@ public class Student {
 	public Student() {
 		super();
 	}
+	
+	
+	// za dodavanje u bazu
+	public Student(String firstName, String lastName, LocalDate dateOfBirth, Address address, String phone,
+			String email, String index, int indexYear, int currentYear,double averageGrade, Status studentStatus) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+		this.index = index;
+		this.indexYear = indexYear;
+		this.currentYear = currentYear;
+		this.averageGrade = averageGrade;
+		this.studentStatus = studentStatus;
+	}
+
+	/*public Student(String string, String string2, String string3, int i, Status b, double d) {
+		// TODO Auto-generated constructor stub
+	}*/
+
 
 	public String getLastName() {
 		return lastName;
@@ -52,12 +75,12 @@ public class Student {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getAdress() {
-		return adress;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public String getPhone() {
@@ -135,7 +158,7 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [lastName=" + lastName + ", firstName=" + firstName + ", dateOfBirth=" + dateOfBirth
-				+ ", adress=" + adress + ", phone=" + phone + ", email=" + email + ", index=" + index + ", indexYear="
+				+ ", address=" + address + ", phone=" + phone + ", email=" + email + ", index=" + index + ", indexYear="
 				+ indexYear + ", currentYear=" + currentYear + ", studentStatus=" + studentStatus + ", averageGrade="
 				+ averageGrade + ", passedExams=" + passedExams + ", otherExams=" + otherExams + "]";
 	}

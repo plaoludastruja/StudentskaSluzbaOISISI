@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Subject {
 
+	public enum Semester { LETNJI, ZIMSKI; }
+	
 	private String subjectCode;
 	private String subjectName;
-	private String subjectSemester;
+	private Semester subjectSemester;
 	private int subjectYear;
 	private Professor professor;
 	private int espb;
@@ -17,6 +19,22 @@ public class Subject {
 	public Subject() {
 		super();
 	}
+
+
+	public Subject(String subjectCode, String subjectName, Semester subjectSemester, int subjectYear,
+			Professor professor, int espb, List<Student> passedSubject, List<Student> didntPassSubject) {
+		super();
+		this.subjectCode = subjectCode;
+		this.subjectName = subjectName;
+		this.subjectSemester = subjectSemester;
+		this.subjectYear = subjectYear;
+		this.professor = professor;
+		this.espb = espb;
+		this.passedSubject = passedSubject;
+		this.didntPassSubject = didntPassSubject;
+	}
+
+
 
 	public String getSubjectCode() {
 		return subjectCode;
@@ -34,11 +52,11 @@ public class Subject {
 		this.subjectName = subjectName;
 	}
 
-	public String getSubjectSemester() {
+	public Semester getSubjectSemester() {
 		return subjectSemester;
 	}
 
-	public void setSubjectSemester(String subjectSemester) {
+	public void setSubjectSemester(Semester subjectSemester) {
 		this.subjectSemester = subjectSemester;
 	}
 

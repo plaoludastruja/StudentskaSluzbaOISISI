@@ -9,18 +9,38 @@ public class Professor {
 		private String firstName;
 		private String lastName;
 		private LocalDate dateOfBirth;
-		private String homeAdress;
+		private Address homeAddress;
 		private String phone;
 		private String email;
-		private String officeAdress;
+		private Address officeAddress;
 		private String idCard;
 		private String position; //titula
 		private String workingYear; //godine radnog staza
-		private List<Subject> listofSubjects = new ArrayList();
+		private List<Subject> listofSubjects = new ArrayList<Subject>();
 	
 	public Professor() {
 		super();
 	}
+
+
+	public Professor(String firstName, String lastName, LocalDate dateOfBirth, Address homeAddress, String phone,
+			String email, Address officeAddress, String idCard, String position, String workingYear,
+			List<Subject> listofSubjects) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.homeAddress = homeAddress;
+		this.phone = phone;
+		this.email = email;
+		this.officeAddress = officeAddress;
+		this.idCard = idCard;
+		this.position = position;
+		this.workingYear = workingYear;
+		this.listofSubjects = listofSubjects;
+	}
+
+
 
 	public String getFirstName() {
 		return firstName;
@@ -46,12 +66,12 @@ public class Professor {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getHomeAdress() {
-		return homeAdress;
+	public Address getHomeAddress() {
+		return homeAddress;
 	}
 
-	public void setHomeAdress(String homeAdress) {
-		this.homeAdress = homeAdress;
+	public void setHomeAddress(Address homeAddress) {
+		this.homeAddress = homeAddress;
 	}
 
 	public String getPhone() {
@@ -70,12 +90,12 @@ public class Professor {
 		this.email = email;
 	}
 
-	public String getOfficeAdress() {
-		return officeAdress;
+	public Address getOfficeAddress() {
+		return officeAddress;
 	}
 
-	public void setOfficeAdress(String officeAdress) {
-		this.officeAdress = officeAdress;
+	public void setOfficeAddress(Address officeAddress) {
+		this.officeAddress = officeAddress;
 	}
 
 	public String getIdCard() {
@@ -113,8 +133,8 @@ public class Professor {
 	@Override
 	public String toString() {
 		return "Professor [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth
-				+ ", homeAdress=" + homeAdress + ", phone=" + phone + ", email=" + email + ", officeAdress="
-				+ officeAdress + ", idCard=" + idCard + ", position=" + position + ", workingYear=" + workingYear
+				+ ", homeAddress=" + homeAddress + ", phone=" + phone + ", email=" + email + ", officeAddress="
+				+ officeAddress + ", idCard=" + idCard + ", position=" + position + ", workingYear=" + workingYear
 				+ ", listofSubjects=" + listofSubjects + "]";
 	}
 
