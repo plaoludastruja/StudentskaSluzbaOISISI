@@ -94,9 +94,6 @@ public class BazaStudent {
 		return null;
 	}
 
-	/*private long generateId() {
-		return ++generator;
-	}*/
 
 	public int getColumnCount() {
 		return 6;
@@ -143,7 +140,6 @@ public class BazaStudent {
 		return studenti.get(id);
 	}
 		
-		//public void addStudent(String index, String firstName, String lastName, int currentYear, Status studentStatus, double averageGrade) {
 	public void addStudent(Student noviStudent) {
 				this.studenti.add(noviStudent);
 		
@@ -163,18 +159,6 @@ public class BazaStudent {
 			for (Student i : studenti) {
 				
 				if (i.getIndex().equals(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getIndex())) {
-					
-					/*i.setFirstName(firstName);
-					i.setLastName(lastName);
-					i.setDateOfBirth(dateOfBirth);
-					i.setAddress(address);
-					i.setPhone(phone);
-					i.setEmail(email);
-					i.setIndexYear(indexYear);
-					i.setCurrentYear(currentYear);
-					i.setStudentStatus(studentStatus);
-					i.setAverageGrade(0.0);
-					i.setIndex(index);*/
 					
 					i.setFirstName(izmjenaStudent.getFirstName());
 					i.setLastName(izmjenaStudent.getLastName());

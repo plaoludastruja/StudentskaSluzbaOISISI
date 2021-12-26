@@ -15,8 +15,6 @@ public class StudentFocusListener implements FocusListener {
 	public void focusGained(FocusEvent e) {
 		// TODO Auto-generated method stubv
 		JTextField textField = (JTextField) e.getComponent();
-		String inputText =  textField.getText();
-		String fieldName = textField.getName();
 		
 		if(textField.getForeground()==Color.RED) {
 			textField.setForeground(Color.BLACK);
