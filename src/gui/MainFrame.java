@@ -61,7 +61,7 @@ public class MainFrame extends JFrame{
 		});
 		validate();
 //		//window listener
-		addWindowListener(new MyWindowListener());
+		//addWindowListener(new MyWindowListener());
 	
 	}
 	

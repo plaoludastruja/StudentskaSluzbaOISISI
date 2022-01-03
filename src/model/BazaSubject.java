@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import controller.StudentController;
 import model.Subject.Semester;
 
 public class BazaSubject {
@@ -34,12 +35,15 @@ public class BazaSubject {
 		this.kolone.add("SEMESTAR U KOME SE PREDMET IZVODI");
 
 		this.predmeti = new ArrayList<Subject>();
-//		predmeti.add(new Subject("Sifra1","fizika",Semester.LETNJI,"1. godina", prof.getFirstName(),9, null,null));
-//		predmeti.add(new Subject("Sifra2","engleski jezik",Semester.ZIMSKI,"1. godina", ,3, null,null));
-//		predmeti.add(new Subject("Sifra3","baze podataka",Semester.ZIMSKI,"3. godina", ,8, null,null)); 
+		Professor prof = BazaProfessor.getInstance().getProfesori().get(1);
+		predmeti.add(new Subject("Sifra1","fizika",Semester.LETNJI,1,prof ,9, null,null));
+		predmeti.add(new Subject("Sifra2","engleski jezik",Semester.ZIMSKI,2,prof ,3, null,null));
+		predmeti.add(new Subject("Sifra3","baze podataka",Semester.ZIMSKI,3, prof,8, null,null)); 
+		/*predmeti.add(new Subject());
 		predmeti.add(new Subject());
-		predmeti.add(new Subject());
-		predmeti.add(new Subject());
+		predmeti.add(new Subject());*/
+		
+		
 		
 	
 	}

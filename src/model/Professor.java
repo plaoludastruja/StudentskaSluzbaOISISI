@@ -14,7 +14,7 @@ public class Professor {
 		private String email;
 		private Address officeAddress;
 		private String idCard;
-		private String position; //titula
+		private String position; 
 		private String workingYear; //godine radnog staza
 		private List<Subject> listofSubjects = new ArrayList<Subject>();
 	
@@ -130,13 +130,19 @@ public class Professor {
 		this.listofSubjects = listofSubjects;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Professor [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth
 				+ ", homeAddress=" + homeAddress + ", phone=" + phone + ", email=" + email + ", officeAddress="
 				+ officeAddress + ", idCard=" + idCard + ", position=" + position + ", workingYear=" + workingYear
 				+ ", listofSubjects=" + listofSubjects + "]";
+	}*/
+	
+	@Override
+	public String toString() {
+		return firstName + " " + lastName + " "+ idCard;
 	}
+
 
 
 	
