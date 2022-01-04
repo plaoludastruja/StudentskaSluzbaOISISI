@@ -41,7 +41,7 @@ public class DeleteSubjectDialog extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SubjectController.getInstance().izbrisiPredmet(index1);
+				SubjectController.getInstance().deleteSubject(index1);
 				dispose();
 			}
 		});

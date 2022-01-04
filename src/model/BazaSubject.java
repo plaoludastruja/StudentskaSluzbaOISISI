@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import controller.StudentController;
+import gui.SubjectTable;
 import model.Subject.Semester;
 
 public class BazaSubject {
@@ -35,7 +36,7 @@ public class BazaSubject {
 		this.kolone.add("SEMESTAR U KOME SE PREDMET IZVODI");
 
 		this.predmeti = new ArrayList<Subject>();
-		Professor prof = BazaProfessor.getInstance().getProfesori().get(1);
+		Professor prof = BazaProfessor.getInstance().getProfesori().get(0);
 		predmeti.add(new Subject("Sifra1","fizika",Semester.LETNJI,1,prof ,9, null,null));
 		predmeti.add(new Subject("Sifra2","engleski jezik",Semester.ZIMSKI,2,prof ,3, null,null));
 		predmeti.add(new Subject("Sifra3","baze podataka",Semester.ZIMSKI,3, prof,8, null,null)); 
@@ -88,10 +89,45 @@ public class BazaSubject {
 
 	}
 
+	public Subject getSubjectByCode(int code) {
+		return predmeti.get(code);
+	}
+	
+	public void addSubject(Subject noviPredmet) {
+		this.predmeti.add(noviPredmet);
 
-	public void izbrisiPredmet(int row) { // brise red u tabeli
+	}
+	
+	/*public void deleteSubject(String code) {
+		for (Subject i : predmeti) {
+			if (i.getSubjectCode() == code ) {
+				predmeti.remove(i);
+				break;
+			}
+		}
+	}*/
+	
+	public void deleteSubject(int row) { // brise red u tabeli
 		predmeti.remove(row);
 	}
 
+	public void changeSubject(Subject izmjenaPredmet) {
+		
+		for (Subject i : predmeti) {
+			
+			if (i.getSubjectCode().equals(BazaSubject.getInstance().getSubjectByCode(SubjectTable.getInstance().getSelectedRow()).getSubjectCode())) {
+				
+				i.setSubjectCode(izmjenaPredmet.getSubjectCode());
+				i.setSubjectName(izmjenaPredmet.getSubjectName());
+				i.setSubjectSemester(izmjenaPredmet.getSubjectSemester());
+				i.setSubjectYear(izmjenaPredmet.getSubjectYear());
+				i.setProfessor(izmjenaPredmet.getProfessor());
+				i.setEspb(izmjenaPredmet.getEspb());
+
+				
+			}
+		}
+	}
+	
 
 }

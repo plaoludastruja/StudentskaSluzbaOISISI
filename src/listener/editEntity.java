@@ -5,8 +5,10 @@ import java.awt.event.ActionListener;
 
 import gui.MainFrame;
 import gui.StudentTable;
+import gui.SubjectTable;
 import gui.TabbedPaneMainFrame;
 import gui.dialog.AddEditStudentDialog;
+import gui.dialog.AddEditSubjectDialog;
 import gui.dialog.DeleteStudentDialog;
 import gui.dialog.EditProfessorDialog;
 import model.BazaProfessor;
@@ -33,10 +35,12 @@ public class EditEntity implements ActionListener{
 //				editProfessorDialog.validate();
 				
 				break;
-//			case 2:	// PREDMET
-				/*EditSubjectDialog editSubjectDialog = new EditSubjectDialog(MainFrame.getInstance(), "Izmjena predmeta", false);
-				editSubjectDialog.setVisible(true);*/
-//				break;
+			case 2:	// PREDMET
+				if(SubjectTable.getInstance().getSelectedRow()!=-1) {
+					AddEditSubjectDialog editSubjectDialog = new AddEditSubjectDialog(MainFrame.getInstance(), "Izmjena predmeta", true, false);
+					editSubjectDialog.setVisible(true);
+				}
+				break;
 			default:
 				break;
 		}

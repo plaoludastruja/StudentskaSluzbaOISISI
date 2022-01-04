@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,17 +19,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.StudentController;
+import controller.SubjectController;
 import gui.MainFrame;
+import gui.StudentTable;
+import gui.SubjectTable;
+import listener.StudentFocusListener;
 import model.BazaProfessor;
 import model.Professor;
 import model.Student.Status;
 import model.Subject.Semester;
 
-public class AddSubjectDialog extends JDialog{
+public class AddEditSubjectDialog extends JDialog{
 
 	public static JTextField txtSifraPredmeta, txtNazivPredmeta, txtEspb;
 	
-	public AddSubjectDialog(Frame parent, String title, boolean modal) {
+	public AddEditSubjectDialog(Frame parent, String title, boolean modal, boolean add) {
 		super(parent, title, modal);
 		
 		setSize(400, 420);
@@ -126,7 +132,32 @@ public class AddSubjectDialog extends JDialog{
 		panDugmad.add(potvrdiBtn);
 		panDugmad.add(odustaniBtn);
 		
+//		potvrdiBtn.setEnabled(false);
+//		txtIme.addFocusListener(new StudentFocusListener());
+//		txtPrezime.addFocusListener(new StudentFocusListener());
+//		txtDatumRodjenja.addFocusListener(new StudentFocusListener());
+//		txtAdresaStanovanja.addFocusListener(new StudentFocusListener());
+//		txtBrojTelefona.addFocusListener(new StudentFocusListener());
+//		txtEmailAdresa.addFocusListener(new StudentFocusListener());
+//		txtBrojIndeksa.addFocusListener(new StudentFocusListener());
+//		txtGodinaUpisa.addFocusListener(new StudentFocusListener());
 		
+		if(add==false) {
+			// AKO JE EDIT, TJ ADDEDIT==2 TREBA SETOVATI VRIJEDNOSTI
+			potvrdiBtn.setEnabled(true);
+			
+			
+			SubjectController controllerInstance = SubjectController.getInstance();
+			int row = SubjectTable.getInstance().getSelectedRow();
+			
+			txtSifraPredmeta.setText(controllerInstance.getSubjectByCode(row).getSubjectCode());
+			txtNazivPredmeta.setText(controllerInstance.getSubjectByCode(row).getSubjectName());
+			txtSemestar.setSelectedItem((Semester)(controllerInstance.getSubjectByCode(row).getSubjectSemester()));
+			txtGodina.setSelectedItem((Integer)controllerInstance.getSubjectByCode(row).getSubjectYear());
+			txtProfesor.setSelectedItem(controllerInstance.getSubjectByCode(row).getProfessor().toString());
+			txtEspb.setText(Integer.toString(controllerInstance.getSubjectByCode(row).getEspb()));
+		}
+
 		potvrdiBtn.addActionListener(new ActionListener() {
 
 			@Override
