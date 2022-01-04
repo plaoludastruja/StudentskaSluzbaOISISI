@@ -1,11 +1,14 @@
 package controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import gui.TabbedPaneMainFrame;
 import model.Address;
 import model.BazaProfessor;
+import model.BazaStudent;
 import model.Professor;
+import model.Student;
 
 public class ProfessorController {
 	private static ProfessorController instance = null;
@@ -18,6 +21,10 @@ public class ProfessorController {
 	}
 
 	private ProfessorController() {
+	}
+	
+	public List<Professor> getProfesori() {
+		return  BazaProfessor.getInstance().getProfesori();
 	}
 
 	public void dodajProfesora(String firstName, String lastName, LocalDate dateOfBirth, Address homeAddress,

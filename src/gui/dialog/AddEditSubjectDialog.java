@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +20,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.ProfessorController;
 import controller.StudentController;
 import controller.SubjectController;
 import gui.MainFrame;
 import gui.StudentTable;
 import gui.SubjectTable;
 import listener.StudentFocusListener;
+import model.Address;
 import model.BazaProfessor;
 import model.Professor;
+import model.Student;
 import model.Student.Status;
+import model.Subject;
 import model.Subject.Semester;
 
 public class AddEditSubjectDialog extends JDialog{
@@ -153,15 +158,45 @@ public class AddEditSubjectDialog extends JDialog{
 			txtSifraPredmeta.setText(controllerInstance.getSubjectByCode(row).getSubjectCode());
 			txtNazivPredmeta.setText(controllerInstance.getSubjectByCode(row).getSubjectName());
 			txtSemestar.setSelectedItem((Semester)(controllerInstance.getSubjectByCode(row).getSubjectSemester()));
-			txtGodina.setSelectedItem((Integer)controllerInstance.getSubjectByCode(row).getSubjectYear());
-			txtProfesor.setSelectedItem(controllerInstance.getSubjectByCode(row).getProfessor().toString());
+			txtGodina.setSelectedItem((Integer)(controllerInstance.getSubjectByCode(row).getSubjectYear()));
+			txtProfesor.setSelectedItem((Professor)(controllerInstance.getSubjectByCode(row).getProfessor()));
 			txtEspb.setText(Integer.toString(controllerInstance.getSubjectByCode(row).getEspb()));
 		}
 
+		
+		
 		potvrdiBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int intEsbp = Integer.parseInt(txtEspb.getText());
+				
+//				Address addressAdresaStanovanja = new Address();
+//		        String[] addressPart = txtAdresaStanovanja.getText().split(",", 4);
+//		        addressAdresaStanovanja.setStreet(addressPart[0]);
+//		        addressAdresaStanovanja.setStreetNum(addressPart[1]);
+//		        addressAdresaStanovanja.setCity(addressPart[2]);
+//		        addressAdresaStanovanja.setCountry(addressPart[3]);
+
+				Semester semester = Semester.values()[txtSemestar.getSelectedIndex()];
+				Professor prof = ProfessorController.getInstance().getProfesori().get(txtProfesor.getSelectedIndex());
+				
+				
+				
+				Subject noviPredmet = new Subject();
+				noviPredmet.setSubjectCode(txtSifraPredmeta.getText());
+				noviPredmet.setSubjectName(txtNazivPredmeta.getText());
+				noviPredmet.setSubjectSemester(semester);
+				noviPredmet.setSubjectYear(txtGodina.getSelectedIndex() + 1);
+				noviPredmet.setProfessor(prof);
+				noviPredmet.setEspb(intEsbp);
+
+			if(add==true) {
+				SubjectController.getInstance().addSubject(noviPredmet);
+			}else if(add==false) {
+				SubjectController.getInstance().editSubject(SubjectTable.getInstance().getSelectedRow(), noviPredmet);
+
+			}
 				dispose();
 			}
 		});
@@ -173,7 +208,6 @@ public class AddEditSubjectDialog extends JDialog{
 				dispose();
 			}
 		});
-		
 		
 		Box boxCentar = Box.createVerticalBox();
 		boxCentar.add(Box.createVerticalStrut(20));
