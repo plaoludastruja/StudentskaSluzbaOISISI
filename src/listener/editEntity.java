@@ -5,13 +5,9 @@ import java.awt.event.ActionListener;
 
 import gui.MainFrame;
 import gui.StudentTable;
-import gui.SubjectTable;
 import gui.TabbedPaneMainFrame;
 import gui.dialog.AddEditStudentDialog;
-import gui.dialog.AddEditSubjectDialog;
-import gui.dialog.DeleteStudentDialog;
-import gui.dialog.EditProfessorDialog;
-import model.BazaProfessor;
+
 
 public class EditEntity implements ActionListener{
 
@@ -23,23 +19,15 @@ public class EditEntity implements ActionListener{
 					AddEditStudentDialog editStudentDialog = new AddEditStudentDialog(MainFrame.getInstance(), "Izmjena studenta", true, false);
 					editStudentDialog.setVisible(true);
 				}
-				break;
-			case 1:	// PROFESOR
-				EditProfessorDialog editProfessorDialog = new EditProfessorDialog(MainFrame.getInstance(), "Izmjena profesora", true);
-				int index = MainFrame.getInstance().getTable().getSelectedRow();
-				if(index == -1) {
-					return;
-				}
-				editProfessorDialog.setForEdit(BazaProfessor.getInstance().getRow(index));
-				editProfessorDialog.setVisible(true);
-//				editProfessorDialog.validate();
 				
 				break;
+			case 1:	// PROFESOR
+				//EditProfessorDialog editProfessorDialog = new EditProfessorDialog(MainFrame.getInstance(), "Izmjena profesora", true);
+				//addProfessorDialog.setVisible(true);
+				break;
 			case 2:	// PREDMET
-				if(SubjectTable.getInstance().getSelectedRow()!=-1) {
-					AddEditSubjectDialog editSubjectDialog = new AddEditSubjectDialog(MainFrame.getInstance(), "Izmjena predmeta", true, false);
-					editSubjectDialog.setVisible(true);
-				}
+				/*EditSubjectDialog addSubjectDialog = new EditSubjectDialog(MainFrame.getInstance(), "Izmjena predmeta", false);
+				editSubjectDialog.setVisible(true);*/
 				break;
 			default:
 				break;
