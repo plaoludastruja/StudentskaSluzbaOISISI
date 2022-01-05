@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -19,6 +21,7 @@ import listener.AddEntity;
 //import listener.addEntity;
 import listener.DeleteEntity;
 import listener.EditEntity;
+import listener.SearchEntity;
 
 
 public class ToolBar extends JToolBar {
@@ -67,8 +70,18 @@ public class ToolBar extends JToolBar {
 
 		btnNew.addActionListener(new AddEntity());
 		btnDelete.addActionListener(new DeleteEntity());
-		btnEdit.addActionListener(new EditEntity());		
-
+		btnEdit.addActionListener(new EditEntity());
+		searchField.addFocusListener(new FocusListener() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				searchField.setText(""); 
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+			}
+		}); 
+		
+		btnSearch.addActionListener(new SearchEntity());
 		
 		
 // ************************************* //			
