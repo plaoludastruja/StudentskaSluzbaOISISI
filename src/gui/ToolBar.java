@@ -27,6 +27,7 @@ import listener.SearchEntity;
 public class ToolBar extends JToolBar {
 
 	Color toolbarBg = new Color(193, 223, 230);
+	public static JTextField searchField;
 	public ToolBar() {
 		
 		super(SwingConstants.HORIZONTAL);
@@ -37,7 +38,7 @@ public class ToolBar extends JToolBar {
 		JButton btnNew = new JButton();
 		JButton btnEdit = new JButton();
 		JButton btnDelete = new JButton();
-		JTextField searchField = new JTextField(20);
+		searchField = new JTextField(20);
 		JButton btnSearch = new JButton();
 		
 // ************************************* //	
