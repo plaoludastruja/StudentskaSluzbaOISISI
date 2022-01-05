@@ -26,6 +26,8 @@ public class StudentTable extends JTable {
 		// Sama JTable komponenta je implementirana postujuci MVC arhitekturu.
 		this.setModel(new AbstractTableModelStudent());
 		this.getTableHeader();
+		
+		this.setAutoCreateRowSorter(true);
 	}
 
 	@Override

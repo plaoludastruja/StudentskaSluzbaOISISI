@@ -33,4 +33,8 @@ public class AbstractTableModelStudent extends AbstractTableModel {
 		return BazaStudent.getInstance().getValueAt(rowIndex, columnIndex);
 	}
 
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+	    return getValueAt(0, columnIndex).getClass();
+	}
 }
