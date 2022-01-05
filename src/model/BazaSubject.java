@@ -29,7 +29,7 @@ public class BazaSubject {
 		generator = 0;
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("ŠIFRA PREDMETA");
+		this.kolone.add("SIFRA PREDMETA");
 		this.kolone.add("NAZIV PREDMETA");
 		this.kolone.add("BROJ ESPB BODOVA");
 		this.kolone.add("GODINA NA KOJOJ SE PREDMET IZVODI");

@@ -13,12 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -26,32 +28,45 @@ import javax.swing.event.DocumentListener;
 
 import controller.StudentController;
 import listener.StudentFocusListener;
+import gui.AbstractTableModelProfessor;
+import gui.AbstractTableModelStudent;
+import gui.AbstractTableModelSubject;
 import gui.MainFrame;
+import gui.PassedTable;
+import gui.ProfessorTable;
 import gui.StudentTable;
+import gui.SubjectTable;
 import gui.ToolBar;
 import model.Address;
 import model.Student;
 import model.Student.Status;
+import gui.dialog.PassedSubject;
 
 public class AddEditStudentDialog extends JDialog {
 
 	public static JTextField txtIme, txtPrezime, txtDatumRodjenja, txtAdresaStanovanja, txtBrojTelefona, txtEmailAdresa,
 	txtBrojIndeksa, txtGodinaUpisa;
 	public static JButton potvrdiBtn;
+	//public PassedSubject passed = new PassedSubject();
 	
 	
 	public AddEditStudentDialog(Frame parent, String title, boolean modal, boolean add) {
 		super(parent, title, modal);
 		
-		setSize(400, 420);
+		if(add) {
+			setSize(400, 420);
+		}else {
+			setSize(400, 500);
+		}
 		setLocationRelativeTo(MainFrame.getInstance());
 		setResizable(false);
 		
 		Dimension dim = new Dimension(180, 20);
 		
 		JPanel panCentar = new JPanel(new BorderLayout());
+		Box hor = Box.createHorizontalBox();
 		
-		JPanel panIme = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel panIme = new JPanel();
 		JPanel panPrezime = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel panDatumRodjenja = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel panAdresaStanovanja = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -130,9 +145,14 @@ public class AddEditStudentDialog extends JDialog {
 		txtBrojIndeksa.setName("txtBrojIndeksa");
 		txtGodinaUpisa.setName("txtGodinaUpisa");
 		
-		panIme.add(lblIme);
-		panIme.add(txtIme);
 		
+		hor.add(lblIme);
+		hor.add(Box.createHorizontalGlue());
+		hor.add(txtIme);
+		panIme.add(hor);
+		/*
+		 * MRS U PIZDU MATErinu
+		 */
 		panPrezime.add(lblPrezime);
 		panPrezime.add(txtPrezime);
 		
@@ -291,10 +311,13 @@ public class AddEditStudentDialog extends JDialog {
 			JTabbedPane tabbedPanneEditStudent = new JTabbedPane();
 			panCentar.add(boxCentar, BorderLayout.CENTER);
 			panCentar.add(panDugmad,BorderLayout.SOUTH);
+			
 			tabbedPanneEditStudent.add("Informacije", panCentar);
-			tabbedPanneEditStudent.add("Polozeni", new JPanel());
+			
+			tabbedPanneEditStudent.add("Polozeni", PassedSubject.getInstance());
 			tabbedPanneEditStudent.add("Nepolozeni",new JPanel());
 			add(tabbedPanneEditStudent, BorderLayout.NORTH);
+			pack();
 		}
 		
 		

@@ -22,7 +22,7 @@ public class BazaStudent {
 	
 	private List<Student> studenti = new ArrayList<Student>();
 	//private List<Student> studentiBaza = new ArrayList<Student>();
-	private List<String> kolone = new ArrayList<String>();;
+	private List<String> kolone = new ArrayList<String>();
 	
 	public BazaStudent() {
 		
@@ -127,6 +127,8 @@ public class BazaStudent {
 		}
 	}
 
+
+	
 	public boolean checkIfExists(String index) {
 		for(Student i : studenti) {
 			if(i.getIndex().equals(index)) {
