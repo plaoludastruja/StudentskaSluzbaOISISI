@@ -315,7 +315,7 @@ public class AddEditStudentDialog extends JDialog {
 			tabbedPanneEditStudent.add("Informacije", panCentar);
 			
 			tabbedPanneEditStudent.add("Polozeni", PassedSubject.getInstance());
-			tabbedPanneEditStudent.add("Nepolozeni",new JPanel());
+			tabbedPanneEditStudent.add("Nepolozeni",NotPassedSubject.getInstance());
 			add(tabbedPanneEditStudent, BorderLayout.NORTH);
 			pack();
 		}
