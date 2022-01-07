@@ -1,7 +1,12 @@
 package gui.dialog;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -10,6 +15,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+
+import controller.StudentController;
+import gui.MainFrame;
+import gui.StudentTable;
+import model.BazaSubject;
+import model.Grade;
+import model.Student;
 
 
 public class NotPassedSubject extends JPanel {
@@ -22,7 +34,11 @@ public class NotPassedSubject extends JPanel {
 		return instance;
 	}
 	
-	public NotPassedSubject() {
+	//public static NotPassedSubject not =  new NotPassedSubject();
+	
+	public static DefaultTableModel notPassedTableModel;
+	public static JTable tabelica;
+	private NotPassedSubject() {
 	
 		
 		JPanel notPassedSubject = new JPanel(new BorderLayout());
@@ -34,14 +50,17 @@ public class NotPassedSubject extends JPanel {
 		dugme.add(dodaj);
         dugme.add(obrisi);
         dugme.add(polaganje);
+        
+        
+        
 
-		JTable tabelica = new JTable();
+		tabelica = new JTable();
 		tabelica.setRowSelectionAllowed(true);
-		tabelica.setColumnSelectionAllowed(true);
 		tabelica.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tabelica.getTableHeader();
+		tabelica.setSelectionBackground(Color.LIGHT_GRAY);
 		
-		DefaultTableModel passedTableModel = new DefaultTableModel();
+		notPassedTableModel = new DefaultTableModel();
 		Vector<String> kolone = new Vector<String>();
 
 		kolone.add("SifraPredmeta");
@@ -49,11 +68,38 @@ public class NotPassedSubject extends JPanel {
 		kolone.add("ESPB");
 		kolone.add("Godina Studija");
 		kolone.add("Semestar");
-		passedTableModel.setColumnIdentifiers(kolone);
-		tabelica.setModel(passedTableModel);
+		notPassedTableModel.setColumnIdentifiers(kolone);
+		tabelica.setModel(notPassedTableModel);
 
 		JScrollPane tabela = new JScrollPane(tabelica);
 		
+		
+		/*
+         * Listeneri
+         */
+        
+        dodaj.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AddNotPassedSubject addNotPassedSubject = new AddNotPassedSubject(MainFrame.getInstance(), "Dodavanje predmeta", true);
+				addNotPassedSubject.setVisible(true);
+	
+			}
+		});
+        
+        obrisi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if(tabelica.getSelectedRow()!=-1) {
+					DeleteNotPassedSubject deleteNotPassedSubject = new DeleteNotPassedSubject(MainFrame.getInstance(), "Uklanjanje predmeta", true);
+					deleteNotPassedSubject.setVisible(true);
+				}
+			}
+		});
+        
 		notPassedSubject.add(dugme, BorderLayout.NORTH);
 		notPassedSubject.add(tabela, BorderLayout.CENTER);
 		

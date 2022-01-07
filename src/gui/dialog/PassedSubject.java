@@ -1,6 +1,7 @@
 package gui.dialog;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ import model.BazaStudent;
 import model.BazaSubject;
 import model.Grade;
 import model.Student;
+import model.Subject;
 
 public class PassedSubject extends JPanel {
 
@@ -36,13 +38,14 @@ public class PassedSubject extends JPanel {
 		return instance;
 	}
 	
+	//public static PassedSubject pass = new PassedSubject();
 	
 	private List<Grade> passedExams = new ArrayList<Grade>();
 	private void initPassedExams() {
 		
 	}
 	
-	public PassedSubject() {
+	private PassedSubject() {
 	
 //		Grade ocena = new Grade();
 //		ocena.setStudent(BazaStudent.getInstance().getStudent().get(0));
@@ -67,9 +70,9 @@ public class PassedSubject extends JPanel {
 		
 		JTable tabelica = new JTable();
 		tabelica.setRowSelectionAllowed(true);
-		tabelica.setColumnSelectionAllowed(true);
 		tabelica.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tabelica.getTableHeader();
+		tabelica.setSelectionBackground(Color.LIGHT_GRAY);
 		
 		DefaultTableModel passedTableModel = new DefaultTableModel();
 		Vector<String> kolone = new Vector<String>();
@@ -101,12 +104,12 @@ public class PassedSubject extends JPanel {
 		
 		for(Grade grade : stud.getPassedExams()) {
 			
-			Object[] row = {grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
-					grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate()};
-			passedTableModel.addRow(row);
-			sumGrade = sumGrade + grade.getValue();
-			++countGrade;
-			sumEspb = sumEspb + grade.getSubject().getEspb();
+//			Object[] row = {grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
+//					grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate()};
+//			passedTableModel.addRow(row);
+//			sumGrade = sumGrade + grade.getValue();
+//			++countGrade;
+//			sumEspb = sumEspb + grade.getSubject().getEspb();
 
 		}
 		
@@ -125,7 +128,8 @@ public class PassedSubject extends JPanel {
 				ocena.setValue(10);
 				LocalDate date = LocalDate.parse("29.02.2000.", DateTimeFormatter.ofPattern("dd.MM.yyyy."));
 				ocena.setExamDate(date);
-				ocena.setSubject(BazaSubject.getInstance().getSubjects().get(0));
+				Subject subj = BazaSubject.getInstance().getSubjects().get(0);
+				ocena.setSubject(subj);
 //				for(Grade grade : stud.getPassedExams()) {
 //					
 //					Object[] row = {grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
@@ -141,12 +145,14 @@ public class PassedSubject extends JPanel {
 				//}
 				
 				s.getPassedExams().add(ocena);
+				subj.getPassedSubject().add(s);
+				
 				//passedExams.add(ocena);
 //				for(Grade gr : s.getPassedExams()) {
 //					System.out.println(gr);
 //				}
 				
-				System.out.println(ocena);
+				//System.out.println(ocena);
 	
 			}
 		});

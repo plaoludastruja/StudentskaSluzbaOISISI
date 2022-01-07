@@ -1,8 +1,7 @@
 package controller;
 
 import java.time.LocalDate;
-
-
+import java.util.List;
 
 import gui.TabbedPaneMainFrame;
 import model.Address;
@@ -27,6 +26,10 @@ public class SubjectController {
 	
 	public Subject getSubjectByCode(int id) {
 		return BazaSubject.getInstance().getSubjectByCode(id);
+	}
+	
+	public List<Subject> getSubjects() {
+		return BazaSubject.getInstance().getSubjects();
 	}
 	
 	public void addSubject(Subject noviPredmet) {

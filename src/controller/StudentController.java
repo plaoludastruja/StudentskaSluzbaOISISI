@@ -57,6 +57,7 @@ private static StudentController instance = null;
 			return;
 		}
     	// izmena modela
+    
     	Student student = BazaStudent.getInstance().getRow(rowSelectedIndex);
     	BazaStudent.getInstance().deleteStudent(student.getIndex());
 		// azuriranje prikaza
