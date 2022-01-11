@@ -32,11 +32,13 @@ import model.Student;
 import model.Subject;
 
 public class AddNotPassedSubject extends JDialog {
+	
 	public static DefaultTableModel notPassedTableModel;
 	public static JTable tabelica;
+	
 	public AddNotPassedSubject(Frame parent, String title, boolean modal) {
-		super(parent, title, modal);
 		
+		super(parent, title, modal);
 		setSize(400, 250);
 		setLocationRelativeTo(MainFrame.getInstance());
 		setResizable(false);
@@ -49,12 +51,13 @@ public class AddNotPassedSubject extends JDialog {
 		
 		tabelica.setRowSelectionAllowed(true);
 		tabelica.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tabelica.getTableHeader();
+		tabelica.getTableHeader().setReorderingAllowed(false);;
 		tabelica.setSelectionBackground(Color.LIGHT_GRAY);
 		
 		
 		DefaultTableModel notPassedTableModel = new DefaultTableModel();
 		tabelica.setModel(notPassedTableModel);
+		
 		Vector<String> kolone = new Vector<String>();
 		kolone.add("SifraPredmeta");
 		kolone.add("ImePredmeta");
@@ -64,14 +67,15 @@ public class AddNotPassedSubject extends JDialog {
 		/*
 		 * Ispisujem predmete koji se mogu dodati studentu
 		 */
+		
 		List<Subject> predmeti = SubjectController.getInstance().getSubjects();
 		Student stud = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 		for(Subject s : predmeti) {
 			if(s.getSubjectYear() <= stud.getCurrentYear()
-			//&& ako je u listi za nepolozene da ne bude u malom dijalogu
-			&& (!stud.getOtherExams().contains(s))
-			//&& ako je u listi polozenih da n ebude tu
-			//&& (!s.getPassedSubject().contains(stud))
+			
+			&& (!stud.getOtherExams().contains(s))			//&& ako je u listi za nepolozene da ne bude u malom dijalogu
+			
+			//&& (!s.getPassedSubject().contains(stud))		//&& ako je u listi polozenih da n ebude tu
 			) {
 				Object[] row = {s.getSubjectCode(), s.getSubjectName()};
 				notPassedTableModel.addRow(row);
@@ -80,47 +84,33 @@ public class AddNotPassedSubject extends JDialog {
 		}
 
 
-
-        /*
-         * Dodavanje predmeta na listu nepolozenih
-         * Doda se u tabelu nepolozenih predmeta studenta
-         * Ali takodje se doda u tabelu nepolozenih predmeta svih drugih studenata
-         */
-		
 		/*
-		 * TEST: Dodati novi nepolozeni predmet Djordju,
-		 * a onda uci u Sandrine nepolozene predmete
-		 * 
-		 * Imacemo predmet u obe tabele,
-		 * Ali kod Sandre ga opet mozemo dodati
-		 * jer nije dodat u listu njenih nepolozenih predmeta
-		 * vec samo na Djorjevu listu
+		 * Listeneri
 		 */
+		
         dodaj.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Subject predmet = SubjectController.getInstance().getSubjectByCode(tabelica.getSelectedRow());
-				Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());				
-				s.getOtherExams().add(predmet);
-
-				Object[] pred = {predmet.getSubjectCode(), predmet.getSubjectName(),
-						predmet.getEspb(), predmet.getSubjectYear(), predmet.getSubjectSemester()};
+				if(tabelica.getSelectedRow()!=-1) {
+					Subject predmet = SubjectController.getInstance().getSubjectByCode(tabelica.getSelectedRow());
+					Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 					
-					//NotPassedSubject.notPassedTableModel.addRow(pred);
-					
-					//NotPassedSubject.getInstance().notPassedTableModel.addRow(pred);
+					s.getOtherExams().add(predmet);
+	
+	//					Object[] pred = {predmet.getSubjectCode(), predmet.getSubjectName(),
+	//							predmet.getEspb(), predmet.getSubjectYear(), predmet.getSubjectSemester()};
 					notPassedTableModel.removeRow(tabelica.getSelectedRow());
-//					notPassedTableModel.fireTableDataChanged();
-//					validate();
-//					NotPassedSubject.tabelica.repaint();
-					
+							
 					AbstractTableModelNotPassedTableModel model = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
-					// azuriranje modela tabele, kao i njenog prikaza
+							// azuriranje modela tabele, kao i njenog prikaza
 					model.fireTableDataChanged();
 					validate();
+				
+				}
 			}
 		});
+		
         
         odustani.addActionListener(new ActionListener() {
 

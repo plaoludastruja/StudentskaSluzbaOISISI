@@ -103,16 +103,6 @@ public class AddEditSubjectDialog extends JDialog{
 		txtGodina.setPreferredSize(dim);
 		txtProfesor.setPreferredSize(dim);
 		txtEspb.setPreferredSize(dim);
-
-		
-		/*txtIme.setName("txtIme");
-		txtPrezime.setName("txtPrezime");
-		txtDatumRodjenja.setName("txtDatumRodjenja");
-		txtAdresaStanovanja.setName("txtAdresaStanovanja");
-		txtBrojTelefona.setName("txtBrojTelefona");
-		txtEmailAdresa.setName("txtEmailAdresa");
-		txtBrojIndeksa.setName("txtBrojIndeksa");
-		txtGodinaUpisa.setName("txtGodinaUpisa");*/
 		
 		
 		panSifraPredmeta.add(lblSifraPredmeta);
@@ -136,16 +126,7 @@ public class AddEditSubjectDialog extends JDialog{
 		
 		panDugmad.add(potvrdiBtn);
 		panDugmad.add(odustaniBtn);
-		
-//		potvrdiBtn.setEnabled(false);
-//		txtIme.addFocusListener(new StudentFocusListener());
-//		txtPrezime.addFocusListener(new StudentFocusListener());
-//		txtDatumRodjenja.addFocusListener(new StudentFocusListener());
-//		txtAdresaStanovanja.addFocusListener(new StudentFocusListener());
-//		txtBrojTelefona.addFocusListener(new StudentFocusListener());
-//		txtEmailAdresa.addFocusListener(new StudentFocusListener());
-//		txtBrojIndeksa.addFocusListener(new StudentFocusListener());
-//		txtGodinaUpisa.addFocusListener(new StudentFocusListener());
+
 		
 		if(add==false) {
 			// AKO JE EDIT, TJ ADDEDIT==2 TREBA SETOVATI VRIJEDNOSTI
@@ -170,13 +151,6 @@ public class AddEditSubjectDialog extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int intEsbp = Integer.parseInt(txtEspb.getText());
-				
-//				Address addressAdresaStanovanja = new Address();
-//		        String[] addressPart = txtAdresaStanovanja.getText().split(",", 4);
-//		        addressAdresaStanovanja.setStreet(addressPart[0]);
-//		        addressAdresaStanovanja.setStreetNum(addressPart[1]);
-//		        addressAdresaStanovanja.setCity(addressPart[2]);
-//		        addressAdresaStanovanja.setCountry(addressPart[3]);
 
 				Semester semester = Semester.values()[txtSemestar.getSelectedIndex()];
 				Professor prof = ProfessorController.getInstance().getProfesori().get(txtProfesor.getSelectedIndex());

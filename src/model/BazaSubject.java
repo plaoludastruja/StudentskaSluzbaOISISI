@@ -43,12 +43,7 @@ public class BazaSubject {
 		predmeti.add(new Subject("Sifra1","fizika",Semester.LETNJI,1,prof ,9, null,null));
 		predmeti.add(new Subject("Sifra2","engleski jezik",Semester.ZIMSKI,2,prof ,3, null,null));
 		predmeti.add(new Subject("Sifra3","baze podataka",Semester.ZIMSKI,3, prof,8, null,null)); 
-		/*predmeti.add(new Subject());
-		predmeti.add(new Subject());
-		predmeti.add(new Subject());*/
-		
-		
-		
+
 	
 	}
 
@@ -95,14 +90,9 @@ public class BazaSubject {
 	
 	public String getValueAt1(int row, int column) {
 
-		//Subject predmet = this.predmeti.get(row);
-		//Subject predmet = SubjectController.getInstance().getSubjectByCode(row);
 		Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());				
 		s.getOtherExams();
-		//private List<Subject> otherExams = new ArrayList<Subject>();
-//		Subject predmet = SubjectController.getInstance().getSubjectByCode(AddNotPassedSubject.tabelica.getSelectedRow());
 		Subject predmet = s.getOtherExams().get(row);
-		System.out.println(predmet);
 		switch (column) {
 		case 0:
 			return predmet.getSubjectCode();

@@ -34,11 +34,11 @@ public class NotPassedSubject extends JPanel {
 		}
 		return instance;
 	}
-	
-	//public static NotPassedSubject not =  new NotPassedSubject();
+
 	
 	public static AbstractTableModelNotPassedTableModel notPassedTableModel;
 	public static JTable tabelica;
+	
 	private NotPassedSubject() {
 	
 		
@@ -51,27 +51,16 @@ public class NotPassedSubject extends JPanel {
 		dugme.add(dodaj);
         dugme.add(obrisi);
         dugme.add(polaganje);
-        
-        
-       // Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());				
+		
 
 		tabelica = new JTable();
 		tabelica.setRowSelectionAllowed(true);
 		tabelica.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tabelica.getTableHeader();
+		tabelica.getTableHeader().setReorderingAllowed(false);
 		tabelica.setSelectionBackground(Color.LIGHT_GRAY);
-		
-		//notPassedTableModel = new DefaultTableModel();
 		 
 		Vector<String> kolone = new Vector<String>();
 		notPassedTableModel = new AbstractTableModelNotPassedTableModel();
-//		kolone.add("SifraPredmeta");
-//		kolone.add("NazivPredmeta");
-//		kolone.add("ESPB");
-//		kolone.add("Godina Studija");
-//		kolone.add("Semestar");
-		//notPassedTableModel.setColumnIdentifiers(kolone);
-		//tabelica.setModel(notPassedTableModel);
 		tabelica.setModel(notPassedTableModel);
 
 		JScrollPane tabela = new JScrollPane(tabelica);

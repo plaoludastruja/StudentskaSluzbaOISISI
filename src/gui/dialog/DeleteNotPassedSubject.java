@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import controller.StudentController;
 import controller.SubjectController;
+import gui.AbstractTableModelNotPassedTableModel;
 import gui.MainFrame;
 import gui.StudentTable;
 import model.Student;
@@ -59,7 +60,11 @@ public class DeleteNotPassedSubject extends JDialog {
 				Subject predmet = SubjectController.getInstance().getSubjectByCode(NotPassedSubject.tabelica.getSelectedRow());
 				Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 					s.getOtherExams().remove(predmet);
-					//NotPassedSubject.notPassedTableModel.removeRow(NotPassedSubject.tabelica.getSelectedRow());
+		
+					AbstractTableModelNotPassedTableModel model = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
+											// azuriranje modela tabele, kao i njenog prikaza
+					model.fireTableDataChanged();
+					validate();
 					dispose();
 			}
 		});
