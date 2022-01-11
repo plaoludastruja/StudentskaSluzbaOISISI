@@ -23,6 +23,7 @@ import javax.swing.table.TableCellRenderer;
 
 import controller.StudentController;
 import controller.SubjectController;
+import gui.AbstractTableModelNotPassedTableModel;
 import gui.MainFrame;
 import gui.StudentTable;
 import model.BazaSubject;
@@ -108,10 +109,16 @@ public class AddNotPassedSubject extends JDialog {
 					
 					//NotPassedSubject.notPassedTableModel.addRow(pred);
 					
-					NotPassedSubject.getInstance().notPassedTableModel.addRow(pred);
+					//NotPassedSubject.getInstance().notPassedTableModel.addRow(pred);
 					notPassedTableModel.removeRow(tabelica.getSelectedRow());
-					NotPassedSubject.notPassedTableModel.fireTableDataChanged();
-					NotPassedSubject.tabelica.repaint();
+//					notPassedTableModel.fireTableDataChanged();
+//					validate();
+//					NotPassedSubject.tabelica.repaint();
+					
+					AbstractTableModelNotPassedTableModel model = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
+					// azuriranje modela tabele, kao i njenog prikaza
+					model.fireTableDataChanged();
+					validate();
 			}
 		});
         

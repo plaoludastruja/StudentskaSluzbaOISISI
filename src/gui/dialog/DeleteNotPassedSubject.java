@@ -59,7 +59,7 @@ public class DeleteNotPassedSubject extends JDialog {
 				Subject predmet = SubjectController.getInstance().getSubjectByCode(NotPassedSubject.tabelica.getSelectedRow());
 				Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 					s.getOtherExams().remove(predmet);
-					NotPassedSubject.notPassedTableModel.removeRow(NotPassedSubject.tabelica.getSelectedRow());
+					//NotPassedSubject.notPassedTableModel.removeRow(NotPassedSubject.tabelica.getSelectedRow());
 					dispose();
 			}
 		});

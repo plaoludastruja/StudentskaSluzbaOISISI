@@ -6,7 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 import controller.StudentController;
+import controller.SubjectController;
+import gui.StudentTable;
 import gui.SubjectTable;
+import gui.dialog.AddNotPassedSubject;
 import model.Subject.Semester;
 
 public class BazaSubject {
@@ -72,6 +75,34 @@ public class BazaSubject {
 	public String getValueAt(int row, int column) {
 
 		Subject predmet = this.predmeti.get(row);
+		System.out.println(predmet);
+		switch (column) {
+		case 0:
+			return predmet.getSubjectCode();
+		case 1:
+			return predmet.getSubjectName();
+		case 2:
+			return predmet.getEspb()+"";
+		case 3:
+			return predmet.getSubjectYear()+"";
+		case 4:
+			return predmet.getSubjectSemester()+"";
+		default:
+			return null;
+		}
+
+	}
+	
+	public String getValueAt1(int row, int column) {
+
+		//Subject predmet = this.predmeti.get(row);
+		//Subject predmet = SubjectController.getInstance().getSubjectByCode(row);
+		Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());				
+		s.getOtherExams();
+		//private List<Subject> otherExams = new ArrayList<Subject>();
+//		Subject predmet = SubjectController.getInstance().getSubjectByCode(AddNotPassedSubject.tabelica.getSelectedRow());
+		Subject predmet = s.getOtherExams().get(row);
+		System.out.println(predmet);
 		switch (column) {
 		case 0:
 			return predmet.getSubjectCode();

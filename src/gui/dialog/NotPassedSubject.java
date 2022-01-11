@@ -17,6 +17,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import controller.StudentController;
+import gui.AbstractTableModelNotPassedTableModel;
 import gui.MainFrame;
 import gui.StudentTable;
 import model.BazaSubject;
@@ -36,7 +37,7 @@ public class NotPassedSubject extends JPanel {
 	
 	//public static NotPassedSubject not =  new NotPassedSubject();
 	
-	public static DefaultTableModel notPassedTableModel;
+	public static AbstractTableModelNotPassedTableModel notPassedTableModel;
 	public static JTable tabelica;
 	private NotPassedSubject() {
 	
@@ -52,7 +53,7 @@ public class NotPassedSubject extends JPanel {
         dugme.add(polaganje);
         
         
-        
+       // Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());				
 
 		tabelica = new JTable();
 		tabelica.setRowSelectionAllowed(true);
@@ -60,15 +61,17 @@ public class NotPassedSubject extends JPanel {
 		tabelica.getTableHeader();
 		tabelica.setSelectionBackground(Color.LIGHT_GRAY);
 		
-		notPassedTableModel = new DefaultTableModel();
+		//notPassedTableModel = new DefaultTableModel();
+		 
 		Vector<String> kolone = new Vector<String>();
-
-		kolone.add("SifraPredmeta");
-		kolone.add("NazivPredmeta");
-		kolone.add("ESPB");
-		kolone.add("Godina Studija");
-		kolone.add("Semestar");
-		notPassedTableModel.setColumnIdentifiers(kolone);
+		notPassedTableModel = new AbstractTableModelNotPassedTableModel();
+//		kolone.add("SifraPredmeta");
+//		kolone.add("NazivPredmeta");
+//		kolone.add("ESPB");
+//		kolone.add("Godina Studija");
+//		kolone.add("Semestar");
+		//notPassedTableModel.setColumnIdentifiers(kolone);
+		//tabelica.setModel(notPassedTableModel);
 		tabelica.setModel(notPassedTableModel);
 
 		JScrollPane tabela = new JScrollPane(tabelica);
