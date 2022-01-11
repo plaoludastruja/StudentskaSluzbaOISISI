@@ -17,6 +17,7 @@ import controller.SubjectController;
 import gui.AbstractTableModelNotPassedTableModel;
 import gui.MainFrame;
 import gui.StudentTable;
+import model.BazaSubject;
 import model.Student;
 import model.Subject;
 
@@ -57,7 +58,8 @@ public class DeleteNotPassedSubject extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Subject predmet = SubjectController.getInstance().getSubjectByCode(NotPassedSubject.tabelica.getSelectedRow());
+				//Subject predmet = SubjectController.getInstance().getSubjectByCode(NotPassedSubject.tabelica.getSelectedRow());
+				Subject predmet = BazaSubject.getInstance().getSubjectByCode(NotPassedSubject.tabelica.getValueAt(NotPassedSubject.tabelica.getSelectedRow(), 0).toString());
 				Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 					s.getOtherExams().remove(predmet);
 		

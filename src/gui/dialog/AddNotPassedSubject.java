@@ -70,16 +70,28 @@ public class AddNotPassedSubject extends JDialog {
 		
 		List<Subject> predmeti = SubjectController.getInstance().getSubjects();
 		Student stud = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
+
 		for(Subject s : predmeti) {
 			if(s.getSubjectYear() <= stud.getCurrentYear()
 			
 			&& (!stud.getOtherExams().contains(s))			//&& ako je u listi za nepolozene da ne bude u malom dijalogu
 			
-			//&& (!s.getPassedSubject().contains(stud))		//&& ako je u listi polozenih da n ebude tu
-			) {
+			//&& (!stud.getPassedExams().contains(ocjena))		//&& ako je u listi polozenih da n ebude tu
+			)
+			{
+				boolean add = true;
+				
+				for(Grade g : stud.getPassedExams()) {
+					if(g.getSubject().getSubjectCode().equals(s.getSubjectCode())) {
+						add = false;
+					}
+				}
+				
+			if(add) {
 				Object[] row = {s.getSubjectCode(), s.getSubjectName()};
 				notPassedTableModel.addRow(row);
-
+			}
+			
 			}
 		}
 
@@ -93,7 +105,8 @@ public class AddNotPassedSubject extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(tabelica.getSelectedRow()!=-1) {
-					Subject predmet = SubjectController.getInstance().getSubjectByCode(tabelica.getSelectedRow());
+
+					Subject predmet = BazaSubject.getInstance().getSubjectByCode(tabelica.getValueAt(tabelica.getSelectedRow(), 0).toString());
 					Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 					
 					s.getOtherExams().add(predmet);
@@ -106,7 +119,9 @@ public class AddNotPassedSubject extends JDialog {
 							// azuriranje modela tabele, kao i njenog prikaza
 					model.fireTableDataChanged();
 					validate();
+					dispose();
 				
+						
 				}
 			}
 		});

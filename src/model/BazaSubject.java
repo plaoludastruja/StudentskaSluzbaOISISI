@@ -70,7 +70,6 @@ public class BazaSubject {
 	public String getValueAt(int row, int column) {
 
 		Subject predmet = this.predmeti.get(row);
-		System.out.println(predmet);
 		switch (column) {
 		case 0:
 			return predmet.getSubjectCode();
@@ -109,10 +108,20 @@ public class BazaSubject {
 		}
 
 	}
-
-	public Subject getSubjectByCode(int code) {
+	public Subject getSubjectFromList(int code) {
 		return predmeti.get(code);
 	}
+	public Subject getSubjectByCode(String code) {
+		for(Subject i : predmeti) {
+			if(i.getSubjectCode().equals(code)) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
+
+		
 	
 	public void addSubject(Subject noviPredmet) {
 		this.predmeti.add(noviPredmet);
@@ -128,15 +137,23 @@ public class BazaSubject {
 		}
 	}*/
 	
-	public void deleteSubject(int row) { // brise red u tabeli
-		predmeti.remove(row);
+	public void deleteSubject(String code) { // brise red u tabeli
+		for(Subject i : predmeti) {
+			if(i.getSubjectCode().equals(code)) {
+				predmeti.remove(i);
+				break;
+			}
+		}
 	}
+	
+	
+
 
 	public void changeSubject(Subject izmjenaPredmet) {
 		
 		for (Subject i : predmeti) {
 			
-			if (i.getSubjectCode().equals(BazaSubject.getInstance().getSubjectByCode(SubjectTable.getInstance().getSelectedRow()).getSubjectCode())) {
+			if (i.getSubjectCode().equals(BazaSubject.getInstance().getSubjectFromList(SubjectTable.getInstance().getSelectedRow()).getSubjectCode())) {
 				
 				i.setSubjectCode(izmjenaPredmet.getSubjectCode());
 				i.setSubjectName(izmjenaPredmet.getSubjectName());
