@@ -234,6 +234,11 @@ public class EditProfessorDialog extends JDialog {
 		} catch (Exception ex) {
 			return false;
 		}
+		
+		
+//		if(!txtDatumRodjenja.getText().matches("\\d{2}.\\d{2}.\\d{4}.")) {
+//			return false;
+//		}
 
 		String adress = txtAdresaStanovanja.getText();
 		String[] adressArray = adress.split(",");
