@@ -3,6 +3,8 @@ package controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import gui.ProfessorTable;
+import gui.StudentTable;
 import gui.TabbedPaneMainFrame;
 import model.Address;
 import model.BazaProfessor;
@@ -25,6 +27,10 @@ public class ProfessorController {
 	
 	public List<Professor> getProfesori() {
 		return  BazaProfessor.getInstance().getProfesori();
+	}
+	
+	public Professor getProfessortByID(int id) {
+		return BazaProfessor.getInstance().getProfessorByID(ProfessorTable.getInstance().getValueAt(id, 3).toString());
 	}
 
 	public void dodajProfesora(String firstName, String lastName, LocalDate dateOfBirth, Address homeAddress,

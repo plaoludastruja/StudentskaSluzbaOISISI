@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import controller.ProfessorController;
 import controller.StudentController;
 import controller.SubjectController;
+import gui.ProfessorTable;
 import gui.StudentTable;
 import gui.SubjectTable;
 import gui.dialog.AddNotPassedSubject;
@@ -108,6 +110,29 @@ public class BazaSubject {
 		}
 
 	}
+	
+	public String getValueAt2(int row, int column) {
+
+		Professor p = ProfessorController.getInstance().getProfessortByID(ProfessorTable.getInstance().getSelectedRow());				
+		p.getListofSubjects();
+		Subject predmet = p.getListofSubjects().get(row);
+		switch (column) {
+		case 0:
+			return predmet.getSubjectCode();
+		case 1:
+			return predmet.getSubjectName();
+		case 2:
+			return predmet.getEspb()+"";
+		case 3:
+			return predmet.getSubjectYear()+"";
+		case 4:
+			return predmet.getSubjectSemester()+"";
+		default:
+			return null;
+		}
+
+	}
+	
 	public Subject getSubjectFromList(int code) {
 		return predmeti.get(code);
 	}

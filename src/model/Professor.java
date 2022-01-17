@@ -24,8 +24,7 @@ public class Professor {
 
 
 	public Professor(String firstName, String lastName, LocalDate dateOfBirth, Address homeAddress, String phone,
-			String email, Address officeAddress, String idCard, String position, String workingYear,
-			List<Subject> listofSubjects) {
+			String email, Address officeAddress, String idCard, String position, String workingYear) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -37,7 +36,7 @@ public class Professor {
 		this.idCard = idCard;
 		this.position = position;
 		this.workingYear = workingYear;
-		this.listofSubjects = listofSubjects;
+		//this.listofSubjects = listofSubjects;
 	}
 
 

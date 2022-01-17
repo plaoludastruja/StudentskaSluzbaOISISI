@@ -17,6 +17,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.ProfessorController;
@@ -146,8 +147,15 @@ public class EditProfessorDialog extends JDialog {
 		boxCentar.add(panZvanje);
 		boxCentar.add(Box.createGlue());
 
-		add(boxCentar, BorderLayout.NORTH);
-		add(panDugmad, BorderLayout.SOUTH);
+		
+		
+		panCentar.add(boxCentar, BorderLayout.CENTER);
+		panCentar.add(panDugmad, BorderLayout.SOUTH);
+		
+		JTabbedPane tabbedPaneEditProfessor = new JTabbedPane();
+		tabbedPaneEditProfessor.add("Informacije", panCentar);
+		tabbedPaneEditProfessor.add("Predmeti", ProfessorOnSubject.getInstance());
+		add(tabbedPaneEditProfessor, BorderLayout.NORTH);
 
 		potvrdiBtn.addActionListener(new ActionListener() {
 
@@ -214,6 +222,10 @@ public class EditProfessorDialog extends JDialog {
 		txtZvanje.addKeyListener(keyListener);
 
 
+
+			
+
+		
 		pack();
 
 	}
@@ -284,5 +296,7 @@ public class EditProfessorDialog extends JDialog {
 		txtAdresaKancelarije.setText(forEdit.getOfficeAddress().adressForDisplay());
 		
 	}
+	
+	
 
 }
