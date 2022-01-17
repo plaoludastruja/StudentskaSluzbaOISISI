@@ -11,6 +11,9 @@ public class AbstractTableModelProfessor extends AbstractTableModel {
 	
 	@Override
 	public int getRowCount() {
+		if(BazaProfessor.getInstance().isSearchedDone()) {
+			return BazaProfessor.getInstance().getSearched().size();
+		}
 		return BazaProfessor.getInstance().getProfesori().size();
 	}
 	
@@ -26,6 +29,9 @@ public class AbstractTableModelProfessor extends AbstractTableModel {
 	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
+		if(BazaProfessor.getInstance().isSearchedDone()) {
+			return BazaProfessor.getInstance().getValueAtSearch(rowIndex, columnIndex);
+		}
 		return BazaProfessor.getInstance().getValueAt(rowIndex, columnIndex);
 	}
 	
