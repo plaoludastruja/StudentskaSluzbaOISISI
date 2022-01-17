@@ -18,7 +18,10 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
 import controller.ProfessorController;
+import controller.SubjectController;
 import gui.dialog.AddEditStudentDialog;
+import gui.dialog.AddEditSubjectDialog;
+import gui.dialog.AddProfessorDialog;
 import listener.AddEntity;
 //import listener.addEntity;
 import listener.DeleteEntity;
@@ -85,29 +88,59 @@ public class ToolBar extends JToolBar {
 		});
 
 		btnSearch.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				String profesor = searchField.getText();
-				String[] niz = profesor.split(",");
-				if (niz.length == 1) {
+				switch (TabbedPaneMainFrame.getInstance().getSelectedIndex()) {
+				case 0: // STUDENT
 
-					String prof1 = niz[0].trim();
-					ProfessorController.getInstance().getProffessorNameSurname(prof1, null);
-					
-				} else if (niz.length == 2) {
+					break;
+				case 1: // PROFESOR
+					String profesor = searchField.getText();
+					String[] nizProfessor = profesor.split(",");
+					if (nizProfessor.length == 1) {
 
-					String prof1 = niz[0].trim();
-					String prof2 = niz[1].trim();
+						String lastName = nizProfessor[0].trim();
+						ProfessorController.getInstance().getProffessorNameSurname(lastName, null);
 
-					ProfessorController.getInstance().getProffessorNameSurname(prof1, prof2);
-					
-				} else {
-					JOptionPane.showMessageDialog(null, "Pretraga profesora mora biti formata prezime ili prezime, ime",
-							"Pogresan format!", JOptionPane.ERROR_MESSAGE);
-					return;
+					} else if (nizProfessor.length == 2) {
+
+						String lastName = nizProfessor[0].trim();
+						String name = nizProfessor[1].trim();
+
+						ProfessorController.getInstance().getProffessorNameSurname(lastName, name);
+
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"Pretraga profesora mora biti formata prezime ili prezime, ime", "Pogresan format!",
+								JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					break;
+				case 2: // PREDMET
+					String predmet = searchField.getText();
+					String[] nizPredmet = predmet.split(",");
+					if (nizPredmet.length == 1) {
+
+						String name = nizPredmet[0].trim();
+						SubjectController.getInstance().getSubjectNameCode(name, null);
+
+					} else if (nizPredmet.length == 2) {
+
+						String name = nizPredmet[0].trim();
+						String code = nizPredmet[1].trim();
+
+						SubjectController.getInstance().getSubjectNameCode(name, code);
+
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"Pretraga predmeta mora biti formata ime ili ime, sifra", "Pogresan format!",
+								JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					break;
+				default:
+					break;
 				}
 
 			}

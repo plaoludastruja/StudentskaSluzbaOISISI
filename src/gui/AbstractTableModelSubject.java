@@ -12,8 +12,12 @@ public class AbstractTableModelSubject extends AbstractTableModel {
 	
 	@Override
 	public int getRowCount() {
+		if(BazaSubject.getInstance().isSearchedDone()) {
+			return BazaSubject.getInstance().getSearched().size();
+		}
 		return BazaSubject.getInstance().getSubjects().size();
 	}
+	
 	
 	@Override
 	public int getColumnCount() {
@@ -27,6 +31,9 @@ public class AbstractTableModelSubject extends AbstractTableModel {
 	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
+		if(BazaSubject.getInstance().isSearchedDone()) {
+			return BazaSubject.getInstance().getValueAtSearch(rowIndex, columnIndex);
+		}
 		return BazaSubject.getInstance().getValueAt(rowIndex, columnIndex);
 	}
 	

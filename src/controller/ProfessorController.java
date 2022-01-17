@@ -9,6 +9,7 @@ import gui.TabbedPaneMainFrame;
 import model.Address;
 import model.BazaProfessor;
 import model.BazaStudent;
+import model.BazaSubject;
 import model.Professor;
 import model.Student;
 
@@ -60,9 +61,8 @@ public class ProfessorController {
 	
 	public void getProffessorNameSurname(String lastName,String name) {
 		BazaProfessor.getInstance().getProffessorNameSurname(lastName, name);
-		TabbedPaneMainFrame.getInstance().azurirajPrikaz("IZMENJEN", -1);
+		TabbedPaneMainFrame.getInstance().azurirajPrikaz("AZURIRAN", -1);
 	}
-	
 	
 	
 	
