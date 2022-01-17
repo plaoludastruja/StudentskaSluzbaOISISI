@@ -57,6 +57,9 @@ public class MenuBar extends JMenuBar {
 		delete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		help1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		
+		
+
+		
 // ************************************* //		
 		mbnew.setIcon(new ImageIcon("images/menubar/plus.png"));
 		save.setIcon(new ImageIcon("images/menubar/diskette.png"));
@@ -81,7 +84,41 @@ public class MenuBar extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.getInstance().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				//MainFrame.getInstance().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				System.exit(ABORT);
+			}
+		});
+
+		
+		studenti.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TabbedPaneMainFrame.getInstance().setSelectedIndex(0);
+			}
+		});
+		
+		predmeti.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TabbedPaneMainFrame.getInstance().setSelectedIndex(1);
+			}
+		});
+		
+		profesori.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TabbedPaneMainFrame.getInstance().setSelectedIndex(2);
+			}
+		});
+		
+		katedre.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		
