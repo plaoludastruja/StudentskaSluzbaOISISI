@@ -11,6 +11,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import gui.dialog.AddEditStudentDialog;
+import gui.dialog.DepartmentDialog;
 import listener.AddEntity;
 import listener.DeleteEntity;
 import listener.EditEntity;
@@ -118,7 +120,8 @@ public class MenuBar extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				DepartmentDialog department = new DepartmentDialog();
+				department.setVisible(true);
 			}
 		});
 		

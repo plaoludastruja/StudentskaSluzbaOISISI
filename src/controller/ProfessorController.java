@@ -6,6 +6,7 @@ import java.util.List;
 import gui.ProfessorTable;
 import gui.StudentTable;
 import gui.TabbedPaneMainFrame;
+import gui.dialog.DepartmentBossDialog;
 import model.Address;
 import model.BazaProfessor;
 import model.BazaStudent;
@@ -32,9 +33,13 @@ public class ProfessorController {
 	public Professor getProfessortByID(int id) {
 		return BazaProfessor.getInstance().getProfessorByID(ProfessorTable.getInstance().getValueAt(id, 3).toString());
 	}
+	
+	public Professor getProfessortByID2(int id) {
+		return BazaProfessor.getInstance().getProfessorByID(DepartmentBossDialog.deparmentBossTable.getValueAt(id, 2).toString());
+	}
 
 	public void dodajProfesora(String firstName, String lastName, LocalDate dateOfBirth, Address homeAddress,
-			String phone, String email, Address officeAddress, String idCard, String position, String workingYear) {
+			String phone, String email, Address officeAddress, String idCard, String position, int workingYear) {
 
 		BazaProfessor.getInstance().dodajProfesora(firstName, lastName, dateOfBirth, homeAddress, phone, email,
 				officeAddress, idCard, position, workingYear);
@@ -52,7 +57,7 @@ public class ProfessorController {
 
 	public void izmeniProfesora(Professor forEdit, String firstName, String lastName, LocalDate dateOdBirth,
 			Address home_address, String phone, String email, Address officeAddress, String idCard, String position,
-			String workingYear) {
+			int workingYear) {
 		
 		BazaProfessor.getInstance().izmeniProfesora(forEdit, firstName, lastName, dateOdBirth, home_address,
 				phone, email, officeAddress, idCard, position, workingYear);

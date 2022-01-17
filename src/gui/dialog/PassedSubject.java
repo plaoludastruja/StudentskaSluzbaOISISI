@@ -47,16 +47,6 @@ public class PassedSubject extends JPanel {
 	
 	private PassedSubject() {
 	
-//		Grade ocena = new Grade();
-//		ocena.setStudent(BazaStudent.getInstance().getStudent().get(0));
-//		ocena.setValue(10);
-//		LocalDate date = LocalDate.parse("29.02.2000.", DateTimeFormatter.ofPattern("dd.MM.yyyy."));
-//		ocena.setExamDate(date);
-//		ocena.setSubject(BazaSubject.getInstance().getSubjects().get(0));
-//		passedExams.add(ocena);
-//		System.out.println(BazaStudent.getInstance().getStudent().get(0).getPassedExams());
-//		
-//		System.out.println(ocena);
 		
 		JPanel passedSubject = new JPanel(new BorderLayout());
 		
@@ -99,63 +89,10 @@ public class PassedSubject extends JPanel {
 		int countGrade = 0;
 		double avgGrade = 0;
 		
-		Student stud = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 		
-		
-		for(Grade grade : stud.getPassedExams()) {
-			
-//			Object[] row = {grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
-//					grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate()};
-//			passedTableModel.addRow(row);
-//			sumGrade = sumGrade + grade.getValue();
-//			++countGrade;
-//			sumEspb = sumEspb + grade.getSubject().getEspb();
 
-		}
 		
-		if(countGrade!=0) {
-			avgGrade = sumGrade / countGrade;
-		}
-		
-		
-		ponisti.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Grade ocena = new Grade();
-				Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
-				ocena.setStudent(s);
-				ocena.setValue(10);
-				LocalDate date = LocalDate.parse("29.02.2000.", DateTimeFormatter.ofPattern("dd.MM.yyyy."));
-				ocena.setExamDate(date);
-				Subject subj = BazaSubject.getInstance().getSubjects().get(0);
-				ocena.setSubject(subj);
-//				for(Grade grade : stud.getPassedExams()) {
-//					
-//					Object[] row = {grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
-//							grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate()};
-//					passedTableModel.addRow(row);
-//					sumGrade = sumGrade + grade.getValue();
-//					++countGrade;
-//					sumEspb = sumEspb + grade.getSubject().getEspb();
-					Object[] row = {ocena.getSubject().getSubjectCode(), ocena.getSubject().getSubjectName(),
-							ocena.getSubject().getEspb(), ocena.getValue(), ocena.getExamDate()};
-					passedTableModel.addRow(row);
-
-				//}
-				
-				s.getPassedExams().add(ocena);
-				subj.getPassedSubject().add(s);
-				
-				//passedExams.add(ocena);
-//				for(Grade gr : s.getPassedExams()) {
-//					System.out.println(gr);
-//				}
-				
-				//System.out.println(ocena);
-	
-			}
-		});
 		
 		JPanel ispis = new JPanel(new BorderLayout());
 		
