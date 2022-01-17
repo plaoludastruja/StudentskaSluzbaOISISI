@@ -135,11 +135,11 @@ public class BazaProfessor {
 		searchedDone = true;
 		for (Professor p : profesori) {
 			if (name == null) {
-				if (p.getLastName().contains(lastName)) {
+				if (p.getLastName().toLowerCase().contains(lastName)) {
 					searched.add(p);
 				}
 			} else {
-				if (p.getLastName().contains(lastName) && p.getFirstName().contains(name)) {
+				if (p.getLastName().toLowerCase().contains(lastName) && p.getFirstName().toLowerCase().contains(name)) {
 					searched.add(p);
 				}
 			}

@@ -71,11 +71,11 @@ public class NotPassedSubject extends JPanel {
 				if(idx == -1) {
 					return;
 				}				
-				Student stud = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
-				Grade ocena = stud.getOtherExams().get(idx);
-				PassingExam passingDiag = new PassingExam(MainFrame.getInstance(), "Unos ocene", true);
-				passingDiag.setGrade(ocena);
-				passingDiag.setVisible(true);
+				Student student = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
+				Grade grade = student.getOtherExams().get(idx);
+				PassingExam passingDialog = new PassingExam(MainFrame.getInstance(), "Unos ocene", true);
+				passingDialog.setGrade(grade);
+				passingDialog.setVisible(true);
 				
 			}
 		});

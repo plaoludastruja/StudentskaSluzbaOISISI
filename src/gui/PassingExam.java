@@ -34,7 +34,7 @@ public class PassingExam extends JDialog {
 	private JTextField txtDatum;
 	private JButton potvrdiBtn;
 	private JButton odustaniBtn;
-	private JComboBox<String> ocenaList;
+	private JComboBox<String> gradeList;
 	private Grade currentGrade;
 
 	private JLabel lblSifra;
@@ -62,11 +62,11 @@ public class PassingExam extends JDialog {
 		lblOcena = new JLabel("Ocena*");
 		lblDatum = new JLabel("Datum*");
 
-		String nizStr[] = { "5", "6", "7", "8", "9", "10" };
+		String niz[] = {"6", "7", "8", "9", "10" };
 
 		txtSifra = new JTextField();
 		txtNaziv = new JTextField();
-		ocenaList = new JComboBox<String>(nizStr);
+		gradeList = new JComboBox<String>(niz);
 		txtDatum = new JTextField();
 
 		potvrdiBtn = new JButton("Potvrdi");
@@ -76,7 +76,7 @@ public class PassingExam extends JDialog {
 		lblNaziv.setPreferredSize(dim);
 		lblOcena.setPreferredSize(dim);
 		lblDatum.setPreferredSize(dim);
-		ocenaList.setPreferredSize(dim);
+		gradeList.setPreferredSize(dim);
 
 		txtSifra.setPreferredSize(dim);
 		txtNaziv.setPreferredSize(dim);
@@ -89,7 +89,7 @@ public class PassingExam extends JDialog {
 		panNaziv.add(txtNaziv);
 
 		panOcena.add(lblOcena);
-		panOcena.add(ocenaList);
+		panOcena.add(gradeList);
 
 		panDatum.add(lblDatum);
 		panDatum.add(txtDatum);
@@ -106,13 +106,13 @@ public class PassingExam extends JDialog {
 		boxCentar.add(panDatum);
 		boxCentar.add(Box.createVerticalStrut(20));
 		// boxCentar.add(Box.createGlue());
-		JPanel levi = new JPanel();
-		levi.add(Box.createHorizontalStrut(20));
+		JPanel left = new JPanel();
+		left.add(Box.createHorizontalStrut(20));
 
 		add(boxCentar, BorderLayout.CENTER);
 		add(panDugmad, BorderLayout.SOUTH);
-		add(levi, BorderLayout.EAST);
-		add(levi, BorderLayout.WEST);
+		add(left, BorderLayout.EAST);
+		add(left, BorderLayout.WEST);
 		pack();
 		this.setLocationRelativeTo(null);
 
@@ -120,38 +120,38 @@ public class PassingExam extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Student stud = StudentController.getInstance()
+				Student student = StudentController.getInstance()
 						.getStudentByID(StudentTable.getInstance().getSelectedRow());
-				LocalDate datum;
+				LocalDate date;
 				try {
-					datum = DateHandler.stringToDate(txtDatum.getText());
+					date = DateHandler.stringToDate(txtDatum.getText());
 
 				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(PassingExam.this, "wrong format", "Warning",
+					JOptionPane.showMessageDialog(PassingExam.this, "Pogresan format!", "Greska",
 							JOptionPane.WARNING_MESSAGE);
 					return;
 				}
-				stud.getOtherExams().remove(currentGrade);
-				stud.getPassedExams().add(currentGrade);
-				int ocena = ocenaList.getSelectedIndex() + 5;
-				currentGrade.setValue(ocena);
-				currentGrade.setExamDate(datum);
+				student.getOtherExams().remove(currentGrade);
+				student.getPassedExams().add(currentGrade);
+				int grade = gradeList.getSelectedIndex() + 6;
+				currentGrade.setValue(grade);
+				currentGrade.setExamDate(date);
 
 				DefaultTableModel model = (DefaultTableModel) PassedSubject.getInstance().getTabelica().getModel();
 
 				for (int i = 0; i < model.getRowCount(); i++)
 					model.removeRow(i);
 
-				for (Grade grade : stud.getPassedExams()) {
+				for (Grade g : student.getPassedExams()) {
 
-					Object[] row = { grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
-							grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate() };
+					Object[] row = { g.getSubject().getSubjectCode(), g.getSubject().getSubjectName(),
+							g.getSubject().getEspb(), g.getValue(), g.getExamDate() };
 					model.addRow(row);
 				}
+				
 				model.fireTableDataChanged();
 				NotPassedTableModel modelNotP = (NotPassedTableModel) NotPassedSubject.getInstance().getTable()
 						.getModel();
-
 				modelNotP.fireTableDataChanged();
 
 				dispose();
@@ -167,10 +167,10 @@ public class PassingExam extends JDialog {
 		});
 	}
 
-	public void setGrade(Grade ocena) {
-		this.currentGrade = ocena;
-		this.txtNaziv.setText(ocena.getSubject().getSubjectName());
-		this.txtSifra.setText(ocena.getSubject().getSubjectCode());
+	public void setGrade(Grade grade) {
+		this.currentGrade = grade;
+		this.txtNaziv.setText(grade.getSubject().getSubjectName());
+		this.txtSifra.setText(grade.getSubject().getSubjectCode());
 		this.txtNaziv.setEnabled(false);
 		this.txtSifra.setEnabled(false);
 		this.txtSifra.setDisabledTextColor(Color.black);

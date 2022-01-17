@@ -88,15 +88,14 @@ public class PassedSubject extends JPanel {
 		Student stud = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 		passedExams = stud.getPassedExams();
 		System.out.println(stud.getPassedExams().size());
+		
 		for (Grade grade : stud.getPassedExams()) {
-
 			Object[] row = { grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
 					grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate() };
 			passedTableModel.addRow(row);
 			sumGrade = sumGrade + grade.getValue();
 			++countGrade;
 			sumEspb = sumEspb + grade.getSubject().getEspb();
-
 		}
 
 		if (countGrade != 0) {
@@ -136,7 +135,7 @@ public class PassedSubject extends JPanel {
 //				
 //				System.out.println(ocena);
 //	
-				if (JOptionPane.showConfirmDialog(null, "Are you sure?", "WARNING",
+				if (JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da uklonite predmet?", "Uklanjanje predmeta",
 				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				    // yes option
 				} else {
@@ -147,9 +146,9 @@ public class PassedSubject extends JPanel {
 				if (idx == -1) {
 					return;
 				}
-				Grade ocena = passedExams.get(idx);
+				Grade grade = passedExams.get(idx);
 				passedExams.remove(idx);
-				stud.getOtherExams().add(ocena);
+				stud.getOtherExams().add(grade);
 				DefaultTableModel model = (DefaultTableModel) tabelica.getModel();
 				model.removeRow(0);
 
@@ -157,12 +156,12 @@ public class PassedSubject extends JPanel {
 				for (int i = 0; i < model.getRowCount(); i++)
 					model.removeRow(i);
 
-				Student stud = StudentController.getInstance()
+				Student student = StudentController.getInstance()
 						.getStudentByID(StudentTable.getInstance().getSelectedRow());
-				for (Grade grade : stud.getPassedExams()) {
+				for (Grade g : student.getPassedExams()) {
 
-					Object[] row = { grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
-							grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate() };
+					Object[] row = { g.getSubject().getSubjectCode(), g.getSubject().getSubjectName(),
+							g.getSubject().getEspb(), g.getValue(), g.getExamDate() };
 					model.addRow(row);
 				}
 				model.fireTableDataChanged();

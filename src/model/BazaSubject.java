@@ -139,11 +139,11 @@ public class BazaSubject {
 		searchedDone = true;
 		for (Subject s : predmeti) {
 			if (code == null) {
-				if (s.getSubjectName().contains(name)) {
+				if (s.getSubjectName().toLowerCase().contains(name)) {
 					searched.add(s);
 				}
 			} else {
-				if (s.getSubjectName().contains(name) && s.getSubjectCode().contains(code)) {
+				if (s.getSubjectName().toLowerCase().contains(name) && s.getSubjectCode().toLowerCase().contains(code)) {
 					searched.add(s);
 				}
 			}

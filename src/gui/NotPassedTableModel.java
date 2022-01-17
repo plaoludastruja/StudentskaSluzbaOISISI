@@ -39,8 +39,8 @@ public class NotPassedTableModel extends AbstractTableModel {
 	@Override
 	public String getValueAt(int rowIndex, int columnIndex) {
 		Student stud = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
-		
 		Subject subject = stud.getOtherExams().get(rowIndex).getSubject();
+		
 		if (columnIndex == 0) {
 			return subject.getSubjectCode();
 		} else if (columnIndex == 1) {
@@ -65,4 +65,6 @@ public class NotPassedTableModel extends AbstractTableModel {
 	public void setColons(ArrayList<String> kolone) {
 		this.kolone = kolone;
 	}
+	
+	
 }
