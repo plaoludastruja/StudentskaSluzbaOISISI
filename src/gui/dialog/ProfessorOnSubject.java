@@ -79,8 +79,8 @@ public class ProfessorOnSubject extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(profSubTable.getSelectedRow()!=-1) {
-//					DeleteNotPassedSubject deleteNotPassedSubject = new DeleteNotPassedSubject(MainFrame.getInstance(), "Uklanjanje predmeta", true);
-//					deleteNotPassedSubject.setVisible(true);
+					DeleteSubjectToProfessor deleteSubjectToProfessor = new DeleteSubjectToProfessor(MainFrame.getInstance(), "Uklanjanje predmeta", true);
+					deleteSubjectToProfessor.setVisible(true);
 					
 					
 				}
