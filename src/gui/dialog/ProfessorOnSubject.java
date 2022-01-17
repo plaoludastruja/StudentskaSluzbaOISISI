@@ -65,8 +65,8 @@ public class ProfessorOnSubject extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				AddNotPassedSubject addNotPassedSubject = new AddNotPassedSubject(MainFrame.getInstance(), "Dodavanje predmeta", true);
-//				addNotPassedSubject.setVisible(true);
+				AddSubjectToProfessor addSubjectToProfessor = new AddSubjectToProfessor(MainFrame.getInstance(), "Dodaj predmeta", true);
+				addSubjectToProfessor.setVisible(true);
 				
 				//AddNotPassedSubject addNotPassedSubject = new AddNotPassedSubject(MainFrame.getInstance(), "Dodavanje predmeta", true);
 	
