@@ -4,14 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,10 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.StudentController;
 import gui.NotPassedTableModel;
-import gui.PassedTable;
 import gui.StudentTable;
-import model.BazaStudent;
-import model.BazaSubject;
 import model.Grade;
 import model.Student;
 
@@ -141,6 +136,12 @@ public class PassedSubject extends JPanel {
 //				
 //				System.out.println(ocena);
 //	
+				if (JOptionPane.showConfirmDialog(null, "Are you sure?", "WARNING",
+				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+				    // yes option
+				} else {
+				    return;
+				}
 
 				int idx = tabelica.getSelectedRow();
 				if (idx == -1) {
@@ -152,6 +153,7 @@ public class PassedSubject extends JPanel {
 				DefaultTableModel model = (DefaultTableModel) tabelica.getModel();
 				model.removeRow(0);
 
+				
 				for (int i = 0; i < model.getRowCount(); i++)
 					model.removeRow(i);
 

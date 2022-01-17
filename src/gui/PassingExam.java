@@ -158,6 +158,13 @@ public class PassingExam extends JDialog {
 
 			}
 		});
+		
+		odustaniBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 	}
 
 	public void setGrade(Grade ocena) {
