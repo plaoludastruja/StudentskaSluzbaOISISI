@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import gui.AbstractTableModelNotPassedTableModel;
+import gui.AbstractTableModelProfessorOnSubject;
 import gui.MainFrame;
 
 public class ProfessorOnSubject extends JPanel {

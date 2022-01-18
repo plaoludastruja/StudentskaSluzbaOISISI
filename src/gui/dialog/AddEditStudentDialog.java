@@ -56,7 +56,7 @@ public class AddEditStudentDialog extends JDialog {
 		if(add) {
 			setSize(400, 420);
 		}else {
-			setSize(400, 500);
+			setSize(480, 420);
 		}
 		setLocationRelativeTo(MainFrame.getInstance());
 		setResizable(false);
@@ -64,18 +64,17 @@ public class AddEditStudentDialog extends JDialog {
 		Dimension dim = new Dimension(180, 20);
 		
 		JPanel panCentar = new JPanel(new BorderLayout());
-		Box hor = Box.createHorizontalBox();
 		
-		JPanel panIme = new JPanel();
-		JPanel panPrezime = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panDatumRodjenja = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panAdresaStanovanja = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panBrojTelefona = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panEmailAdresa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panBrojIndeksa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panGodinaUpisa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panTrenutnaGodinaStudija = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panNacinFinansiranja = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel panIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panPrezime = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panDatumRodjenja = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panAdresaStanovanja = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panBrojTelefona = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panEmailAdresa = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panBrojIndeksa = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panGodinaUpisa = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panTrenutnaGodinaStudija = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panNacinFinansiranja = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		
 		JLabel lblIme = new JLabel("Ime*:");
@@ -146,10 +145,8 @@ public class AddEditStudentDialog extends JDialog {
 		txtGodinaUpisa.setName("txtGodinaUpisa");
 		
 		
-		hor.add(lblIme);
-		hor.add(Box.createHorizontalGlue());
-		hor.add(txtIme);
-		panIme.add(hor);
+		panIme.add(lblIme);
+		panIme.add(txtIme);
 
 		panPrezime.add(lblPrezime);
 		panPrezime.add(txtPrezime);
@@ -307,11 +304,10 @@ public class AddEditStudentDialog extends JDialog {
 			add(panDugmad,BorderLayout.SOUTH);
 		} else if(add==false) {
 			JTabbedPane tabbedPanneEditStudent = new JTabbedPane();
-			panCentar.add(boxCentar, BorderLayout.CENTER);
-			panCentar.add(panDugmad,BorderLayout.SOUTH);
+			panCentar.add(boxCentar, BorderLayout.NORTH);
+			panCentar.add(panDugmad,BorderLayout.CENTER);
 			
 			tabbedPanneEditStudent.add("Informacije", panCentar);
-			
 			tabbedPanneEditStudent.add("Polozeni", PassedSubject.getInstance());
 			tabbedPanneEditStudent.add("Nepolozeni",NotPassedSubject.getInstance());
 			add(tabbedPanneEditStudent, BorderLayout.NORTH);

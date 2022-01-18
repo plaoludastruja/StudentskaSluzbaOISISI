@@ -2,6 +2,7 @@ package gui.dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -82,7 +83,7 @@ public class PassedSubject extends JPanel {
 		
 		
 		JScrollPane tabela = new JScrollPane(tabelica);
-		
+
 		
 		int sumGrade = 0;
 		int sumEspb = 0;

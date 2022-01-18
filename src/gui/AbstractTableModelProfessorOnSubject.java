@@ -1,11 +1,9 @@
-package gui.dialog;
+package gui;
 
 import javax.swing.table.AbstractTableModel;
 
 import controller.ProfessorController;
 import controller.StudentController;
-import gui.ProfessorTable;
-import gui.StudentTable;
 import model.BazaSubject;
 
 public class AbstractTableModelProfessorOnSubject extends AbstractTableModel {

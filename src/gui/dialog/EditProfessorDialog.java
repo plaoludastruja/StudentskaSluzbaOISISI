@@ -51,17 +51,18 @@ public class EditProfessorDialog extends JDialog {
 
 		JPanel panCentar = new JPanel(new BorderLayout());
 
-		JPanel panIme = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panPrezime = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panDatumRodjenja = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panAdresaStanovanja = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panBrojTelefona = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panEmailAdresa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panBrojLicneKarte = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panAdresaKancelarije = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel panZvanje = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel panIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panPrezime = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panDatumRodjenja = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panAdresaStanovanja = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panBrojTelefona = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panEmailAdresa = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panBrojLicneKarte = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panAdresaKancelarije = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panZvanje = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel panGodine = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JPanel panGodine = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		
 
 		JLabel lblIme = new JLabel("Ime*");
 		JLabel lblPrezime = new JLabel("Prezime*");
@@ -97,6 +98,7 @@ public class EditProfessorDialog extends JDialog {
 		lblBrojLicneKarte.setPreferredSize(dim);
 		lblAdresaKancelarije.setPreferredSize(dim);
 		lblZvanje.setPreferredSize(dim);
+		lblGodine.setPreferredSize(dim);
 
 		txtIme.setPreferredSize(dim);
 		txtPrezime.setPreferredSize(dim);
@@ -231,6 +233,7 @@ public class EditProfessorDialog extends JDialog {
 		txtBrojLicneKarte.addKeyListener(keyListener);
 		txtAdresaKancelarije.addKeyListener(keyListener);
 		txtZvanje.addKeyListener(keyListener);
+		txtGodine.addKeyListener(keyListener);
 
 
 
@@ -247,7 +250,8 @@ public class EditProfessorDialog extends JDialog {
 		if (txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatumRodjenja.getText().equals("")
 				|| txtAdresaStanovanja.getText().equals("") || txtBrojTelefona.getText().equals("")
 				|| txtEmailAdresa.getText().equals("") || txtBrojLicneKarte.getText().equals("")
-				|| txtAdresaKancelarije.getText().equals("") || txtZvanje.getText().equals("")) {
+				|| txtAdresaKancelarije.getText().equals("") || txtZvanje.getText().equals("")
+				|| txtGodine.getText().equals("")) {
 			return false;
 		}
 		
@@ -301,11 +305,11 @@ public class EditProfessorDialog extends JDialog {
 		txtEmailAdresa.setText(forEdit.getEmail());
 		txtBrojLicneKarte.setText(forEdit.getIdCard());
 		txtZvanje.setText(forEdit.getPosition());
-		
+		txtGodine.setText(Integer.toString(forEdit.getWorkingYear()));
 		txtDatumRodjenja.setText(DateHandler.dateToString((forEdit.getDateOfBirth())));
 		txtAdresaStanovanja.setText(forEdit.getHomeAddress().adressForDisplay());
 		txtAdresaKancelarije.setText(forEdit.getOfficeAddress().adressForDisplay());
-		
+
 	}
 	
 	

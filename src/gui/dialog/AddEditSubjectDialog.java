@@ -42,7 +42,7 @@ public class AddEditSubjectDialog extends JDialog{
 	public AddEditSubjectDialog(Frame parent, String title, boolean modal, boolean add) {
 		super(parent, title, modal);
 		
-		setSize(400, 420);
+		setSize(400, 300);
 		setLocationRelativeTo(MainFrame.getInstance());
 		setResizable(false);
 		

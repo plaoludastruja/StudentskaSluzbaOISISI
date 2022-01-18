@@ -22,6 +22,7 @@ import controller.ProfessorController;
 import controller.StudentController;
 import controller.SubjectController;
 import gui.AbstractTableModelNotPassedTableModel;
+import gui.AbstractTableModelProfessorOnSubject;
 import gui.MainFrame;
 import gui.ProfessorTable;
 import gui.StudentTable;

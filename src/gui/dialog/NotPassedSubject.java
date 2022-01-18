@@ -93,7 +93,7 @@ public class NotPassedSubject extends JPanel {
 		});
         
 		notPassedSubject.add(dugme, BorderLayout.NORTH);
-		notPassedSubject.add(tabela, BorderLayout.CENTER);
+		notPassedSubject.add(tabela, BorderLayout.SOUTH);
 		
 		add(notPassedSubject);
 		}
