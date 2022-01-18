@@ -2,7 +2,7 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+//import java.util.Date;
 import java.util.List;
 
 public class BazaProfessor {
@@ -17,11 +17,15 @@ public class BazaProfessor {
 
 	private long generator;
 
-	private List<Professor> profesori;
-	private List<String> kolone;
+	private ArrayList<Professor> profesori;
+	public ArrayList<Professor> searched;	//pravimo novu listu za pretrazivanje 
+	private ArrayList<String> kolone;
+	private boolean searchedDone;			
 
 	private BazaProfessor() {
 		generator = 0;
+		searched = new ArrayList<Professor>();
+		searchedDone = false;
 
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("IME");
@@ -31,15 +35,17 @@ public class BazaProfessor {
 
 		this.profesori = new ArrayList<Professor>();
 
+
 		profesori.add(new Professor("Nebojsa", "Ralevic", LocalDate.now(), new Address("Zmaj Jovina","1","Novi Sad","Srbija"), "069/2903456",
 				"email@gmai", new Address("Strazilovska","2","Novi Sad","Srbija"), "ID3457","redovni profesor",15));
 		profesori.add(new Professor("Rade", "Doroslovacki", LocalDate.now(), new Address("Jevrejska","1","Novi Sad","Srbija"), "069/00022",
 				"email1@gmai", new Address("Futoska","2","Novi Sad","Srbija"), "ID1157","docent",20));
 		profesori.add(new Professor("Milan", "Rapaic", LocalDate.now(), new Address("Dunavska","7","Novi Sad","Srbija"), "069/299996",
 				"email2@gmai", new Address("Kosovska","2","Novi Sad","Srbija"), "ID300000","vanredni profesor",33)); 
+
 	}
 
-	public List<Professor> getProfesori() {
+	public ArrayList<Professor> getProfesori() {
 		return profesori;
 	}
 
@@ -93,9 +99,11 @@ public class BazaProfessor {
 		profesori.remove(row);
 	}
 
+
 	public void izmeniProfesora(Professor profesor, String firstName, String lastName, LocalDate dateOfBirth, Address home_address,
 			String phone, String email, Address officeAddress, String idCard, String position, int workingYear) {
 		
+
 		profesor.setFirstName(firstName);
 		profesor.setLastName(lastName);
 		profesor.setDateOfBirth(dateOfBirth);
@@ -126,4 +134,53 @@ public class BazaProfessor {
 			}
 		}
 	}
+
+	public void getProffessorNameSurname(String lastName, String name) {
+		searched.clear();
+		searchedDone = true;
+		for (Professor p : profesori) {
+			if (name == null) {
+				if (p.getLastName().toLowerCase().contains(lastName)) {
+					searched.add(p);
+				}
+			} else {
+				if (p.getLastName().toLowerCase().contains(lastName) && p.getFirstName().toLowerCase().contains(name)) {
+					searched.add(p);
+				}
+			}
+		}
+
+	}
+
+	public boolean isSearchedDone() {
+		return searchedDone;
+	}
+
+	public Professor getRowSearch(int rowIndex) {
+		return this.searched.get(rowIndex);
+	}
+
+	public String getValueAtSearch(int row, int column) {
+
+		Professor profesor = this.searched.get(row);
+		switch (column) {
+		case 0:
+			return profesor.getFirstName();
+		case 1:
+			return profesor.getLastName();
+		case 2:
+			return profesor.getPosition();
+		case 3:
+			return profesor.getEmail();
+		default:
+			return null;
+		}
+
+	}
+
+	public ArrayList<Professor> getSearched() {
+		return searched;
+	}
+
+	
 }

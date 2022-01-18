@@ -48,8 +48,8 @@ public class BazaStudent {
 		adresaDjordje.setCountry("BIH");
 		
 		Student djordje = new Student();
-		djordje.setFirstName("Đorđe");
-		djordje.setLastName("Lipovčić");
+		djordje.setFirstName("Djordje");
+		djordje.setLastName("Lipovcic");
 		djordje.setDateOfBirth(datumDjordje);
 		djordje.setAddress(adresaDjordje);
 		djordje.setPhone("+387644479985");
@@ -59,10 +59,23 @@ public class BazaStudent {
 		djordje.setCurrentYear(3);
 		djordje.setAverageGrade(8.53);
 		djordje.setStudentStatus(Status.B);
+//		Subject predmet = new Subject();
+//		Grade grade = new Grade();
+//		grade.setSubject(predmet);
+//		predmet.setSubjectName("predmet2");
+//		predmet.setSubjectCode("sfr1");
+//		
+//		Subject predmet1 = new Subject();
+//		Grade grade1 = new Grade();
+//		grade1.setSubject(predmet1);
+//		predmet1.setSubjectName("predmet3");
+//		predmet1.setSubjectCode("sfr2");
+//		djordje.getPassedExams().add(grade);
+//		djordje.getPassedExams().add(grade1);
 		
 		Student sandra = new Student();
 		sandra.setFirstName("Sandra");
-		sandra.setLastName("Jovanović");
+		sandra.setLastName("Jovanoviic");
 		sandra.setDateOfBirth(datumSandra);
 		sandra.setAddress(adresaDjordje);
 		sandra.setPhone("+387644479985");

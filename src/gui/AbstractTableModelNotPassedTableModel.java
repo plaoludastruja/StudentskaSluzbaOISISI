@@ -13,7 +13,6 @@ public class AbstractTableModelNotPassedTableModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
 		return StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getOtherExams().size();
 	}
 

@@ -1,15 +1,18 @@
 package controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import gui.ProfessorTable;
 import gui.StudentTable;
+import gui.MainFrame;
 import gui.TabbedPaneMainFrame;
 import gui.dialog.DepartmentBossDialog;
 import model.Address;
 import model.BazaProfessor;
 import model.BazaStudent;
+import model.BazaSubject;
 import model.Professor;
 import model.Student;
 
@@ -64,4 +67,15 @@ public class ProfessorController {
 		TabbedPaneMainFrame.getInstance().azurirajPrikaz("IZMENJEN", -1);
 
 	}
+	
+	
+	
+	public void getProffessorNameSurname(String lastName,String name) {
+		BazaProfessor.getInstance().getProffessorNameSurname(lastName, name);
+		TabbedPaneMainFrame.getInstance().azurirajPrikaz("AZURIRAN", -1);
+	}
+	
+	
+	
+	
 }

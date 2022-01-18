@@ -45,12 +45,12 @@ public class TabbedPaneMainFrame extends JTabbedPane {
 	public void azurirajPrikaz(String akcija, int vrednost) {
 		AbstractTableModelStudent model = (AbstractTableModelStudent) StudentTable.getInstance().getModel();
 		// azuriranje modela tabele, kao i njenog prikaza
-		AbstractTableModelProfessor modelP = (AbstractTableModelProfessor) ProfessorTable.getInstance().getModel();
-		AbstractTableModelSubject modelPR = (AbstractTableModelSubject) SubjectTable.getInstance().getModel();
+		AbstractTableModelProfessor modelProfessor = (AbstractTableModelProfessor) ProfessorTable.getInstance().getModel();
+		AbstractTableModelSubject modelSubject = (AbstractTableModelSubject) SubjectTable.getInstance().getModel();
 
 		model.fireTableDataChanged();
-		modelP.fireTableDataChanged();
-		modelPR.fireTableDataChanged();
+		modelProfessor.fireTableDataChanged();
+		modelSubject.fireTableDataChanged();
 		validate();
 	}
 	

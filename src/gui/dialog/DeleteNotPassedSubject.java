@@ -58,13 +58,11 @@ public class DeleteNotPassedSubject extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Subject predmet = SubjectController.getInstance().getSubjectByCode(NotPassedSubject.tabelica.getSelectedRow());
 				Subject predmet = BazaSubject.getInstance().getSubjectByCode(NotPassedSubject.tabelica.getValueAt(NotPassedSubject.tabelica.getSelectedRow(), 0).toString());
 				Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 					s.getOtherExams().remove(predmet);
 		
 					AbstractTableModelNotPassedTableModel model = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
-											// azuriranje modela tabele, kao i njenog prikaza
 					model.fireTableDataChanged();
 					validate();
 					dispose();

@@ -62,13 +62,6 @@ public class DeleteProfessorDialog extends JDialog{
 		add(panDugmad,BorderLayout.SOUTH);
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	}
 
 	public void setRowIndex(int index) {

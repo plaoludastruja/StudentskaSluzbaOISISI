@@ -78,5 +78,9 @@ public class SubjectController {
 		TabbedPaneMainFrame.getInstance().azurirajPrikaz("IZBRISAN", -1);
 	}
 
+	public void getSubjectNameCode(String name,String code) {
+		BazaSubject.getInstance().getSubjectNameCode(name, code);
+		TabbedPaneMainFrame.getInstance().azurirajPrikaz("AZURIRAN", -1);
+	}
 	
 }

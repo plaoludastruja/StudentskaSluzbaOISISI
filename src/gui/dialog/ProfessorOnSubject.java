@@ -89,8 +89,7 @@ public class ProfessorOnSubject extends JPanel {
 		});
         
         profSubjPanel.add(dugme, BorderLayout.NORTH);
-        profSubjPanel.add(tabela, BorderLayout.CENTER);
-		
+        profSubjPanel.add(tabela, BorderLayout.SOUTH);
 		add(profSubjPanel);
 		}
 	

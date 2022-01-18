@@ -283,5 +283,13 @@ public class AddProfessorDialog extends JDialog {
 		return true;
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

@@ -26,7 +26,7 @@ import gui.MainFrame;
 import model.Professor;
 
 public class EditProfessorDialog extends JDialog {
-	
+
 	Professor forEdit;
 	private JTextField txtIme;
 	private JTextField txtPrezime;
@@ -39,11 +39,10 @@ public class EditProfessorDialog extends JDialog {
 	private JTextField txtZvanje;
 	private JTextField txtGodine;
 
-
 	public EditProfessorDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 
-		setSize(400, 420);
+		setSize(450, 500);
 		setLocationRelativeTo(MainFrame.getInstance());
 		setResizable(false);
 
@@ -185,25 +184,23 @@ public class EditProfessorDialog extends JDialog {
 				
 				LocalDate dateOfb = null;
 				try {
-					dateOfb = DateHandler.stringToDate(dateOfBirth);					
-				}catch(Exception ex){
-					JOptionPane.showMessageDialog(null, "Pogresan format datuma",
-						      "Hey!", JOptionPane.ERROR_MESSAGE);
+					dateOfb = DateHandler.stringToDate(dateOfBirth);
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Pogresan format datuma", "Hey!", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
 				ProfessorController.getInstance().izmeniProfesora(forEdit, name, lastName, dateOfb, null, phone, email, null, idCard,
 						position, workingYear);
+
 			}
- 
+
 		});
 
-		
 		KeyListener keyListener = new KeyListener() {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				
 
 			}
 
@@ -223,7 +220,7 @@ public class EditProfessorDialog extends JDialog {
 
 			}
 		};
-		
+
 		txtIme.addKeyListener(keyListener);
 		txtPrezime.addKeyListener(keyListener);
 		txtDatumRodjenja.addKeyListener(keyListener);
@@ -236,16 +233,23 @@ public class EditProfessorDialog extends JDialog {
 		txtGodine.addKeyListener(keyListener);
 
 
+		//pack();
 
-			
-
+		JTabbedPane tabbedPanneEditProfessor = new JTabbedPane();
+		JPanel panPredmeti = new JPanel();
 		
-		pack();
+		panCentar.add(boxCentar, BorderLayout.NORTH);
+		panCentar.add(panDugmad, BorderLayout.CENTER);
 
+		tabbedPanneEditProfessor.add("Info", panCentar);
+		tabbedPanneEditProfessor.add("Predmeti", ProfessorOnSubject.getInstance());
+		
+		add(tabbedPanneEditProfessor, BorderLayout.NORTH);
+		pack();
+		
+		
 	}
-	
-	
-	
+
 	private boolean validateInputInfo() {
 		if (txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatumRodjenja.getText().equals("")
 				|| txtAdresaStanovanja.getText().equals("") || txtBrojTelefona.getText().equals("")
@@ -254,7 +258,7 @@ public class EditProfessorDialog extends JDialog {
 				|| txtGodine.getText().equals("")) {
 			return false;
 		}
-		
+
 		LocalDate dateOfb;
 		try {
 			dateOfb = DateHandler.stringToDate(txtDatumRodjenja.getText());
@@ -262,21 +266,25 @@ public class EditProfessorDialog extends JDialog {
 			return false;
 		}
 
+//		if(!txtDatumRodjenja.getText().matches("\\d{2}.\\d{2}.\\d{4}.")) {
+//			return false;
+//		}
+
 		String adress = txtAdresaStanovanja.getText();
 		String[] adressArray = adress.split(",");
-		//System.out.println(adressArray.length);
-		
+		// System.out.println(adressArray.length);
+
 		if (adressArray.length != 3) {
 			return false;
 		}
-		if(adressArray[0].equals("") || adressArray[1].equals("") || adressArray[2].equals("")) {
+		if (adressArray[0].equals("") || adressArray[1].equals("") || adressArray[2].equals("")) {
 			return false;
 		}
 		String[] ulicaBr = adressArray[0].split(" ");
 		if (ulicaBr.length != 2) {
 			return false;
 		}
-		
+
 		String oAdress = txtAdresaKancelarije.getText();
 		String[] oAdressArray = oAdress.split(",");
 		if (oAdressArray.length != 3) {
@@ -290,15 +298,13 @@ public class EditProfessorDialog extends JDialog {
 		return true;
 	}
 
-	
-	
 	public Professor getForEdit() {
 		return forEdit;
 	}
-	
+
 	public void setForEdit(Professor forEdit) {
 		this.forEdit = forEdit;
-		
+
 		txtIme.setText(forEdit.getFirstName());
 		txtPrezime.setText(forEdit.getLastName());
 		txtBrojTelefona.setText(forEdit.getPhone());
@@ -311,7 +317,4 @@ public class EditProfessorDialog extends JDialog {
 		txtAdresaKancelarije.setText(forEdit.getOfficeAddress().adressForDisplay());
 
 	}
-	
-	
-
 }
