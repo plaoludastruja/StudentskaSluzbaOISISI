@@ -94,6 +94,7 @@ public class PassedSubject extends JPanel {
 			avgGrade = sumGrade / countGrade;
 		}
 		
+		
 		ponisti.addActionListener(new ActionListener() {
 
 			@Override
@@ -122,6 +123,7 @@ public class PassedSubject extends JPanel {
 
 				Student student = StudentController.getInstance()
 						.getStudentByID(StudentTable.getInstance().getSelectedRow());
+				
 				for (Grade g : student.getPassedExams()) {
 
 					Object[] row = { g.getSubject().getSubjectCode(), g.getSubject().getSubjectName(),
