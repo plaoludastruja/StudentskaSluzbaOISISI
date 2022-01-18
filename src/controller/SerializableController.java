@@ -24,7 +24,7 @@ public class SerializableController implements Serializable {
 	/**
 	 * 
 	 */
-	//private static final long serialVersionUID = -272424087427384469L;
+	private static final long serialVersionUID = 7207247815531617972L;
 	
 	private List<Student> studenti;
 
@@ -44,37 +44,37 @@ public class SerializableController implements Serializable {
 		studenti = new ArrayList<Student>();
 	}
 	
-	public void serijalizacija() throws FileNotFoundException, IOException, ClassNotFoundException{
-	
-		studenti = BazaStudent.getInstance().getStudent();
-
-		//Pisanje.
-		File f = new File("objectstream.txt");
-		
-		try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)))) {
-			oos.writeObject(getInstance());
-			oos.close(); //Zatvara i tok nizeg nivoa.
-		} finally {
-			
-		
-		}	
-	}
-		
-		public void deserijalizacija() throws FileNotFoundException, IOException, ClassNotFoundException{
-			//Citanje.
-			File f = new File("objectstream.txt");
-			
-			
-			try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)))) {
-				SerializableController serializableController;
-				serializableController = (SerializableController)ois.readObject();
-				BazaStudent.getInstance().setStudent(serializableController.getStudenti());
-				ois.close();
-			} finally {
-				
-			}
-			
-		}
+//	public void serijalizacija() throws FileNotFoundException, IOException, ClassNotFoundException{
+//	
+//		studenti = BazaStudent.getInstance().getStudent();
+//
+//		//Pisanje.
+//		File f = new File("objectstream.txt");
+//		
+//		try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)))) {
+//			oos.writeObject(getInstance());
+//			oos.close(); //Zatvara i tok nizeg nivoa.
+//		} finally {
+//			
+//		
+//		}	
+//	}
+//		
+//		public void deserijalizacija() throws FileNotFoundException, IOException, ClassNotFoundException{
+//			//Citanje.
+//			File f = new File("objectstream.txt");
+//			
+//			
+//			try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)))) {
+//				SerializableController serializableController;
+//				serializableController = (SerializableController)ois.readObject();
+//				BazaStudent.getInstance().setStudent(serializableController.getStudenti());
+//				ois.close();
+//			} finally {
+//				
+//			}
+//			
+//		}
 		
 
 	public List<Student> getStudenti() {
