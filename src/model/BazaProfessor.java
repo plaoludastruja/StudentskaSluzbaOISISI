@@ -17,9 +17,9 @@ public class BazaProfessor {
 
 	private long generator;
 
-	private List<Professor> profesori;
+	private ArrayList<Professor> profesori;
 	public ArrayList<Professor> searched;	//pravimo novu listu za pretrazivanje 
-	private List<String> kolone;
+	private ArrayList<String> kolone;
 	private boolean searchedDone;			
 
 	private BazaProfessor() {
@@ -46,7 +46,7 @@ public class BazaProfessor {
 				new Address("Kosovska", "2", "Novi Sad", "Srbija"), "ID300000", "prof dr", "10", null));
 	}
 
-	public List<Professor> getProfesori() {
+	public ArrayList<Professor> getProfesori() {
 		return profesori;
 	}
 

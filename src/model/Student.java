@@ -22,7 +22,7 @@ public class Student {
 	private Status studentStatus;
 	private double averageGrade;
 	private List<Grade> passedExams = new ArrayList<Grade>();
-	private List<Grade> otherExams = new ArrayList<Grade>();
+	private List<Subject> otherExams = new ArrayList<Subject>();
 	
 	public Student() {
 		super();
@@ -147,11 +147,11 @@ public class Student {
 		this.passedExams = passedExams;
 	}
 
-	public List<Grade> getOtherExams() {
+	public List<Subject> getOtherExams() {
 		return otherExams;
 	}
 
-	public void setOtherExams(List<Grade> otherExams) {
+	public void setOtherExams(List<Subject> otherExams) {
 		this.otherExams = otherExams;
 	}
 

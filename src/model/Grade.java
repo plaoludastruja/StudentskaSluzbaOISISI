@@ -9,6 +9,16 @@ public class Grade {
 	private int value;
 	private LocalDate examDate;
 	
+	
+	
+	public Grade(Student student, Subject subject, int value, LocalDate examDate) {
+		super();
+		this.student = student;
+		this.subject = subject;
+		this.value = value;
+		this.examDate = examDate;
+	}
+
 	public Grade() {
 		super();
 	}

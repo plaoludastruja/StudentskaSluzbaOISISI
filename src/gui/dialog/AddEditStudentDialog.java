@@ -144,9 +144,7 @@ public class AddEditStudentDialog extends JDialog {
 		hor.add(Box.createHorizontalGlue());
 		hor.add(txtIme);
 		panIme.add(hor);
-		/*
-		 * MRS U PIZDU MATErinu
-		 */
+
 		panPrezime.add(lblPrezime);
 		panPrezime.add(txtPrezime);
 

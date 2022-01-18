@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 import gui.MainFrame;
+import gui.StudentTable;
 import gui.TabbedPaneMainFrame;
 import model.Address;
 import model.BazaStudent;
@@ -41,8 +42,9 @@ private static StudentController instance = null;
 
 	
 	public Student getStudentByID(int id) {
-		return BazaStudent.getInstance().getStudentByID(id);
+		return BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getValueAt(id, 0).toString());
 	}
+
 
 	public void addStudent(Student noviStudent) {
 		
@@ -57,7 +59,9 @@ private static StudentController instance = null;
 			return;
 		}
     	// izmena modela
-    	Student student = BazaStudent.getInstance().getRow(rowSelectedIndex);
+    	
+    	//Student student = BazaStudent.getInstance().getRow(rowSelectedIndex);
+    	Student student = getStudentByID(rowSelectedIndex);
     	BazaStudent.getInstance().deleteStudent(student.getIndex());
 		// azuriranje prikaza
     	TabbedPaneMainFrame.getInstance().azurirajPrikaz("UKLONJEN", rowSelectedIndex);

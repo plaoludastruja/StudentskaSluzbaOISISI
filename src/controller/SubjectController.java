@@ -1,9 +1,10 @@
 package controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
-
-
+import gui.StudentTable;
+import gui.SubjectTable;
 import gui.TabbedPaneMainFrame;
 import model.Address;
 import model.BazaProfessor;
@@ -26,9 +27,16 @@ public class SubjectController {
 	private SubjectController() {}
 	
 	public Subject getSubjectByCode(int id) {
-		return BazaSubject.getInstance().getSubjectByCode(id);
+		return BazaSubject.getInstance().getSubjectByCode(SubjectTable.getInstance().getValueAt(id, 0).toString());
+
+		
 	}
 	
+	public List<Subject> getSubjects() {
+		return BazaSubject.getInstance().getSubjects();
+	}
+	
+
 	public void addSubject(Subject noviPredmet) {
 		
 		// izmena modela
@@ -65,7 +73,8 @@ public class SubjectController {
 			return;
 		}
 
-		BazaSubject.getInstance().deleteSubject(rowSelectedIndex);
+		Subject predmet = getSubjectByCode(rowSelectedIndex);
+		BazaSubject.getInstance().deleteSubject(predmet.getSubjectCode());
 		TabbedPaneMainFrame.getInstance().azurirajPrikaz("IZBRISAN", -1);
 	}
 

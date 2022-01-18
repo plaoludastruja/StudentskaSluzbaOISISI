@@ -39,7 +39,7 @@ public class NotPassedTableModel extends AbstractTableModel {
 	@Override
 	public String getValueAt(int rowIndex, int columnIndex) {
 		Student stud = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
-		Subject subject = stud.getOtherExams().get(rowIndex).getSubject();
+		Subject subject = stud.getOtherExams().get(rowIndex);
 		
 		if (columnIndex == 0) {
 			return subject.getSubjectCode();

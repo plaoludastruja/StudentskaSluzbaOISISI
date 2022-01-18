@@ -26,6 +26,7 @@ import gui.dialog.NotPassedSubject;
 import gui.dialog.PassedSubject;
 import model.Grade;
 import model.Student;
+import model.Subject;
 
 public class PassingExam extends JDialog {
 
@@ -35,7 +36,7 @@ public class PassingExam extends JDialog {
 	private JButton potvrdiBtn;
 	private JButton odustaniBtn;
 	private JComboBox<String> gradeList;
-	private Grade currentGrade;
+	private Subject currentSubject;
 
 	private JLabel lblSifra;
 	private JLabel lblNaziv;
@@ -131,11 +132,12 @@ public class PassingExam extends JDialog {
 							JOptionPane.WARNING_MESSAGE);
 					return;
 				}
-				student.getOtherExams().remove(currentGrade);
-				student.getPassedExams().add(currentGrade);
+				student.getOtherExams().remove(currentSubject);
 				int grade = gradeList.getSelectedIndex() + 6;
+				Grade currentGrade = new Grade(student, currentSubject, grade, null);
 				currentGrade.setValue(grade);
 				currentGrade.setExamDate(date);
+				student.getPassedExams().add(currentGrade);
 
 				DefaultTableModel model = (DefaultTableModel) PassedSubject.getInstance().getTabelica().getModel();
 
@@ -167,14 +169,16 @@ public class PassingExam extends JDialog {
 		});
 	}
 
-	public void setGrade(Grade grade) {
-		this.currentGrade = grade;
-		this.txtNaziv.setText(grade.getSubject().getSubjectName());
-		this.txtSifra.setText(grade.getSubject().getSubjectCode());
+	public void setSubject(Subject subject) {
+		this.currentSubject = subject;
+		this.txtNaziv.setText(subject.getSubjectName());
+		this.txtSifra.setText(subject.getSubjectCode());
 		this.txtNaziv.setEnabled(false);
 		this.txtSifra.setEnabled(false);
 		this.txtSifra.setDisabledTextColor(Color.black);
 		this.txtNaziv.setDisabledTextColor(Color.black);
 	}
+
+	
 
 }

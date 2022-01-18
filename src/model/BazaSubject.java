@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.StudentController;
+import controller.SubjectController;
+import gui.StudentTable;
 import gui.SubjectTable;
+import gui.dialog.AddNotPassedSubject;
 import model.Subject.Semester;
 
 public class BazaSubject {
@@ -44,12 +47,7 @@ public class BazaSubject {
 		predmeti.add(new Subject("Sifra1","fizika",Semester.LETNJI,1,prof ,9, null,null));
 		predmeti.add(new Subject("Sifra2","engleski jezik",Semester.ZIMSKI,2,prof ,3, null,null));
 		predmeti.add(new Subject("Sifra3","baze podataka",Semester.ZIMSKI,3, prof,8, null,null)); 
-		/*predmeti.add(new Subject());
-		predmeti.add(new Subject());
-		predmeti.add(new Subject());*/
-		
-		
-		
+
 	
 	}
 
@@ -92,10 +90,42 @@ public class BazaSubject {
 		}
 
 	}
+	
+	public String getValueAt1(int row, int column) {
 
-	public Subject getSubjectByCode(int code) {
+		Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());				
+		s.getOtherExams();
+		Subject predmet = s.getOtherExams().get(row);
+		switch (column) {
+		case 0:
+			return predmet.getSubjectCode();
+		case 1:
+			return predmet.getSubjectName();
+		case 2:
+			return predmet.getEspb()+"";
+		case 3:
+			return predmet.getSubjectYear()+"";
+		case 4:
+			return predmet.getSubjectSemester()+"";
+		default:
+			return null;
+		}
+
+	}
+	public Subject getSubjectFromList(int code) {
 		return predmeti.get(code);
 	}
+	public Subject getSubjectByCode(String code) {
+		for(Subject i : predmeti) {
+			if(i.getSubjectCode().equals(code)) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
+
+		
 	
 	public void addSubject(Subject noviPredmet) {
 		this.predmeti.add(noviPredmet);
@@ -111,15 +141,23 @@ public class BazaSubject {
 		}
 	}*/
 	
-	public void deleteSubject(int row) { // brise red u tabeli
-		predmeti.remove(row);
+	public void deleteSubject(String code) { // brise red u tabeli
+		for(Subject i : predmeti) {
+			if(i.getSubjectCode().equals(code)) {
+				predmeti.remove(i);
+				break;
+			}
+		}
 	}
+	
+	
+
 
 	public void changeSubject(Subject izmjenaPredmet) {
 		
 		for (Subject i : predmeti) {
 			
-			if (i.getSubjectCode().equals(BazaSubject.getInstance().getSubjectByCode(SubjectTable.getInstance().getSelectedRow()).getSubjectCode())) {
+			if (i.getSubjectCode().equals(BazaSubject.getInstance().getSubjectFromList(SubjectTable.getInstance().getSelectedRow()).getSubjectCode())) {
 				
 				i.setSubjectCode(izmjenaPredmet.getSubjectCode());
 				i.setSubjectName(izmjenaPredmet.getSubjectName());

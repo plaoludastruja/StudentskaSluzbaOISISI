@@ -9,7 +9,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableModel;
 
+import gui.dialog.AddNotPassedSubject;
 import model.BazaStudent;
 
 public class TabbedPaneMainFrame extends JTabbedPane {

@@ -33,6 +33,7 @@ public class ToolBar extends JToolBar {
 
 	Color toolbarBg = new Color(193, 223, 230);
 
+	public static JTextField searchField;
 	public ToolBar() {
 
 		super(SwingConstants.HORIZONTAL);
@@ -43,7 +44,7 @@ public class ToolBar extends JToolBar {
 		JButton btnNew = new JButton();
 		JButton btnEdit = new JButton();
 		JButton btnDelete = new JButton();
-		JTextField searchField = new JTextField(20);
+		searchField = new JTextField(20);
 		JButton btnSearch = new JButton();
 
 // ************************************* //	
@@ -96,7 +97,7 @@ public class ToolBar extends JToolBar {
 
 					break;
 				case 1: // PROFESOR
-					String profesor = searchField.getText();
+					String profesor = searchField.getText().toLowerCase();
 					String[] nizProfessor = profesor.split(",");
 					if (nizProfessor.length == 1) {
 
@@ -118,7 +119,7 @@ public class ToolBar extends JToolBar {
 					}
 					break;
 				case 2: // PREDMET
-					String predmet = searchField.getText();
+					String predmet = searchField.getText().toLowerCase();
 					String[] nizPredmet = predmet.split(",");
 					if (nizPredmet.length == 1) {
 

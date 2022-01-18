@@ -17,6 +17,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.ProfessorController;
@@ -25,7 +26,7 @@ import gui.MainFrame;
 import model.Professor;
 
 public class EditProfessorDialog extends JDialog {
-	
+
 	Professor forEdit;
 	private JTextField txtIme;
 	private JTextField txtPrezime;
@@ -36,7 +37,6 @@ public class EditProfessorDialog extends JDialog {
 	private JTextField txtBrojLicneKarte;
 	private JTextField txtAdresaKancelarije;
 	private JTextField txtZvanje;
-
 
 	public EditProfessorDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
@@ -164,25 +164,22 @@ public class EditProfessorDialog extends JDialog {
 				String officeAddress = txtAdresaKancelarije.getText();
 				LocalDate dateOfb = null;
 				try {
-					dateOfb = DateHandler.stringToDate(dateOfBirth);					
-				}catch(Exception ex){
-					JOptionPane.showMessageDialog(null, "Pogresan format datuma",
-						      "Hey!", JOptionPane.ERROR_MESSAGE);
+					dateOfb = DateHandler.stringToDate(dateOfBirth);
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Pogresan format datuma", "Hey!", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
-				ProfessorController.getInstance().izmeniProfesora(forEdit, name, lastName, dateOfb, null, phone, email, null, idCard,
-						position, null);
+				ProfessorController.getInstance().izmeniProfesora(forEdit, name, lastName, dateOfb, null, phone, email,
+						null, idCard, position, null);
 			}
- 
+
 		});
 
-		
 		KeyListener keyListener = new KeyListener() {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				
 
 			}
 
@@ -202,7 +199,7 @@ public class EditProfessorDialog extends JDialog {
 
 			}
 		};
-		
+
 		txtIme.addKeyListener(keyListener);
 		txtPrezime.addKeyListener(keyListener);
 		txtDatumRodjenja.addKeyListener(keyListener);
@@ -213,13 +210,23 @@ public class EditProfessorDialog extends JDialog {
 		txtAdresaKancelarije.addKeyListener(keyListener);
 		txtZvanje.addKeyListener(keyListener);
 
-
 		pack();
 
+		JTabbedPane tabbedPanneEditProfessor = new JTabbedPane();
+		JPanel panPredmeti = new JPanel();
+		
+		panCentar.add(boxCentar, BorderLayout.CENTER);
+		panCentar.add(panDugmad, BorderLayout.SOUTH);
+
+		tabbedPanneEditProfessor.add("Info", panCentar);
+		tabbedPanneEditProfessor.add("Predmeti", panPredmeti);
+		
+		add(tabbedPanneEditProfessor, BorderLayout.NORTH);
+		pack();
+		
+		
 	}
-	
-	
-	
+
 	private boolean validateInputInfo() {
 		if (txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatumRodjenja.getText().equals("")
 				|| txtAdresaStanovanja.getText().equals("") || txtBrojTelefona.getText().equals("")
@@ -227,34 +234,33 @@ public class EditProfessorDialog extends JDialog {
 				|| txtAdresaKancelarije.getText().equals("") || txtZvanje.getText().equals("")) {
 			return false;
 		}
-		
+
 		LocalDate dateOfb;
 		try {
 			dateOfb = DateHandler.stringToDate(txtDatumRodjenja.getText());
 		} catch (Exception ex) {
 			return false;
 		}
-		
-		
+
 //		if(!txtDatumRodjenja.getText().matches("\\d{2}.\\d{2}.\\d{4}.")) {
 //			return false;
 //		}
 
 		String adress = txtAdresaStanovanja.getText();
 		String[] adressArray = adress.split(",");
-		//System.out.println(adressArray.length);
-		
+		// System.out.println(adressArray.length);
+
 		if (adressArray.length != 3) {
 			return false;
 		}
-		if(adressArray[0].equals("") || adressArray[1].equals("") || adressArray[2].equals("")) {
+		if (adressArray[0].equals("") || adressArray[1].equals("") || adressArray[2].equals("")) {
 			return false;
 		}
 		String[] ulicaBr = adressArray[0].split(" ");
 		if (ulicaBr.length != 2) {
 			return false;
 		}
-		
+
 		String oAdress = txtAdresaKancelarije.getText();
 		String[] oAdressArray = oAdress.split(",");
 		if (oAdressArray.length != 3) {
@@ -268,26 +274,23 @@ public class EditProfessorDialog extends JDialog {
 		return true;
 	}
 
-	
-	
 	public Professor getForEdit() {
 		return forEdit;
 	}
-	
+
 	public void setForEdit(Professor forEdit) {
 		this.forEdit = forEdit;
-		
+
 		txtIme.setText(forEdit.getFirstName());
 		txtPrezime.setText(forEdit.getLastName());
 		txtBrojTelefona.setText(forEdit.getPhone());
 		txtEmailAdresa.setText(forEdit.getEmail());
 		txtBrojLicneKarte.setText(forEdit.getIdCard());
 		txtZvanje.setText(forEdit.getPosition());
-		
+
 		txtDatumRodjenja.setText(DateHandler.dateToString((forEdit.getDateOfBirth())));
 		txtAdresaStanovanja.setText(forEdit.getHomeAddress().adressForDisplay());
 		txtAdresaKancelarije.setText(forEdit.getOfficeAddress().adressForDisplay());
-		
-	}
 
+	}
 }

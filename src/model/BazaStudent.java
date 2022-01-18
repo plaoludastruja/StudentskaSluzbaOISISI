@@ -151,8 +151,17 @@ public class BazaStudent {
 		return false;
 	}
 	
-	public Student getStudentByID(int id) {
+	public Student getStudentFromlist(int id) {
 		return studenti.get(id);
+	}
+	
+	public Student getStudentByID(String idx) {
+		for(Student i : studenti) {
+			if(i.getIndex().equals(idx)) {
+				return i;
+			}
+		}
+		return null;
 	}
 		
 	public void addStudent(Student noviStudent) {
@@ -162,7 +171,7 @@ public class BazaStudent {
 
 		public void deleteStudent(String index) {
 			for (Student i : studenti) {
-				if (i.getIndex() == index) {
+				if (i.getIndex().equals(index)) {
 					studenti.remove(i);
 					break;
 				}
@@ -173,7 +182,7 @@ public class BazaStudent {
 			
 			for (Student i : studenti) {
 				
-				if (i.getIndex().equals(BazaStudent.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow()).getIndex())) {
+				if (i.getIndex().equals(BazaStudent.getInstance().getStudentFromlist(StudentTable.getInstance().getSelectedRow()).getIndex())) {
 					
 					i.setFirstName(izmjenaStudent.getFirstName());
 					i.setLastName(izmjenaStudent.getLastName());
