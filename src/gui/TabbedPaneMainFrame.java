@@ -7,9 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.KeyStroke;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 import gui.dialog.AddNotPassedSubject;
 import model.BazaStudent;
@@ -30,7 +34,10 @@ public class TabbedPaneMainFrame extends JTabbedPane {
 		addTab("Student",new JScrollPane(StudentTable.getInstance()));
 		addTab("Profesor",new JScrollPane(ProfessorTable.getInstance()));
 		addTab("Predmet",new JScrollPane(SubjectTable.getInstance()));
-		//addTab("Student", null, new JScrollPane());
+
+
+
+
 		
 		
 	}

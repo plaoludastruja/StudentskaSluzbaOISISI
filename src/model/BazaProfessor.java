@@ -31,27 +31,31 @@ public class BazaProfessor {
 		this.kolone.add("IME");
 		this.kolone.add("PREZIME");
 		this.kolone.add("ZVANJE");
-		this.kolone.add("E-MAIL ADRESA");
+		this.kolone.add("BROJ LICNE");
 
 		this.profesori = new ArrayList<Professor>();
 
-		profesori.add(new Professor("Nebojsa", "Ralevic", LocalDate.now(),
-				new Address("Zmaj Jovina", "1", "Novi Sad", "Srbija"), "069/2903456", "email@gmai",
-				new Address("Strazilovska", "2", "Novi Sad", "Srbija"), "ID3457", "prof dr", "15", null));
-		profesori.add(new Professor("Rade", "Doroslovacki", LocalDate.now(),
-				new Address("Jevrejska", "1", "Novi Sad", "Srbija"), "069/00022", "email1@gmai",
-				new Address("Futoska", "2", "Novi Sad", "Srbija"), "ID1157", "prof dr", "20", null));
-		profesori.add(new Professor("Milan", "Rapaic", LocalDate.now(),
-				new Address("Dunavska", "7", "Novi Sad", "Srbija"), "069/299996", "email2@gmai",
-				new Address("Kosovska", "2", "Novi Sad", "Srbija"), "ID300000", "prof dr", "10", null));
+
+		profesori.add(new Professor("Nebojsa", "Ralevic", LocalDate.now(), new Address("Zmaj Jovina","1","Novi Sad","Srbija"), "069/2903456",
+				"email@gmai", new Address("Strazilovska","2","Novi Sad","Srbija"), "ID3457","redovni profesor",15));
+		profesori.add(new Professor("Rade", "Doroslovacki", LocalDate.now(), new Address("Jevrejska","1","Novi Sad","Srbija"), "069/00022",
+				"email1@gmai", new Address("Futoska","2","Novi Sad","Srbija"), "ID1157","docent",20));
+		profesori.add(new Professor("Milan", "Rapaic", LocalDate.now(), new Address("Dunavska","7","Novi Sad","Srbija"), "069/299996",
+				"email2@gmai", new Address("Kosovska","2","Novi Sad","Srbija"), "ID300000","vanredni profesor",33)); 
+
 	}
 
 	public ArrayList<Professor> getProfesori() {
 		return profesori;
 	}
 
-	private long generateId() {
-		return ++generator;
+	public Professor getProfessorByID(String idCard) {
+		for(Professor i : profesori) {
+			if(i.getIdCard().equals(idCard)) {
+				return i;
+			}
+		}
+		return null;
 	}
 
 	public int getColumnCount() {
@@ -77,7 +81,7 @@ public class BazaProfessor {
 		case 2:
 			return profesor.getPosition();
 		case 3:
-			return profesor.getEmail();
+			return profesor.getIdCard();
 		default:
 			return null;
 		}
@@ -85,9 +89,9 @@ public class BazaProfessor {
 	}
 
 	public void dodajProfesora(String firstName, String lastName, LocalDate dateOfBirth, Address homeAddress,
-			String phone, String email, Address officeAddress, String idCard, String position, String workingYear) {
+			String phone, String email, Address officeAddress, String idCard, String position, int workingYear) {
 		Professor prof = new Professor(firstName, lastName, dateOfBirth, homeAddress, phone, email, officeAddress,
-				idCard, position, workingYear, null);
+				idCard, position, workingYear);
 		this.profesori.add(prof);
 	}
 
@@ -95,9 +99,10 @@ public class BazaProfessor {
 		profesori.remove(row);
 	}
 
-	public void izmeniProfesora(Professor profesor, String firstName, String lastName, LocalDate dateOfBirth,
-			Address home_address, String phone, String email, Address officeAddress, String idCard, String position,
-			String workingYear) {
+
+	public void izmeniProfesora(Professor profesor, String firstName, String lastName, LocalDate dateOfBirth, Address home_address,
+			String phone, String email, Address officeAddress, String idCard, String position, int workingYear) {
+		
 
 		profesor.setFirstName(firstName);
 		profesor.setLastName(lastName);
@@ -112,7 +117,7 @@ public class BazaProfessor {
 	}
 
 	public void izmeniProfesora(String firstName, String lastName, LocalDate dateOfBirth, Address homeAddress,
-			String phone, String email, Address officeAddress, String idCard, String position, String workingYear) {
+			String phone, String email, Address officeAddress, String idCard, String position, int workingYear) {
 		for (Professor profesor : profesori) {
 			if (profesor.getIdCard().equals(idCard)) {
 				profesor.setFirstName(firstName);

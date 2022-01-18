@@ -2,9 +2,12 @@ package gui.dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -21,8 +24,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import controller.StudentController;
-import gui.NotPassedTableModel;
+import gui.AbstractTableModelNotPassedTableModel;
+//import gui.NotPassedTableModel;
 import gui.StudentTable;
+import listener.EditEntity;
 import model.BazaSubject;
 import model.Grade;
 import model.Student;
@@ -43,8 +48,8 @@ public class PassedSubject extends JPanel {
 	private Student currentStudent;
 	private List<Grade> passedExams = new ArrayList<Grade>();
 
-	
-	public PassedSubject() {
+
+	public PassedSubject() {//private
 
 		JPanel passedSubject = new JPanel(new BorderLayout());
 
@@ -72,10 +77,13 @@ public class PassedSubject extends JPanel {
 
 		JScrollPane tabela = new JScrollPane(tabelica);
 
+
 		int sumGrade = 0;
 		int sumEspb = 0;
 		int countGrade = 0;
 		double avgGrade = 0;
+		
+
 
 		Student stud = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 		passedExams = stud.getPassedExams();
@@ -93,7 +101,6 @@ public class PassedSubject extends JPanel {
 		if (countGrade != 0) {
 			avgGrade = sumGrade / countGrade;
 		}
-		
 		
 		ponisti.addActionListener(new ActionListener() {
 
@@ -131,22 +138,27 @@ public class PassedSubject extends JPanel {
 					model.addRow(row);
 				}
 				model.fireTableDataChanged();
-				NotPassedTableModel modelNotP = (NotPassedTableModel) NotPassedSubject.getInstance().getTable()
-						.getModel();
+				//NotPassedTableModel modelNotP = (NotPassedTableModel) NotPassedSubject.getInstance().getTable().getModel();
+				AbstractTableModelNotPassedTableModel modelNotP = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
 
 				modelNotP.fireTableDataChanged();
 			}
 
 		});
 
+
 		JPanel ispis = new JPanel(new BorderLayout());
 
 		JPanel pnlProsjek = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblProsjek = new JLabel("Prosjek ocjena: " + avgGrade);
+		JLabel lblProsjek = new JLabel();
+		lblProsjek.setText("Prosjek ocjena: " + Double.toString(avgGrade));
+		System.out.println(avgGrade);
+		System.out.println(sumEspb);
 		pnlProsjek.add(lblProsjek);
 
 		JPanel pnlEspb = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblEspb = new JLabel("ESPB: " + sumEspb);
+		JLabel lblEspb = new JLabel();
+		lblEspb.setText("ESPB: " + Integer.toString(sumEspb));
 		pnlEspb.add(lblEspb);
 
 		ispis.add(pnlProsjek, BorderLayout.NORTH);

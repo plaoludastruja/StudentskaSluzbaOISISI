@@ -15,7 +15,7 @@ public class Professor {
 		private Address officeAddress;
 		private String idCard;
 		private String position; 
-		private String workingYear; //godine radnog staza
+		private int workingYear;
 		private List<Subject> listofSubjects = new ArrayList<Subject>();
 	
 	public Professor() {
@@ -24,8 +24,7 @@ public class Professor {
 
 
 	public Professor(String firstName, String lastName, LocalDate dateOfBirth, Address homeAddress, String phone,
-			String email, Address officeAddress, String idCard, String position, String workingYear,
-			List<Subject> listofSubjects) {
+			String email, Address officeAddress, String idCard, String position, int workingYear) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -37,7 +36,7 @@ public class Professor {
 		this.idCard = idCard;
 		this.position = position;
 		this.workingYear = workingYear;
-		this.listofSubjects = listofSubjects;
+		//this.listofSubjects = listofSubjects;
 	}
 
 
@@ -114,11 +113,11 @@ public class Professor {
 		this.position = position;
 	}
 
-	public String getWorkingYear() {
+	public int getWorkingYear() {
 		return workingYear;
 	}
 
-	public void setWorkingYear(String workingYear) {
+	public void setWorkingYear(int workingYear) {
 		this.workingYear = workingYear;
 	}
 

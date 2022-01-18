@@ -12,18 +12,21 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.ProfessorController;
 import controller.StudentController;
-import controller.SubjectController;
 import gui.AbstractTableModelNotPassedTableModel;
+import gui.AbstractTableModelProfessorOnSubject;
 import gui.MainFrame;
+import gui.ProfessorTable;
 import gui.StudentTable;
 import model.BazaSubject;
+import model.Professor;
 import model.Student;
 import model.Subject;
 
-public class DeleteNotPassedSubject extends JDialog {
+public class DeleteSubjectToProfessor extends JDialog {
 
-	public DeleteNotPassedSubject(Frame parent, String title, boolean modal) {
+	public DeleteSubjectToProfessor(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 
 		setSize(400, 100);
@@ -36,7 +39,7 @@ public class DeleteNotPassedSubject extends JDialog {
 		JPanel panPitanje = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		
-		JLabel lblPitanje = new JLabel("Da li ste sigurni da zelite da uklonite predmet?");
+		JLabel lblPitanje = new JLabel("Da li ste sigurni da zelite da uklonite profesora sa predmeta?");
 		JButton daBtn = new JButton("DA");
 		JButton neBtn = new JButton("NE");
 		
@@ -58,11 +61,14 @@ public class DeleteNotPassedSubject extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Subject predmet = BazaSubject.getInstance().getSubjectByCode(NotPassedSubject.tabelica.getValueAt(NotPassedSubject.tabelica.getSelectedRow(), 0).toString());
-				Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
-					s.getOtherExams().remove(predmet);
+				//Subject predmet = SubjectController.getInstance().getSubjectByCode(NotPassedSubject.tabelica.getSelectedRow());
+				Subject predmet = BazaSubject.getInstance().getSubjectByCode(ProfessorOnSubject.profSubTable.getValueAt(ProfessorOnSubject.profSubTable.getSelectedRow(), 0).toString());
+				//Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
+				Professor p = ProfessorController.getInstance().getProfessortByID(ProfessorTable.getInstance().getSelectedRow());	
+					p.getListofSubjects().remove(predmet);
 		
-					AbstractTableModelNotPassedTableModel model = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
+					AbstractTableModelProfessorOnSubject model = (AbstractTableModelProfessorOnSubject) ProfessorOnSubject.proSubTableModel;
+											// azuriranje modela tabele, kao i njenog prikaza
 					model.fireTableDataChanged();
 					validate();
 					dispose();

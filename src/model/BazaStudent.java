@@ -48,8 +48,8 @@ public class BazaStudent {
 		adresaDjordje.setCountry("BIH");
 		
 		Student djordje = new Student();
-		djordje.setFirstName("Ä�orÄ‘e");
-		djordje.setLastName("LipovÄ�iÄ‡");
+		djordje.setFirstName("Djordje");
+		djordje.setLastName("Lipovcic");
 		djordje.setDateOfBirth(datumDjordje);
 		djordje.setAddress(adresaDjordje);
 		djordje.setPhone("+387644479985");
@@ -75,7 +75,7 @@ public class BazaStudent {
 		
 		Student sandra = new Student();
 		sandra.setFirstName("Sandra");
-		sandra.setLastName("JovanoviÄ‡");
+		sandra.setLastName("Jovanoviic");
 		sandra.setDateOfBirth(datumSandra);
 		sandra.setAddress(adresaDjordje);
 		sandra.setPhone("+387644479985");

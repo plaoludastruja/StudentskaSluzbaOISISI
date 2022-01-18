@@ -35,6 +35,7 @@ public class AddProfessorDialog extends JDialog {
 	private JTextField txtBrojLicneKarte;
 	private JTextField txtAdresaKancelarije;
 	private JTextField txtZvanje;
+	private JTextField txtGodine;
 	JButton potvrdiBtn;
 	JButton odustaniBtn;
 
@@ -58,6 +59,7 @@ public class AddProfessorDialog extends JDialog {
 		JPanel panBrojLicneKarte = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel panAdresaKancelarije = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel panZvanje = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel panGodine = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
 		JLabel lblIme = new JLabel("Ime*");
@@ -69,6 +71,7 @@ public class AddProfessorDialog extends JDialog {
 		JLabel lblBrojLicneKarte = new JLabel("Broj licne karte*");
 		JLabel lblAdresaKancelarije = new JLabel("Adresa kancelarije*");
 		JLabel lblZvanje = new JLabel("Zvanje*");
+		JLabel lblGodine = new JLabel("Godine radnog staza*");
 
 		txtIme = new JTextField();
 		txtPrezime = new JTextField();
@@ -79,7 +82,8 @@ public class AddProfessorDialog extends JDialog {
 		txtBrojLicneKarte = new JTextField();
 		txtAdresaKancelarije = new JTextField();
 		txtZvanje = new JTextField();
-
+		txtGodine = new JTextField();
+		
 		potvrdiBtn = new JButton("Potvrdi");
 		potvrdiBtn.setEnabled(false);
 		odustaniBtn = new JButton("Odustani");
@@ -93,6 +97,7 @@ public class AddProfessorDialog extends JDialog {
 		lblBrojLicneKarte.setPreferredSize(dim);
 		lblAdresaKancelarije.setPreferredSize(dim);
 		lblZvanje.setPreferredSize(dim);
+		lblGodine.setPreferredSize(dim);
 
 		txtIme.setPreferredSize(dim);
 		txtPrezime.setPreferredSize(dim);
@@ -103,6 +108,7 @@ public class AddProfessorDialog extends JDialog {
 		txtBrojLicneKarte.setPreferredSize(dim);
 		txtAdresaKancelarije.setPreferredSize(dim);
 		txtZvanje.setPreferredSize(dim);
+		txtGodine.setPreferredSize(dim);
 
 		panIme.add(lblIme);
 		panIme.add(txtIme);
@@ -130,6 +136,9 @@ public class AddProfessorDialog extends JDialog {
 
 		panZvanje.add(lblZvanje);
 		panZvanje.add(txtZvanje);
+		
+		panGodine.add(lblGodine);
+		panGodine.add(txtGodine);
 
 		panDugmad.add(potvrdiBtn);
 		panDugmad.add(odustaniBtn);
@@ -145,6 +154,7 @@ public class AddProfessorDialog extends JDialog {
 		boxCentar.add(panBrojLicneKarte);
 		boxCentar.add(panAdresaKancelarije);
 		boxCentar.add(panZvanje);
+		boxCentar.add(panGodine);
 		boxCentar.add(Box.createGlue());
 
 		add(boxCentar, BorderLayout.NORTH);
@@ -163,6 +173,8 @@ public class AddProfessorDialog extends JDialog {
 				String dateOfBirth = txtDatumRodjenja.getText();
 				String homeAddress = txtAdresaStanovanja.getText();
 				String officeAddress = txtAdresaKancelarije.getText();
+				
+				int workingYear = Integer.parseInt(txtGodine.getText());
 
 				LocalDate dateOfb = null;
 				try {
@@ -183,7 +195,7 @@ public class AddProfessorDialog extends JDialog {
 				Address adressKancelarije = new Address(ulicaBr1[0], ulicaBr1[1], oAdressArray[1], oAdressArray[2]);
 
 				ProfessorController.getInstance().dodajProfesora(name, lastName, dateOfb, adressStanovanja, phone,
-						email, adressKancelarije, idCard, position, null);
+						email, adressKancelarije, idCard, position, workingYear);
 			}
 
 		});

@@ -121,8 +121,7 @@ public class PassingExam extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Student student = StudentController.getInstance()
-						.getStudentByID(StudentTable.getInstance().getSelectedRow());
+				Student student = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 				LocalDate date;
 				try {
 					date = DateHandler.stringToDate(txtDatum.getText());
@@ -152,8 +151,7 @@ public class PassingExam extends JDialog {
 				}
 				
 				model.fireTableDataChanged();
-				NotPassedTableModel modelNotP = (NotPassedTableModel) NotPassedSubject.getInstance().getTable()
-						.getModel();
+				AbstractTableModelNotPassedTableModel modelNotP = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
 				modelNotP.fireTableDataChanged();
 
 				dispose();

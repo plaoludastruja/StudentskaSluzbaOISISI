@@ -19,7 +19,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import controller.StudentController;
-import gui.NotPassedTableModel;
+//import gui.NotPassedTableModel;
 import gui.PassingExam;
 import gui.StudentTable;
 import model.Grade;
@@ -32,7 +32,6 @@ import model.BazaSubject;
 public class NotPassedSubject extends JPanel {
 
 	private static NotPassedSubject instance = null;
-	private JTable table;
 
 	public static NotPassedSubject getInstance() {
 		if (instance == null) {
@@ -57,13 +56,6 @@ public class NotPassedSubject extends JPanel {
 		dugme.add(polaganje);
 
 		tabelica = new JTable();
-		table = new JTable();
-		table.setRowSelectionAllowed(true);
-		table.setColumnSelectionAllowed(false);
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.getTableHeader();
-
-		table.setModel(new NotPassedTableModel());
 
 		tabelica = new JTable();
 		tabelica.setRowSelectionAllowed(true);
@@ -73,7 +65,7 @@ public class NotPassedSubject extends JPanel {
 
 		Vector<String> kolone = new Vector<String>();
 		notPassedTableModel = new AbstractTableModelNotPassedTableModel();
-		tabelica.setModel(new NotPassedTableModel());
+		tabelica.setModel(notPassedTableModel);
 
 		JScrollPane tabela = new JScrollPane(tabelica);
 
@@ -85,8 +77,7 @@ public class NotPassedSubject extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AddNotPassedSubject addNotPassedSubject = new AddNotPassedSubject(MainFrame.getInstance(),
-						"Dodavanje predmeta", true);
+				AddNotPassedSubject addNotPassedSubject = new AddNotPassedSubject(MainFrame.getInstance(),"Dodavanje predmeta", true);
 				addNotPassedSubject.setVisible(true);
 
 			}
@@ -98,8 +89,7 @@ public class NotPassedSubject extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				if (tabelica.getSelectedRow() != -1) {
-					DeleteNotPassedSubject deleteNotPassedSubject = new DeleteNotPassedSubject(MainFrame.getInstance(),
-							"Uklanjanje predmeta", true);
+					DeleteNotPassedSubject deleteNotPassedSubject = new DeleteNotPassedSubject(MainFrame.getInstance(),"Uklanjanje predmeta", true);
 					deleteNotPassedSubject.setVisible(true);
 				}
 			}
@@ -109,33 +99,31 @@ public class NotPassedSubject extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int idx = table.getSelectedRow();
+				int idx = tabelica.getSelectedRow();
 				if (idx == -1) {
 					return;
 				}
-				Student student = StudentController.getInstance()
-						.getStudentByID(StudentTable.getInstance().getSelectedRow());
-				Subject grade = student.getOtherExams().get(idx);
-				PassingExam passingDialog = new PassingExam(MainFrame.getInstance(), "Unos ocene", true);
-				passingDialog.setSubject(grade);
-				passingDialog.setVisible(true);
+			Student student = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
+			Subject grade = student.getOtherExams().get(idx);
+			PassingExam passingDialog = new PassingExam(MainFrame.getInstance(), "Unos ocene", true);
+			passingDialog.setSubject(grade);
+			passingDialog.setVisible(true);
 
 			}
 		});
 
 		notPassedSubject.add(dugme, BorderLayout.NORTH);
-		notPassedSubject.add(tabela, BorderLayout.CENTER);
-
+		notPassedSubject.add(tabela, BorderLayout.SOUTH);//center
 		add(notPassedSubject);
 
 	}
 
 	public JTable getTable() {
-		return table;
+		return tabelica;
 	}
 
 	public void setTable(JTable table) {
-		this.table = table;
+		this.tabelica = table;
 	}
 
 }

@@ -22,7 +22,7 @@ public class Subject {
 
 
 	public Subject(String subjectCode, String subjectName, Semester subjectSemester, int subjectYear,
-			Professor professor, int espb, List<Student> passedSubject, List<Student> didntPassSubject) {
+			Professor professor, int espb, List<Student> passedSubject, List<Student> didntPassSubject) { //ne trebaju liste, tj ono sto je null
 		super();
 		this.subjectCode = subjectCode;
 		this.subjectName = subjectName;
