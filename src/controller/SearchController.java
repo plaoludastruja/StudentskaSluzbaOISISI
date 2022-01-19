@@ -13,6 +13,7 @@ import gui.StudentTable;
 import gui.ToolBar;
 import model.Address;
 
+
 public class SearchController {
 
 	private static SearchController instance = null;
@@ -23,37 +24,31 @@ public class SearchController {
 		}
 		return instance;
 	}
+	
 	private TableRowSorter<AbstractTableModelStudent> studentSorter = new TableRowSorter<AbstractTableModelStudent>((AbstractTableModelStudent) StudentTable.getInstance().getModel());
-	
-	
+
 	private SearchController() {
 		
 	}
-	
-	//rf = RowFilter.regexFilter(filterText.getText(), 0);
 
-	
 	public void searchStudent() {
 		
+		String[] parts = ToolBar.searchField.getText().toLowerCase().split(",");
+		List<RowFilter<Object, Object>> filter = new ArrayList<RowFilter<Object,Object>>(3);
 		
-		String searchPart = ToolBar.searchField.getText().toLowerCase();
-		String[] parts = searchPart.split(",");
-		StudentTable.getInstance().setRowSorter(studentSorter);
-
-		switch(parts.length) {
-		  case 1:
-		        studentSorter.setRowFilter(RowFilter.regexFilter("(?i)" + parts[0] ,2));
-		    break;
-		  case 2:
-		        studentSorter.setRowFilter(RowFilter.regexFilter("(?i)" + parts[1] ,1));
-			  break;
-		  case 3:
-		        //studentSorter.setRowFilter(RowFilter.regexFilter("(?i)" + parts[0] ,1));
-		    break;
-		  default:
-		    // code block
-			  
+		filter.add(RowFilter.regexFilter("(?i)" +  ".*" + "(?i)" + parts[0] + ".*", 2));
+		
+		if(parts.length >= 2) {
+			filter.add(RowFilter.regexFilter("(?i)" + ".*" + "(?i)" + parts[1] + ".*", 1));
+			
+			if(parts.length == 3) {
+				filter.add(RowFilter.regexFilter("(?i)" + ".*" + "(?i)" + parts[2] + ".*", 0));
+			}
 		}
+		
+		RowFilter<Object, Object> studentFilter = RowFilter.andFilter(filter);
+		studentSorter.setRowFilter(studentFilter);
+		StudentTable.getInstance().setRowSorter(studentSorter);
 
 	}
 	
