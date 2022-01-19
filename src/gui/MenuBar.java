@@ -3,6 +3,7 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -63,18 +64,18 @@ public class MenuBar extends JMenuBar {
 
 		
 // ************************************* //		
-		mbnew.setIcon(new ImageIcon("images/menubar/plus.png"));
-		save.setIcon(new ImageIcon("images/menubar/diskette.png"));
-		open.setIcon(new ImageIcon("images/menubar/share.png"));
-		close.setIcon(new ImageIcon("images/menubar/close.png"));
-		studenti.setIcon(new ImageIcon("images/menubar/student.png"));
-		predmeti.setIcon(new ImageIcon("images/menubar/bookshelf.png"));
-		profesori.setIcon(new ImageIcon("images/menubar/professor.png"));
-		katedre.setIcon(new ImageIcon("images/menubar/department.png"));
-		edit1.setIcon(new ImageIcon("images/menubar/edit.png"));
-		delete.setIcon(new ImageIcon("images/menubar/bin.png"));
-		help1.setIcon(new ImageIcon("images/menubar/question.png"));
-		about.setIcon(new ImageIcon("images/menubar/info.png"));
+		mbnew.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "plus.png"));
+		save.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "diskette.png"));
+		open.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "share.png"));
+		close.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "close.png"));
+		studenti.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "student.png"));
+		predmeti.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "bookshelf.png"));
+		profesori.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "professor.png"));
+		katedre.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "department.png"));
+		edit1.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "edit.png"));
+		delete.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "bin.png"));
+		help1.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "question.png"));
+		about.setIcon(new ImageIcon("images" + File.separator + "menubar" + File.separator + "info.png"));
 
 		
 // ************************************* //

@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.File;
 import java.util.Locale;
 
 import javax.swing.Box;
@@ -54,29 +55,29 @@ public class ToolBar extends JToolBar {
 // ************************************* //	
 		btnNew.setToolTipText("Dodaj novi entitet");
 		btnNew.setBackground(toolbarBg);
-		btnNew.setIcon(new ImageIcon("images/toolbar/new.png"));
+		btnNew.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "new.png"));
 
 // ************************************* //
 		btnEdit.setToolTipText("Izmijeni entitet");
 		btnEdit.setBackground(toolbarBg);
-		btnEdit.setIcon(new ImageIcon("images/toolbar/edit.png"));
+		btnEdit.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "edit.png"));
 
 // ************************************* //
 		srpski.setToolTipText("Srpski jezik");
 		srpski.setBackground(toolbarBg);
-		srpski.setIcon(new ImageIcon("images/toolbar/srpski.png"));
+		srpski.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "srpski.png"));
 		srpski.setBorderPainted(false);
 
 // ************************************* //
 		engleski.setToolTipText("Engleski jezik");
 		engleski.setBackground(toolbarBg);
-		engleski.setIcon(new ImageIcon("images/toolbar/engleski.png"));
+		engleski.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "engleski.png"));
 		engleski.setBorderPainted(false);
 
 // ************************************* //
 		btnDelete.setToolTipText("Obrisi entitet");
 		btnDelete.setBackground(toolbarBg);
-		btnDelete.setIcon(new ImageIcon("images/toolbar/delete.png"));
+		btnDelete.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "delete.png"));
 
 // ************************************* //
 		searchField.setToolTipText("Unesi pretragu");
@@ -86,7 +87,7 @@ public class ToolBar extends JToolBar {
 // ************************************* //	
 		btnSearch.setToolTipText("Pretrazi");
 		btnSearch.setBackground(toolbarBg);
-		btnSearch.setIcon(new ImageIcon("images/toolbar/search.png"));
+		btnSearch.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "search.png"));
 
 // ************************************* //	
 
