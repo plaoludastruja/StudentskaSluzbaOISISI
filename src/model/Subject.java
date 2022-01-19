@@ -5,8 +5,9 @@ import java.util.List;
 
 public class Subject {
 
-	public enum Semester { LETNJI, ZIMSKI; }
+	public enum Semester { LJETNI, ZIMSKI; }
 	
+	private int id;
 	private String subjectCode;
 	private String subjectName;
 	private Semester subjectSemester;
@@ -35,6 +36,28 @@ public class Subject {
 	}
 
 
+
+	public Subject(int id, String subjectCode, String subjectName, int subjectYear, int espb, Professor professor,
+			Semester subjectSemester) {
+		super();
+		this.id = id;
+		this.subjectCode = subjectCode;
+		this.subjectName = subjectName;
+		this.subjectYear = subjectYear;
+		this.espb = espb;
+		this.professor = professor;
+		this.subjectSemester = subjectSemester;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getSubjectCode() {
 		return subjectCode;

@@ -5,10 +5,29 @@ import java.util.List;
 
 public class Department {
 
+	private int id;
 	private String departmentCode;
 	private String departmentName;
 	private Professor departmentBoss;
 	private List<Professor> departmentProffesor = new ArrayList<Professor>();
+	
+	public Department(int id, String departmentCode, String departmentName, Professor departmentBoss,
+			List<Professor> departmentProffesor) {
+		super();
+		this.id = id;
+		this.departmentCode = departmentCode;
+		this.departmentName = departmentName;
+		this.departmentBoss = departmentBoss;
+		this.departmentProffesor = departmentProffesor;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public Department() {
 		super();

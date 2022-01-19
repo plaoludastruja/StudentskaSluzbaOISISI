@@ -42,14 +42,53 @@ public class BazaSubject {
 		this.kolone.add("NAZIV PREDMETA");
 		this.kolone.add("BROJ ESPB BODOVA");
 		this.kolone.add("GODINA NA KOJOJ SE PREDMET IZVODI");
-		this.kolone.add("SEMESTAR U KOME SE PREDMET IZVODI");
+		this.kolone.add("Semester U KOME SE PREDMET IZVODI");
 
 		this.predmeti = new ArrayList<Subject>();
 		Professor prof = BazaProfessor.getInstance().getProfesori().get(0);
-		predmeti.add(new Subject("Sifra1","fizika",Semester.LETNJI,1,prof ,9, null,null)); //bez null
+		predmeti.add(new Subject("Sifra1","fizika",Semester.LJETNI,1,prof ,9, null,null)); //bez null
 		predmeti.add(new Subject("Sifra2","engleski jezik",Semester.ZIMSKI,2,prof ,3, null,null));
 		predmeti.add(new Subject("Sifra3","baze podataka",Semester.ZIMSKI,3, prof,8, null,null)); 
-
+/**
+ * 
+ * 
+ */
+		predmeti.add(new Subject(1	,   "p1"    ,"osnove programiranja"	    	    ,1,	7	,BazaProfessor.getInstance().getProfWithKey(2),Semester.ZIMSKI));
+		predmeti.add(new Subject(2	,   "p2"    ,"statistika"		        	    ,3,	8	,BazaProfessor.getInstance().getProfWithKey(2)	    ,Semester.LJETNI));
+		predmeti.add(new Subject(3	,   "p3"    ,"algoritmi i strukture podataka"	,2,	9	,BazaProfessor.getInstance().getProfWithKey(2)	    ,Semester.LJETNI));
+		predmeti.add(new Subject(4	,   "p4"    ,"LPRS"				                ,3,	7	,BazaProfessor.getInstance().getProfWithKey(2)	    ,Semester.ZIMSKI));
+		predmeti.add(new Subject(5	,   "p5"    ,"matematika"			            ,1,	11	,null	,Semester.LJETNI));
+		predmeti.add(new Subject(6	,   "p6"    ,"xml i web servisi"	           	,4,	6	,null	,Semester.LJETNI));
+		predmeti.add(new Subject(7	,   "p7"    ,"Metode optimizacije"		        ,3,	6	,null	,Semester.ZIMSKI));
+		predmeti.add(new Subject(8	,   "p8"    ,"osnove elektortehnike"		    ,1,	11	,BazaProfessor.getInstance().getProfWithKey(5)	    ,Semester.LJETNI));
+		predmeti.add(new Subject(9	,   "p9"    ,"Sociologija"			            ,1,	10	,BazaProfessor.getInstance().getProfWithKey(5)	    ,Semester.ZIMSKI));
+		predmeti.add(new Subject(10,	"p10"	,"Filozofija"		            	,1,	4	,BazaProfessor.getInstance().getProfWithKey(5)	    ,Semester.ZIMSKI));
+		predmeti.add(new Subject(11,	"p11"	,"ORT"				                ,2,	7	,null	,Semester.LJETNI));
+		predmeti.add(new Subject(12,	"p12"	,"NANS"				                ,2,	5	,BazaProfessor.getInstance().getProfWithKey(6)	    ,Semester.LJETNI));
+		predmeti.add(new Subject(13,	"p13"	,"Organizacija podataka"		    ,2,	7	,BazaProfessor.getInstance().getProfWithKey(6)	    ,Semester.ZIMSKI));
+		predmeti.add(new Subject(14,	"p14"	,"Baze podataka"			        ,2,	6	,BazaProfessor.getInstance().getProfWithKey(6)	    ,Semester.ZIMSKI));
+		predmeti.add(new Subject(15,	"p15"	,"paralelno programiranje"		    ,2,	8	,BazaProfessor.getInstance().getProfWithKey(7)	    ,Semester.ZIMSKI));
+		predmeti.add(new Subject(16,	"p16"	,"konkurentno programiranje"	    ,2,	9	,BazaProfessor.getInstance().getProfWithKey(7)	    ,Semester.LJETNI));
+		predmeti.add(new Subject(17,	"p17"	,"Operativni sistemi"		        ,2,	8	,null	,Semester.LJETNI));
+		predmeti.add(new Subject(18,	"p18"	,"Algebra"				            ,1,	15	,null	,Semester.ZIMSKI));
+		predmeti.add(new Subject(19,	"p19"	,"Diskretna matematika"		        ,3,	14	,null	,Semester.LJETNI));
+		predmeti.add(new Subject(20,	"ps20"	,"Upravljacki sistemi"		        ,3,	8	,null	,Semester.LJETNI));
+		predmeti.add(new Subject(21,	"ps21"	,"Osnovi elektronike"		        ,2,	7	,null	,Semester.ZIMSKI));
+		predmeti.add(new Subject(22,	"ps22"	,"Slucajni procesi"		            ,4,	9	,null	,Semester.LJETNI));
+		predmeti.add(new Subject(23,	"ps23"	,"Racunarstvo visokih performansi"	,4,	10	,null	,Semester.LJETNI));
+		predmeti.add(new Subject(24,	"p24"	,"Analiza 1"			            ,1,	20	,null	,Semester.ZIMSKI));
+		predmeti.add(new Subject(25,	"it25"	,"Informaciona bezbednost"		    ,4,	9	,BazaProfessor.getInstance().getProfWithKey(17)  	,Semester.LJETNI));
+		predmeti.add(new Subject(26,	"it26"	,"Elektronsko placanje"		        ,3,	8	,BazaProfessor.getInstance().getProfWithKey(18)  	,Semester.ZIMSKI));
+		predmeti.add(new Subject(27,	"it27"	,"Distribuirani sistemi"		    ,4,	6	,BazaProfessor.getInstance().getProfWithKey(19)	    ,Semester.LJETNI));
+		predmeti.add(new Subject(28,	"p28"	,"Projektovanje softvera"		    ,3,	5	,BazaProfessor.getInstance().getProfWithKey(18)	    ,Semester.ZIMSKI));
+		predmeti.add(new Subject(29,	"p29"	,"Informacioni sistemi"		        ,4,	6	,BazaProfessor.getInstance().getProfWithKey(17)	    ,Semester.ZIMSKI));
+		predmeti.add(new Subject(30,	"p30"	,"Masinsko ucenje"			        ,4,	7	,null	,Semester.LJETNI));
+		
+		/*
+		 * 
+		 * 
+		 * 
+		 */
 	
 	}
 
@@ -246,7 +285,14 @@ public class BazaSubject {
 		return searched;
 	}
 
-	
+	public Subject getSubjectWithKey(int id) {
+		for(Subject i : predmeti) {
+			if(i.getId() == id) {
+				return i;
+			}
+		}
+		return null;
+	}
 	
 	
 	
