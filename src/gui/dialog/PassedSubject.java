@@ -25,8 +25,13 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.StudentController;
 import gui.AbstractTableModelNotPassedTableModel;
+import gui.AbstractTableModelProfessor;
+import gui.AbstractTableModelStudent;
+import gui.AbstractTableModelSubject;
+import gui.ProfessorTable;
 //import gui.NotPassedTableModel;
 import gui.StudentTable;
+import gui.SubjectTable;
 import listener.EditEntity;
 import model.BazaSubject;
 import model.Grade;
@@ -87,19 +92,25 @@ public class PassedSubject extends JPanel {
 
 		Student stud = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 		passedExams = stud.getPassedExams();
-		System.out.println(stud.getPassedExams().size());
+		//System.out.println(stud.getPassedExams().size());
 		
 		for (Grade grade : stud.getPassedExams()) {
 			Object[] row = { grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
 					grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate() };
 			passedTableModel.addRow(row);
+			
 			sumGrade = sumGrade + grade.getValue();
 			++countGrade;
 			sumEspb = sumEspb + grade.getSubject().getEspb();
+			
 		}
 
 		if (countGrade != 0) {
 			avgGrade = sumGrade / countGrade;
+//			stud.setAverageGrade(avgGrade);
+//			AbstractTableModelStudent model = (AbstractTableModelStudent) StudentTable.getInstance().getModel();
+//			model.fireTableDataChanged();
+//			validate();
 		}
 		
 		ponisti.addActionListener(new ActionListener() {
@@ -152,8 +163,8 @@ public class PassedSubject extends JPanel {
 		JPanel pnlProsjek = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JLabel lblProsjek = new JLabel();
 		lblProsjek.setText("Prosjek ocjena: " + Double.toString(avgGrade));
-		System.out.println(avgGrade);
-		System.out.println(sumEspb);
+//		System.out.println(avgGrade);
+//		System.out.println(sumEspb);
 		pnlProsjek.add(lblProsjek);
 
 		JPanel pnlEspb = new JPanel(new FlowLayout(FlowLayout.RIGHT));

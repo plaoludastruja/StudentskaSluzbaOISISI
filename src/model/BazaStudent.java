@@ -213,13 +213,28 @@ public class BazaStudent {
 		case 4:
 			return student.getStudentStatus();
 		case 5:
-			return student.getAverageGrade();
+			int sumGrade = 0;
+			//int sumEspb = 0;
+			int countGrade = 0;
+			double avgGrade = 0;
+			
+			for (Grade grade : student.getPassedExams()) {
+				sumGrade = sumGrade + grade.getValue();
+				++countGrade;			
+			}
+
+			if (countGrade != 0) {
+				avgGrade = (double)sumGrade / (double)countGrade;
+			}
+			
+			//return student.getAverageGrade();
+			return Double.toString(Math.round(avgGrade*100.0)/100.0);
 		default:
 			return null;
 		}
 	}
 
-
+	
 	
 	public boolean checkIfExists(String index) {
 		for(Student i : studenti) {

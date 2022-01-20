@@ -73,9 +73,10 @@ public class DepartmentBossDialog extends JDialog {
 		Department d = DepartmentController.getInstance().getDepartment(DepartmentDialog.deparmentTable.getSelectedRow());
 		//Subject subj = SubjectController.getInstance().getSubjectByCode(StudentTable.getInstance().getSelectedRow());
 		Professor trenutniBoss = d.getDepartmentBoss();
+		List<Professor> departmentProfessor = d.getDepartmentProffesor();
 		
 
-		for(Professor s : prof) {
+		for(Professor s : departmentProfessor) {
 			if(s.getWorkingYear() >= 5
 			&& (s.getPosition() == "vanredni profesor" || s.getPosition() == "redovni profesor")
 			&& !(s.getIdCard().equals(trenutniBoss.getIdCard())))
