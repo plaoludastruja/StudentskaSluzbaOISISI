@@ -59,7 +59,22 @@ public class SerializableController implements Serializable {
 	}
 	
 	public void serijalizacija(){
+		
 
+		//Pisanje.
+		File f = new File("objectstream.txt");
+		
+		try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)))) {
+			studenti = BazaStudent.getInstance().getStudent();
+			profesori = BazaProfessor.getInstance().getProfesori();
+			predmeti = BazaSubject.getInstance().getSubjects();
+			katedre = BazaDepartment.getInstance().getDepartments();
+
+			oos.writeObject(getInstance());
+			oos.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}	
 	}
 		
 		public void deserijalizacija(){
