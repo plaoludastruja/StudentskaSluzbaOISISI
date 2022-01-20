@@ -14,19 +14,30 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+import model.BazaDepartment;
+import model.BazaProfessor;
 import model.BazaStudent;
+import model.BazaSubject;
+import model.Department;
+import model.Professor;
 import model.Student;
+import model.Subject;
 
 
 public class SerializableController implements Serializable {
 
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7207247815531617972L;
-	
+	private static final long serialVersionUID = 2081809264327306805L;
+
 	private List<Student> studenti;
+	private ArrayList<Professor> profesori;
+	private List<Subject> predmeti;
+	private List<Department> katedre;
+
+	
 
 	public static SerializableController instance = null;
 
@@ -42,40 +53,44 @@ public class SerializableController implements Serializable {
 	
 	public SerializableController() {
 		studenti = new ArrayList<Student>();
+		profesori = new ArrayList<Professor>();
+		predmeti = new ArrayList<Subject>();
+		katedre = new ArrayList<Department>();
 	}
 	
-//	public void serijalizacija() throws FileNotFoundException, IOException, ClassNotFoundException{
-//	
-//		studenti = BazaStudent.getInstance().getStudent();
-//
-//		//Pisanje.
-//		File f = new File("objectstream.txt");
-//		
-//		try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)))) {
-//			oos.writeObject(getInstance());
-//			oos.close(); //Zatvara i tok nizeg nivoa.
-//		} finally {
-//			
-//		
-//		}	
-//	}
-//		
-//		public void deserijalizacija() throws FileNotFoundException, IOException, ClassNotFoundException{
-//			//Citanje.
-//			File f = new File("objectstream.txt");
-//			
-//			
-//			try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)))) {
-//				SerializableController serializableController;
-//				serializableController = (SerializableController)ois.readObject();
-//				BazaStudent.getInstance().setStudent(serializableController.getStudenti());
-//				ois.close();
-//			} finally {
-//				
-//			}
-//			
-//		}
+	public void serijalizacija(){
+
+	}
 		
+		public void deserijalizacija(){
+			//Citanje.
+			File f = new File("objectstream.txt");
+			
+			
+			try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)))) {
+				
+				SerializableController serializableController;
+				serializableController = (SerializableController)ois.readObject();
+				
+				BazaStudent.getInstance().setStudent(serializableController.getStudenti());
+				BazaProfessor.getInstance().setProfessor(serializableController.getProfesori());
+				BazaSubject.getInstance().setSubject(serializableController.getPredmeti());
+				BazaDepartment.getInstance().setDepartment(serializableController.getKatedre());
+				ois.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+
+	public List<Department> getKatedre() {
+			return katedre;
+		}
+
+		public void setKatedre(List<Department> katedre) {
+			this.katedre = katedre;
+		}
 
 	public List<Student> getStudenti() {
 		return studenti;
@@ -85,6 +100,21 @@ public class SerializableController implements Serializable {
 		this.studenti = studenti;
 	}
 
+	public ArrayList<Professor> getProfesori() {
+		return profesori;
+	}
+
+	public void setProfesori(ArrayList<Professor> profesori) {
+		this.profesori = profesori;
+	}
+
+	public List<Subject> getPredmeti() {
+		return predmeti;
+	}
+
+	public void setPredmeti(List<Subject> predmeti) {
+		this.predmeti = predmeti;
+	}
 //	public static long getSerialversionuid() {
 //		return serialVersionUID;
 //	}

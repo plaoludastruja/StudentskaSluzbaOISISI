@@ -94,6 +94,10 @@ public class BazaProfessor {
 	public ArrayList<Professor> getProfesori() {
 		return profesori;
 	}
+	
+	public void setProfessor(ArrayList<Professor> profesori) {
+		this.profesori = profesori;
+	}
 
 	public Professor getProfessorByID(String idCard) {
 		for(Professor i : profesori) {

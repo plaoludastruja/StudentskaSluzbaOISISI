@@ -99,19 +99,16 @@ public class PassedSubject extends JPanel {
 					grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate() };
 			passedTableModel.addRow(row);
 			
-			sumGrade = sumGrade + grade.getValue();
-			++countGrade;
-			sumEspb = sumEspb + grade.getSubject().getEspb();
+			sumGrade += grade.getValue();
+			//++countGrade;
+			sumEspb += grade.getSubject().getEspb();
 			
+			if (stud.getPassedExams().size() != 0) {
+				avgGrade = (double)sumGrade / (double)stud.getPassedExams().size();
+			}
+
 		}
 
-		if (countGrade != 0) {
-			avgGrade = sumGrade / countGrade;
-//			stud.setAverageGrade(avgGrade);
-//			AbstractTableModelStudent model = (AbstractTableModelStudent) StudentTable.getInstance().getModel();
-//			model.fireTableDataChanged();
-//			validate();
-		}
 		
 		ponisti.addActionListener(new ActionListener() {
 
@@ -161,15 +158,15 @@ public class PassedSubject extends JPanel {
 		JPanel ispis = new JPanel(new BorderLayout());
 
 		JPanel pnlProsjek = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblProsjek = new JLabel();
-		lblProsjek.setText("Prosjek ocjena: " + Double.toString(avgGrade));
+		JLabel lblProsjek = new JLabel("Prosjek ocjena: " + Double.toString(avgGrade));
+		//lblProsjek.setText("Prosjek ocjena: " + Double.toString(avgGrade));
 //		System.out.println(avgGrade);
 //		System.out.println(sumEspb);
 		pnlProsjek.add(lblProsjek);
 
 		JPanel pnlEspb = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblEspb = new JLabel();
-		lblEspb.setText("ESPB: " + Integer.toString(sumEspb));
+		JLabel lblEspb = new JLabel("ESPB: " + Integer.toString(sumEspb));
+		//lblEspb.setText();
 		pnlEspb.add(lblEspb);
 
 		ispis.add(pnlProsjek, BorderLayout.NORTH);

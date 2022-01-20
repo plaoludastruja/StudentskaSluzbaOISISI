@@ -1,10 +1,16 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Department {
+public class Department implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5446207735396656995L;
+	
 	private int id;
 	private String departmentCode;
 	private String departmentName;

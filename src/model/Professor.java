@@ -1,11 +1,17 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Professor {
+public class Professor implements Serializable {
 
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6725044975913082088L;
+	
 		private int id;
 		private String firstName;
 		private String lastName;

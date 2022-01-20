@@ -16,6 +16,7 @@ import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import controller.SerializableController;
 import listener.MyWindowListener;
 
 public class MainFrame extends JFrame{
@@ -34,6 +35,8 @@ public class MainFrame extends JFrame{
 	
 	private MainFrame() {
 
+		//
+		SerializableController.getInstance().deserijalizacija();
 		// inicijalne postavke prozora
 		this.initPosition();
 		// menu
@@ -76,7 +79,7 @@ public class MainFrame extends JFrame{
 		
 		
 		//window listener
-		//addWindowListener(new MyWindowListener());
+		addWindowListener(new MyWindowListener());
 	
 	}
 	public void changeLanguage() {

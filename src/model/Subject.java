@@ -1,9 +1,15 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Subject {
+public class Subject implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1277437697313394329L;
 
 	public enum Semester { LJETNI, ZIMSKI; }
 	

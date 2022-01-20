@@ -95,6 +95,9 @@ public class BazaDepartment {
 		return katedre;
 	}//
 	
+	public void setDepartment(List<Department> katedre) {
+		this.katedre = katedre;
+	}
 
 
 

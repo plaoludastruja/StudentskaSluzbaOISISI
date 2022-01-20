@@ -96,6 +96,10 @@ public class BazaSubject {
 		return predmeti;
 	}
 
+	public void setSubject(List<Subject> predmeti) {
+		this.predmeti = predmeti;
+	}
+	
 	private long generateId() {
 		return ++generator;
 	}

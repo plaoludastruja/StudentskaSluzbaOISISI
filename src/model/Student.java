@@ -9,10 +9,11 @@ import model.Student.Status;
 
 public class Student implements Serializable {
 
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8421864617295634403L;
+	private static final long serialVersionUID = -2345756339654764685L;
 
 	public enum Status { B, S; }
 	
