@@ -80,11 +80,7 @@ public class AddSubjectToProfessor extends JDialog {
 		if(p.getListofSubjects().contains(s))
 			add = false;
 		
-//		for(Subject g : p.getListofSubjects()) {
-//			if(g.getSubjectCode().equals(s.getSubjectCode())) {
-//				add = false;
-//			}
-//		}
+
 			if(add) {
 				Object[] row = {s.getSubjectCode(), s.getSubjectName()};
 				//forAdd.add(row);
@@ -114,6 +110,7 @@ public class AddSubjectToProfessor extends JDialog {
 					Professor p = ProfessorController.getInstance().getProfessortByID(ProfessorTable.getInstance().getSelectedRow());	
 					
 					p.getListofSubjects().add(predmet);
+					predmet.setProfessor(p);
 	
 	//					Object[] pred = {predmet.getSubjectCode(), predmet.getSubjectName(),
 	//							predmet.getEspb(), predmet.getSubjectYear(), predmet.getSubjectSemester()};

@@ -98,12 +98,12 @@ public class PassedSubject extends JPanel {
 			//++countGrade;
 			sumEspb += grade.getSubject().getEspb();
 			
-			if (stud.getPassedExams().size() != 0) {
-				avgGrade = (double)sumGrade / (double)stud.getPassedExams().size();
-			}
+			
 
 		}
-
+		if (stud.getPassedExams().size() != 0) {
+			avgGrade = (double)sumGrade / (double)stud.getPassedExams().size();
+		}
 		
 		ponisti.addActionListener(new ActionListener() {
 
@@ -178,11 +178,11 @@ public class PassedSubject extends JPanel {
 		JPanel ispis = new JPanel(new BorderLayout());
 
 		JPanel pnlProsjek = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblProsjek = new JLabel("Prosjek ocjena: " + Double.toString(avgGrade));
+		JLabel lblProsjek = new JLabel("Prosjek ocjena: " + avgGrade);
 		pnlProsjek.add(lblProsjek);
 
 		JPanel pnlEspb = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblEspb = new JLabel("ESPB: " + Integer.toString(sumEspb));
+		JLabel lblEspb = new JLabel("ESPB: " + sumEspb);
 		//lblEspb.setText();
 		pnlEspb.add(lblEspb);
 

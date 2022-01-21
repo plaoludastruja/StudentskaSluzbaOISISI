@@ -66,6 +66,7 @@ public class DeleteSubjectToProfessor extends JDialog {
 				//Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 				Professor p = ProfessorController.getInstance().getProfessortByID(ProfessorTable.getInstance().getSelectedRow());	
 					p.getListofSubjects().remove(predmet);
+					predmet.setProfessor(null);
 		
 					AbstractTableModelProfessorOnSubject model = (AbstractTableModelProfessorOnSubject) ProfessorOnSubject.proSubTableModel;
 											// azuriranje modela tabele, kao i njenog prikaza

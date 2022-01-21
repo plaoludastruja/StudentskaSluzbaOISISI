@@ -53,19 +53,18 @@ public class BazaDepartment {
 
 		List<Professor> professorsOnDepartment1 = new ArrayList<Professor>();
 		professorsOnDepartment1.add(BazaProfessor.getInstance().getProfWithKey(1));
-		professorsOnDepartment1.add(BazaProfessor.getInstance().getProfWithKey(7));
-		professorsOnDepartment1.add(BazaProfessor.getInstance().getProfWithKey(13));
+		professorsOnDepartment1.add(BazaProfessor.getInstance().getProfWithKey(2));
 		professorsOnDepartment1.add(BazaProfessor.getInstance().getProfWithKey(19));
 		List<Professor> professorsOnDepartment2 = new ArrayList<Professor>();
-		professorsOnDepartment2.add(BazaProfessor.getInstance().getProfWithKey(2));
+		professorsOnDepartment2.add(BazaProfessor.getInstance().getProfWithKey(3));
 		professorsOnDepartment2.add(BazaProfessor.getInstance().getProfWithKey(8));
 		professorsOnDepartment2.add(BazaProfessor.getInstance().getProfWithKey(14));
 		List<Professor> professorsOnDepartment3 = new ArrayList<Professor>();
-		professorsOnDepartment3.add(BazaProfessor.getInstance().getProfWithKey(3));
+		professorsOnDepartment3.add(BazaProfessor.getInstance().getProfWithKey(4));
 		professorsOnDepartment3.add(BazaProfessor.getInstance().getProfWithKey(9));
 		professorsOnDepartment3.add(BazaProfessor.getInstance().getProfWithKey(15));
 		List<Professor> professorsOnDepartment4 = new ArrayList<Professor>();
-		professorsOnDepartment4.add(BazaProfessor.getInstance().getProfWithKey(4));
+		professorsOnDepartment4.add(BazaProfessor.getInstance().getProfWithKey(7));
 		professorsOnDepartment4.add(BazaProfessor.getInstance().getProfWithKey(10));
 		professorsOnDepartment4.add(BazaProfessor.getInstance().getProfWithKey(16));
 		List<Professor> professorsOnDepartment5 = new ArrayList<Professor>();
@@ -76,7 +75,7 @@ public class BazaDepartment {
 		professorsOnDepartment6.add(BazaProfessor.getInstance().getProfWithKey(6));
 		professorsOnDepartment6.add(BazaProfessor.getInstance().getProfWithKey(12));
 		professorsOnDepartment6.add(BazaProfessor.getInstance().getProfWithKey(18));
-		
+
 		katedre.add(new Department(1,	"e42",	"Katedra za matematiku",	BazaProfessor.getInstance().getProfWithKey(2),professorsOnDepartment1));                    
 		katedre.add(new Department(2,	"e43",	"Katedra za fiziku",	BazaProfessor.getInstance().getProfWithKey(3),professorsOnDepartment2));
 		katedre.add(new Department(3,	"e44",	"Katedra za elektrotehniku",	BazaProfessor.getInstance().getProfWithKey(4),professorsOnDepartment3));
