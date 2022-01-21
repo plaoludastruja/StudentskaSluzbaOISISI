@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
+import controller.SerializableController;
+import gui.MainFrame;
+
 public class MyWindowListener implements WindowListener {
 
 
@@ -25,7 +28,9 @@ public class MyWindowListener implements WindowListener {
 		@Override
 		public void windowClosing(WindowEvent arg0) {
 			JFrame frame = (JFrame) arg0.getComponent();
-			int code = JOptionPane.showConfirmDialog(frame, "Da li ste sigurni da zelite da zatvorite aplikaciju?",
+			SerializableController.getInstance().serijalizacija();
+			
+			int code = JOptionPane.showConfirmDialog(frame, MainFrame.getInstance().getResourceBundle().getString("dalistesigurniZatvori"),
 					"Zatvaranje aplikacije?", JOptionPane.YES_NO_OPTION);
 			if (code != JOptionPane.YES_OPTION) {
 				frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);

@@ -39,9 +39,9 @@ public class DeleteSubjectToProfessor extends JDialog {
 		JPanel panPitanje = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		
-		JLabel lblPitanje = new JLabel("Da li ste sigurni da zelite da uklonite profesora sa predmeta?");
-		JButton daBtn = new JButton("DA");
-		JButton neBtn = new JButton("NE");
+		JLabel lblPitanje = new JLabel(MainFrame.getInstance().getResourceBundle().getString("dalistesigurniProf"));
+		JButton daBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("da"));
+		JButton neBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("ne"));
 		
 		panPitanje.add(lblPitanje);
 		panDugmad.add(daBtn);

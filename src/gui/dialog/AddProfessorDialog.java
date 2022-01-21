@@ -62,16 +62,16 @@ public class AddProfessorDialog extends JDialog {
 		JPanel panGodine = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-		JLabel lblIme = new JLabel("Ime*");
-		JLabel lblPrezime = new JLabel("Prezime*");
-		JLabel lblDatumRodjenja = new JLabel("Datum rodjenja*");
-		JLabel lblAdresaStanovanja = new JLabel("Adresa stanovanja*");
-		JLabel lblBrojTelefona = new JLabel("Broj telefona*");
-		JLabel lblEmailAdresa = new JLabel("E-mail adresa*");
-		JLabel lblBrojLicneKarte = new JLabel("Broj licne karte*");
-		JLabel lblAdresaKancelarije = new JLabel("Adresa kancelarije*");
-		JLabel lblZvanje = new JLabel("Zvanje*");
-		JLabel lblGodine = new JLabel("Godine radnog staza*");
+		JLabel lblIme = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblIme"));
+		JLabel lblPrezime = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblPrezime"));
+		JLabel lblDatumRodjenja = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblDatumRodjenja"));
+		JLabel lblAdresaStanovanja = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblAdresaStanovanja"));
+		JLabel lblBrojTelefona = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblBrojTelefona"));
+		JLabel lblEmailAdresa = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblEmail"));
+		JLabel lblBrojLicneKarte = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblBrojLicne"));
+		JLabel lblAdresaKancelarije = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblAdresaKancelarije"));
+		JLabel lblZvanje = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblZvanje"));
+		JLabel lblGodine = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblStaz"));
 
 		txtIme = new JTextField();
 		txtPrezime = new JTextField();
@@ -84,9 +84,9 @@ public class AddProfessorDialog extends JDialog {
 		txtZvanje = new JTextField();
 		txtGodine = new JTextField();
 		
-		potvrdiBtn = new JButton("Potvrdi");
+		potvrdiBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("potvrdi"));
 		potvrdiBtn.setEnabled(false);
-		odustaniBtn = new JButton("Odustani");
+		odustaniBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("odustani"));
 
 		lblIme.setPreferredSize(dim);
 		lblPrezime.setPreferredSize(dim);

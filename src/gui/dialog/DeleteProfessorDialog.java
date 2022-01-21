@@ -32,9 +32,9 @@ public class DeleteProfessorDialog extends JDialog{
 		JPanel panPitanje = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		
-		JLabel lblPitanje = new JLabel("Da li ste sigurni da zelite da obrisete profesora?");
-		JButton daBtn = new JButton("DA");
-		JButton neBtn = new JButton("NE");
+		JLabel lblPitanje = new JLabel(MainFrame.getInstance().getResourceBundle().getString("dalistesigurniobrisiProf"));
+		JButton daBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("da"));
+		JButton neBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("ne"));
 		
 		daBtn.addActionListener(new ActionListener() {
 			

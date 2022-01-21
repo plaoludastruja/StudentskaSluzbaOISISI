@@ -25,8 +25,14 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.StudentController;
 import gui.AbstractTableModelNotPassedTableModel;
+import gui.AbstractTableModelProfessor;
+import gui.AbstractTableModelStudent;
+import gui.AbstractTableModelSubject;
+import gui.MainFrame;
+import gui.ProfessorTable;
 //import gui.NotPassedTableModel;
 import gui.StudentTable;
+import gui.SubjectTable;
 import listener.EditEntity;
 import model.BazaSubject;
 import model.Grade;
@@ -54,7 +60,7 @@ public class PassedSubject extends JPanel {
 		JPanel passedSubject = new JPanel(new BorderLayout());
 
 		JPanel dugme = new JPanel(new BorderLayout());
-		JButton ponisti = new JButton("Ponisti ocjenu");
+		JButton ponisti = new JButton(MainFrame.getInstance().getResourceBundle().getString("ponistiOcjenu"));
 		dugme.add(ponisti, BorderLayout.WEST);
 
 		tabelica = new JTable();
@@ -66,11 +72,11 @@ public class PassedSubject extends JPanel {
 		DefaultTableModel passedTableModel = new DefaultTableModel();
 		Vector<String> kolone = new Vector<String>();
 
-		kolone.add("SifraPredmeta");
-		kolone.add("ImePredmeta");
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("sifra1"));
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("naziv1"));
 		kolone.add("ESPB");
-		kolone.add("Ocjena");
-		kolone.add("Datum");
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("ocjena"));
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("datum"));
 
 		passedTableModel.setColumnIdentifiers(kolone);
 		tabelica.setModel(passedTableModel);
@@ -87,27 +93,30 @@ public class PassedSubject extends JPanel {
 
 		Student stud = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 		passedExams = stud.getPassedExams();
-		System.out.println(stud.getPassedExams().size());
+		//System.out.println(stud.getPassedExams().size());
 		
 		for (Grade grade : stud.getPassedExams()) {
 			Object[] row = { grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
 					grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate() };
 			passedTableModel.addRow(row);
-			sumGrade = sumGrade + grade.getValue();
-			++countGrade;
-			sumEspb = sumEspb + grade.getSubject().getEspb();
+			
+			sumGrade += grade.getValue();
+			//++countGrade;
+			sumEspb += grade.getSubject().getEspb();
+			
+			if (stud.getPassedExams().size() != 0) {
+				avgGrade = (double)sumGrade / (double)stud.getPassedExams().size();
+			}
+
 		}
 
-		if (countGrade != 0) {
-			avgGrade = sumGrade / countGrade;
-		}
 		
 		ponisti.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da uklonite predmet?", "Uklanjanje predmeta",
+				if (JOptionPane.showConfirmDialog(null, MainFrame.getInstance().getResourceBundle().getString("ukloniPredmetSigurni"), MainFrame.getInstance().getResourceBundle().getString("ukloniPredmet"),
 				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				    // yes option
 				} else {
@@ -150,15 +159,12 @@ public class PassedSubject extends JPanel {
 		JPanel ispis = new JPanel(new BorderLayout());
 
 		JPanel pnlProsjek = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblProsjek = new JLabel();
-		lblProsjek.setText("Prosjek ocjena: " + Double.toString(avgGrade));
-		System.out.println(avgGrade);
-		System.out.println(sumEspb);
+		JLabel lblProsjek = new JLabel("Prosjek ocjena: " + Double.toString(avgGrade));
 		pnlProsjek.add(lblProsjek);
 
 		JPanel pnlEspb = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblEspb = new JLabel();
-		lblEspb.setText("ESPB: " + Integer.toString(sumEspb));
+		JLabel lblEspb = new JLabel("ESPB: " + Integer.toString(sumEspb));
+		//lblEspb.setText();
 		pnlEspb.add(lblEspb);
 
 		ispis.add(pnlProsjek, BorderLayout.NORTH);

@@ -13,12 +13,13 @@ import javax.swing.Timer;
 import dateHandler.DateHandler;
 
 public class StatusBar extends JPanel {
-	private JLabel tabName;
+	private JLabel tabName, appName;
+	
 	public StatusBar() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
 
-		JLabel appName = new JLabel("Studentska sluzba - ");
+		appName = new JLabel("Studentska služba - ");
 
 		tabName = new JLabel("Student");
 
@@ -51,5 +52,7 @@ public class StatusBar extends JPanel {
 		return tabName;
 	}
 	
-	
+	public void initComponents() {
+		appName.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("statusApp"));
+	}
 }

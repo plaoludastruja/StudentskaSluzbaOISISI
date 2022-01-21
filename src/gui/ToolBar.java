@@ -7,12 +7,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.File;
+import java.util.Locale;
 
 import javax.swing.Box;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
@@ -29,10 +34,13 @@ import listener.EditEntity;
 import listener.SearchEntity;
 import model.BazaProfessor;
 
+
 public class ToolBar extends JToolBar {
 
 	Color toolbarBg = new Color(193, 223, 230);
-
+	private JButton btnNew, btnEdit, btnDelete, btnSearch;
+	private JCheckBox srpski, engleski;
+	
 	public static JTextField searchField;
 	public ToolBar() {
 
@@ -41,26 +49,45 @@ public class ToolBar extends JToolBar {
 		setBackground(toolbarBg);
 
 // ************************************* //
-		JButton btnNew = new JButton();
-		JButton btnEdit = new JButton();
-		JButton btnDelete = new JButton();
+		btnNew = new JButton();
+		btnEdit = new JButton();
+		btnDelete = new JButton();
 		searchField = new JTextField(20);
-		JButton btnSearch = new JButton();
+		btnSearch = new JButton();
+		
+		srpski = new JCheckBox();
+		engleski = new JCheckBox();
+		
+		
+		
 
 // ************************************* //	
 		btnNew.setToolTipText("Dodaj novi entitet");
 		btnNew.setBackground(toolbarBg);
-		btnNew.setIcon(new ImageIcon("images/toolbar/new.png"));
+		btnNew.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "new.png"));
 
 // ************************************* //
 		btnEdit.setToolTipText("Izmijeni entitet");
 		btnEdit.setBackground(toolbarBg);
-		btnEdit.setIcon(new ImageIcon("images/toolbar/edit.png"));
+		btnEdit.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "edit.png"));
+
+// ************************************* //
+		srpski.setToolTipText("Srpski jezik");
+		srpski.setBackground(toolbarBg);
+		srpski.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "srpski.png"));
+		srpski.setSelected(true);
+		srpski.setBorderPainted(false);
+
+// ************************************* //
+		engleski.setToolTipText("Engleski jezik");
+		engleski.setBackground(toolbarBg);
+		engleski.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "engleski.png"));
+		engleski.setBorderPainted(false);
 
 // ************************************* //
 		btnDelete.setToolTipText("Obrisi entitet");
 		btnDelete.setBackground(toolbarBg);
-		btnDelete.setIcon(new ImageIcon("images/toolbar/delete.png"));
+		btnDelete.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "delete.png"));
 
 // ************************************* //
 		searchField.setToolTipText("Unesi pretragu");
@@ -70,13 +97,14 @@ public class ToolBar extends JToolBar {
 // ************************************* //	
 		btnSearch.setToolTipText("Pretrazi");
 		btnSearch.setBackground(toolbarBg);
-		btnSearch.setIcon(new ImageIcon("images/toolbar/search.png"));
+		btnSearch.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "search.png"));
 
 // ************************************* //	
-
+		
 		btnNew.addActionListener(new AddEntity());
 		btnDelete.addActionListener(new DeleteEntity());
 		btnEdit.addActionListener(new EditEntity());
+		btnSearch.addActionListener(new SearchEntity());
 		searchField.addFocusListener(new FocusListener() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -87,67 +115,35 @@ public class ToolBar extends JToolBar {
 			public void focusLost(FocusEvent e) {
 			}
 		});
+		
+		srpski.addActionListener(new ActionListener() {
 
-		btnSearch.addActionListener(new SearchEntity());
-//		btnSearch.addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				switch (TabbedPaneMainFrame.getInstance().getSelectedIndex()) {
-//				case 0: // STUDENT
-//
-//					break;
-//				case 1: // PROFESOR
-//					String profesor = searchField.getText().toLowerCase();
-//					String[] nizProfessor = profesor.split(",");
-//					if (nizProfessor.length == 1) {
-//
-//						String lastName = nizProfessor[0].trim();
-//						ProfessorController.getInstance().getProffessorNameSurname(lastName, null);
-//
-//					} else if (nizProfessor.length == 2) {
-//
-//						String lastName = nizProfessor[0].trim();
-//						String name = nizProfessor[1].trim();
-//
-//						ProfessorController.getInstance().getProffessorNameSurname(lastName, name);
-//
-//					} else {
-//						JOptionPane.showMessageDialog(null,
-//								"Pretraga profesora mora biti formata prezime ili prezime, ime", "Pogresan format!",
-//								JOptionPane.ERROR_MESSAGE);
-//						return;
-//					}
-//					break;
-//				case 2: // PREDMET
-//					String predmet = searchField.getText().toLowerCase();
-//					String[] nizPredmet = predmet.split(",");
-//					if (nizPredmet.length == 1) {
-//
-//						String name = nizPredmet[0].trim();
-//						SubjectController.getInstance().getSubjectNameCode(name, null);
-//
-//					} else if (nizPredmet.length == 2) {
-//
-//						String name = nizPredmet[0].trim();
-//						String code = nizPredmet[1].trim();
-//
-//						SubjectController.getInstance().getSubjectNameCode(name, code);
-//
-//					} else {
-//						JOptionPane.showMessageDialog(null,
-//								"Pretraga predmeta mora biti formata ime ili ime, sifra", "Pogresan format!",
-//								JOptionPane.ERROR_MESSAGE);
-//						return;
-//					}
-//					break;
-//				default:
-//					break;
-//				}
-//
-//			}
-//
-//		});
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Locale.setDefault(new Locale("sr", "RS"));
+				MainFrame.getInstance().changeLanguage();
+				
+			}
+			
+		});
+		
+		engleski.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Locale.setDefault(new Locale("en", "US"));
+				MainFrame.getInstance().changeLanguage();
+				
+			}
+			
+		});
+			
+		
+		ButtonGroup bg=new ButtonGroup(); 
+		bg.add(srpski);
+		bg.add(engleski);
+		
+
 
 // ************************************* //			
 		// dodavanje
@@ -158,8 +154,23 @@ public class ToolBar extends JToolBar {
 		add(btnDelete);
 		addSeparator();
 		add(Box.createHorizontalGlue());
+		
+		add(srpski);
+		add(engleski);
 		add(searchField);
 		add(btnSearch);
 
 	}
+	
+	public void initComponents() {
+		btnNew.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("btnNew"));
+		btnEdit.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("btnEdit"));
+		btnDelete.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("btnDelete"));
+		btnSearch.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("btnSearch"));
+		srpski.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("srpski"));
+		engleski.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("engleski"));
+		searchField.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("searchField"));
+		searchField.setText(MainFrame.getInstance().getResourceBundle().getString("searchFieldText"));
+	}
+
 }

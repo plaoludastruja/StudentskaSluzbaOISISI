@@ -21,7 +21,7 @@ public class EditEntity implements ActionListener{
 		switch (TabbedPaneMainFrame.getInstance().getSelectedIndex()) {
 			case 0:	// STUDENT
 				if(StudentTable.getInstance().getSelectedRow()!=-1) {
-					AddEditStudentDialog editStudentDialog = new AddEditStudentDialog(MainFrame.getInstance(), "Izmjena studenta", true, false);
+					AddEditStudentDialog editStudentDialog = new AddEditStudentDialog(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("izmjenaStudenta"), true, false);
 					editStudentDialog.setVisible(true);
 				}
 				
@@ -29,7 +29,7 @@ public class EditEntity implements ActionListener{
 			case 1:	// PROFESOR
 				//EditProfessorDialog editProfessorDialog = new EditProfessorDialog(MainFrame.getInstance(), "Izmjena profesora", true);
 				//addProfessorDialog.setVisible(true);
-				EditProfessorDialog editProfessorDialog = new EditProfessorDialog(MainFrame.getInstance(), "Izmjena profesora", true);
+				EditProfessorDialog editProfessorDialog = new EditProfessorDialog(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("izmjenaProfesora"), true);
 				int index = MainFrame.getInstance().getTable().getSelectedRow();
 				if(index == -1) {
 					return;
@@ -40,7 +40,7 @@ public class EditEntity implements ActionListener{
 				break;
 			case 2:	// PREDMET
 				if(SubjectTable.getInstance().getSelectedRow()!=-1) {
-					AddEditSubjectDialog editSubjectDialog = new AddEditSubjectDialog(MainFrame.getInstance(), "Izmjena predmeta", true, false);
+					AddEditSubjectDialog editSubjectDialog = new AddEditSubjectDialog(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("izmjenaPredmeta"), true, false);
 					editSubjectDialog.setVisible(true);
 				}
 				

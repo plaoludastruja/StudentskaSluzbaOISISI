@@ -1,7 +1,15 @@
 package model;
 
-public class Address {
+import java.io.Serializable;
 
+public class Address implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7679286686343509965L;
+	
+	private int id;
 	private String street;
 	private String streetNum;
 	private String city;
@@ -20,6 +28,24 @@ public class Address {
 		this.country = country;
 	}
 
+
+	public Address(int id, String street, String streetNum, String city, String country) {
+		super();
+		this.id = id;
+		this.street = street;
+		this.streetNum = streetNum;
+		this.city = city;
+		this.country = country;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getStreet() {
 		return street;

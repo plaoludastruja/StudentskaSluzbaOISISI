@@ -9,13 +9,15 @@ import model.Student.Status;
 
 public class Student implements Serializable {
 
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8421864617295634403L;
+	private static final long serialVersionUID = -2345756339654764685L;
 
 	public enum Status { B, S; }
 	
+	private int id;
 	private String lastName;
 	private String firstName;
 	private LocalDate dateOfBirth;
@@ -56,7 +58,39 @@ public class Student implements Serializable {
 		// TODO Auto-generated constructor stub
 	}*/
 
+	
 
+
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public Student(int id, String index, String firstName, String lastName, int currentYear, LocalDate dateOfBirth,
+			Address address, String phone, String email, Status studentStatus, int indexYear, List<Grade> passedExams,
+			List<Subject> otherExams) {
+		super();
+		this.id = id;
+		this.index = index;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.currentYear = currentYear;
+		this.dateOfBirth = dateOfBirth;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+		this.studentStatus = studentStatus;
+		this.indexYear = indexYear;
+		this.passedExams = passedExams;
+		this.otherExams = otherExams;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getLastName() {
 		return lastName;
 	}

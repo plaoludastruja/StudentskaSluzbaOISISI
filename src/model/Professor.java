@@ -1,11 +1,18 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Professor {
+public class Professor implements Serializable {
 
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6725044975913082088L;
+	
+		private int id;
 		private String firstName;
 		private String lastName;
 		private LocalDate dateOfBirth;
@@ -40,6 +47,37 @@ public class Professor {
 	}
 
 
+
+
+
+
+	public Professor(int id, String idCard, String firstName, String lastName, LocalDate dateOfBirth,
+			Address homeAddress, String phone, String email, Address officeAddress, int workingYear, String position,
+			List<Subject> listofSubjects) {
+		super();
+		this.id = id;
+		this.idCard = idCard;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.homeAddress = homeAddress;
+		this.phone = phone;
+		this.email = email;
+		this.officeAddress = officeAddress;
+		this.position = position;
+		this.workingYear = workingYear;
+		this.listofSubjects = listofSubjects;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 		return firstName;

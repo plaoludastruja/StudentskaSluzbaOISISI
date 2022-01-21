@@ -31,9 +31,9 @@ public class TabbedPaneMainFrame extends JTabbedPane {
 	
 	private TabbedPaneMainFrame() {
 		
-		addTab("Student",new JScrollPane(StudentTable.getInstance()));
-		addTab("Profesor",new JScrollPane(ProfessorTable.getInstance()));
-		addTab("Predmet",new JScrollPane(SubjectTable.getInstance()));
+		addTab("Studenti",new JScrollPane(StudentTable.getInstance()));
+		addTab("Profesori",new JScrollPane(ProfessorTable.getInstance()));
+		addTab("Predmeti",new JScrollPane(SubjectTable.getInstance()));
 
 
 

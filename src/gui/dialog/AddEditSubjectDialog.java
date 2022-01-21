@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -60,13 +61,13 @@ public class AddEditSubjectDialog extends JDialog {
 		JPanel panEspb = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
-		JLabel lblSifraPredmeta = new JLabel("Sifra*:");
-		JLabel lblNazivPredmeta = new JLabel("Naziv*:");
-		JLabel lblSemestar = new JLabel("Semestar*:");
-		JLabel lblGodina = new JLabel("Godina*:");
-		JLabel lblProfesor = new JLabel("Profesor*:");
-		JLabel lblEspb = new JLabel("ESPB*:");
+		
+		JLabel lblSifraPredmeta = new JLabel(MainFrame.getInstance().getResourceBundle().getString("sifra"));
+		JLabel lblNazivPredmeta = new JLabel(MainFrame.getInstance().getResourceBundle().getString("naziv"));
+		JLabel lblSemestar = new JLabel(MainFrame.getInstance().getResourceBundle().getString("semestar"));
+		JLabel lblGodina = new JLabel(MainFrame.getInstance().getResourceBundle().getString("godina"));
+		JLabel lblProfesor = new JLabel(MainFrame.getInstance().getResourceBundle().getString("profesor"));
+		JLabel lblEspb = new JLabel(MainFrame.getInstance().getResourceBundle().getString("espb"));
 
 		txtSifraPredmeta = new JTextField();
 		txtNazivPredmeta = new JTextField();
@@ -75,11 +76,11 @@ public class AddEditSubjectDialog extends JDialog {
 		JComboBox txtProfesor = new JComboBox();
 		txtEspb = new JTextField();
 
-		Icon iconPlus = new ImageIcon("images/menubar/plus.png");
+		Icon iconPlus = new ImageIcon("images" + File.separator + "menubar" + File.separator + "plus.png");
 		JButton plus = new JButton(iconPlus);
 		plus.setPreferredSize(new Dimension(20, 20));
 
-		Icon iconMinus = new ImageIcon("/images/menubar/minus.jpg");
+		Icon iconMinus = new ImageIcon("images" + File.separator + "menubar" + File.separator + "minus.jpg");
 		JButton minus = new JButton(iconMinus);
 		minus.setPreferredSize(new Dimension(20, 20));
 
@@ -111,8 +112,8 @@ public class AddEditSubjectDialog extends JDialog {
 			txtProfesor.addItem(c);
 		}
 
-		JButton potvrdiBtn = new JButton("Potvrdi");
-		JButton odustaniBtn = new JButton("Odustani");
+		JButton potvrdiBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("potvrdi"));
+		JButton odustaniBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("odustani"));
 
 		lblSifraPredmeta.setPreferredSize(dim);
 		lblNazivPredmeta.setPreferredSize(dim);

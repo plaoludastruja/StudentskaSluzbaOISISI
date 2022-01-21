@@ -76,17 +76,17 @@ public class AddEditStudentDialog extends JDialog {
 		JPanel panTrenutnaGodinaStudija = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel panNacinFinansiranja = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
-		JLabel lblIme = new JLabel("Ime*:");
-		JLabel lblPrezime = new JLabel("Prezime*:");
-		JLabel lblDatumRodjenja = new JLabel("Datum rođenja*:");
-		JLabel lblAdresaStanovanja = new JLabel("Adresa stanovanja*:");
-		JLabel lblBrojTelefona = new JLabel("Broj telefona*:");
-		JLabel lblEmailAdresa = new JLabel("E-mail adresa*:");
-		JLabel lblBrojIndeksa = new JLabel("Broj indeksa*:");
-		JLabel lblGodinaUpisa = new JLabel("Godina upisa*:");
-		JLabel lblTrenutnaGodinaStudija = new JLabel("Trenutna godina studija*:");
-		JLabel lblNacinFinansiranja = new JLabel("Način finansiranja*:");
+//file.setText(MainFrame.getInstance().getResourceBundle().getString("file"));
+		JLabel lblIme = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblIme"));
+		JLabel lblPrezime = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblPrezime"));
+		JLabel lblDatumRodjenja = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblDatumRodjenja"));
+		JLabel lblAdresaStanovanja = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblAdresaStanovanja"));
+		JLabel lblBrojTelefona = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblBrojTelefona"));
+		JLabel lblEmailAdresa = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblEmail"));
+		JLabel lblBrojIndeksa = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblBrojIndeksa"));
+		JLabel lblGodinaUpisa = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblGodinaUpisa"));
+		JLabel lblTrenutnaGodinaStudija = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblTrenutnaGodina"));
+		JLabel lblNacinFinansiranja = new JLabel(MainFrame.getInstance().getResourceBundle().getString("lblNacinFinansiranja"));
 
 		txtIme = new JTextField();
 		txtPrezime = new JTextField();
@@ -106,8 +106,8 @@ public class AddEditStudentDialog extends JDialog {
 		txtTrenutnaGodinaStudija.addItem(5);
 		txtTrenutnaGodinaStudija.addItem(6);
 
-		potvrdiBtn = new JButton("Potvrdi");
-		JButton odustaniBtn = new JButton("Odustani");
+		potvrdiBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("potvrdi"));
+		JButton odustaniBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("odustani"));
 
 		lblIme.setPreferredSize(dim);
 		lblPrezime.setPreferredSize(dim);
@@ -308,10 +308,10 @@ public class AddEditStudentDialog extends JDialog {
 //			panCentar.add(boxCentar, BorderLayout.CENTER);
 //			panCentar.add(panDugmad, BorderLayout.SOUTH);
 			
-			tabbedPanneEditStudent.add("Informacije", panCentar);
+			tabbedPanneEditStudent.add(MainFrame.getInstance().getResourceBundle().getString("informacije"), panCentar);
 
-			tabbedPanneEditStudent.add("Polozeni", PassedSubject.getInstance());
-			tabbedPanneEditStudent.add("Nepolozeni", NotPassedSubject.getInstance());
+			tabbedPanneEditStudent.add(MainFrame.getInstance().getResourceBundle().getString("polozeni"), PassedSubject.getInstance());
+			tabbedPanneEditStudent.add(MainFrame.getInstance().getResourceBundle().getString("nepolozeni"), NotPassedSubject.getInstance());
 			add(tabbedPanneEditStudent, BorderLayout.NORTH);
 			pack();
 		}
