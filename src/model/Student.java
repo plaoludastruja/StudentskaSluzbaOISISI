@@ -116,7 +116,9 @@ public class Student implements Serializable {
 	}
 
 	public Address getAddress() {
-		return address;
+		if (address!=null)
+		  return address;
+		return new Address();
 	}
 
 	public void setAddress(Address address) {

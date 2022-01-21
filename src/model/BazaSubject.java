@@ -232,7 +232,6 @@ public class BazaSubject {
 			if(i.getSubjectCode().equals(code)) {
 				i.getProfessor().getListofSubjects().remove(i);
 				predmeti.remove(i);
-				
 				break;
 			}
 		}
@@ -242,7 +241,7 @@ public class BazaSubject {
 
 
 	public void changeSubject(Subject izmjenaPredmet) {
-		izmjenaPredmet.getProfessor().getListofSubjects().add(izmjenaPredmet);
+		//izmjenaPredmet.getProfessor().getListofSubjects().add(izmjenaPredmet);
 		for (Subject i : predmeti) {
 			
 			if (i.getSubjectCode().equals(BazaSubject.getInstance().getSubjectFromList(SubjectTable.getInstance().getSelectedRow()).getSubjectCode())) {
@@ -253,6 +252,7 @@ public class BazaSubject {
 				i.setSubjectYear(izmjenaPredmet.getSubjectYear());
 				i.setProfessor(izmjenaPredmet.getProfessor());
 				i.setEspb(izmjenaPredmet.getEspb());
+				i.getProfessor().getListofSubjects().add(i);
 			}
 		}
 	

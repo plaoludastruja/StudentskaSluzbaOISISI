@@ -139,6 +139,8 @@ public class PassingExam extends JDialog {
 				currentGrade.setExamDate(date);
 				student.getPassedExams().add(currentGrade);
 
+				currentSubject.getDidntPassSubject().remove(student);
+				currentSubject.getPassedSubject().add(student);
 				AbstractTableModelPassedTableModel model = (AbstractTableModelPassedTableModel) PassedSubject.getInstance().getTabelica().getModel();
 				model.fireTableDataChanged();
 				

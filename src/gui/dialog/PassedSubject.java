@@ -99,9 +99,9 @@ public class PassedSubject extends JPanel {
 			sumEspb += grade.getSubject().getEspb();
 			
 			
-
 		}
-		if (stud.getPassedExams().size() != 0) {
+		
+		if (stud.getPassedExams().size() != 0 && !stud.getPassedExams().isEmpty()) {
 			avgGrade = (double)sumGrade / (double)stud.getPassedExams().size();
 		}
 		
@@ -129,47 +129,16 @@ public class PassedSubject extends JPanel {
 				Grade grade = passedExams.get(idx);
 				passedExams.remove(idx);
 				stud.getOtherExams().add(grade.getSubject());
+				
+				predmet.getPassedSubject().remove(stud);
+				predmet.getDidntPassSubject().add(stud);
 				AbstractTableModelPassedTableModel model = (AbstractTableModelPassedTableModel) tabelica.getModel();
 				model.fireTableDataChanged();
 
 				AbstractTableModelNotPassedTableModel modelNotP = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
 
 				modelNotP.fireTableDataChanged();
-//				if (JOptionPane.showConfirmDialog(null, MainFrame.getInstance().getResourceBundle().getString("ukloniPredmetSigurni"), MainFrame.getInstance().getResourceBundle().getString("ukloniPredmet"),
-//				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-//				    // yes option
-//				} else {
-//				    return;
-//				}
-//
-//				int idx = tabelica.getSelectedRow();
-//				if (idx == -1) {
-//					return;
-//				}
-//				Grade grade = passedExams.get(idx);
-//				passedExams.remove(idx);
-//				stud.getOtherExams().add(grade.getSubject());
-//				DefaultTableModel model = (DefaultTableModel) tabelica.getModel();
-//				model.removeRow(0);
-//
-//				
-//				for (int i = 0; i < model.getRowCount(); i++)
-//					model.removeRow(i);
-//
-//				Student student = StudentController.getInstance()
-//						.getStudentByID(StudentTable.getInstance().getSelectedRow());
-//				
-//				for (Grade g : student.getPassedExams()) {
-//
-//					Object[] row = { g.getSubject().getSubjectCode(), g.getSubject().getSubjectName(),
-//							g.getSubject().getEspb(), g.getValue(), g.getExamDate() };
-//					model.addRow(row);
-//				}
-//				model.fireTableDataChanged();
-//				//NotPassedTableModel modelNotP = (NotPassedTableModel) NotPassedSubject.getInstance().getTable().getModel();
-//				AbstractTableModelNotPassedTableModel modelNotP = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
-//
-//				modelNotP.fireTableDataChanged();
+
 			}
 
 		});
@@ -178,7 +147,7 @@ public class PassedSubject extends JPanel {
 		JPanel ispis = new JPanel(new BorderLayout());
 
 		JPanel pnlProsjek = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblProsjek = new JLabel("Prosjek ocjena: " + avgGrade);
+		JLabel lblProsjek = new JLabel(MainFrame.getInstance().getResourceBundle().getString("prosjek") + avgGrade);
 		pnlProsjek.add(lblProsjek);
 
 		JPanel pnlEspb = new JPanel(new FlowLayout(FlowLayout.RIGHT));
