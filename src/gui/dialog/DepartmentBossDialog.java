@@ -64,9 +64,12 @@ public class DepartmentBossDialog extends JDialog {
         deparmentBossTable.setModel(departmentBossTableModel);
         
         Vector<String> kolone = new Vector<String>();
-		kolone.add(MainFrame.getInstance().getResourceBundle().getString("lblIme"));
-		kolone.add(MainFrame.getInstance().getResourceBundle().getString("lblPrezime"));
-		kolone.add(MainFrame.getInstance().getResourceBundle().getString("lblBrojLicne"));
+        kolone.add("ImeProfesora");
+		kolone.add("PrezimeProfesora");
+		kolone.add("IDProfesora");
+//		kolone.add(MainFrame.getInstance().getResourceBundle().getString("lblIme"));
+//		kolone.add(MainFrame.getInstance().getResourceBundle().getString("lblPrezime"));
+//		kolone.add(MainFrame.getInstance().getResourceBundle().getString("lblBrojLicne"));
 		departmentBossTableModel.setColumnIdentifiers(kolone);
 		
 		List<Professor> prof = ProfessorController.getInstance().getProfesori();
@@ -78,13 +81,13 @@ public class DepartmentBossDialog extends JDialog {
 
 		for(Professor s : departmentProfessor) {
 			if(s.getWorkingYear() >= 5
-			&& (s.getPosition() == "vanredni profesor" || s.getPosition() == "redovni profesor")
+			&& (s.getPosition().equals("vanredni profesor") || s.getPosition().equals("redovni profesor"))
 			&& !(s.getIdCard().equals(trenutniBoss.getIdCard())))
 			{
 
 				Object[] row = {s.getFirstName(), s.getLastName(), s.getIdCard()};
 				departmentBossTableModel.addRow(row);
-			
+
 			}
 		}
         dodaj.addActionListener(new ActionListener() {

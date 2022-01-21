@@ -121,13 +121,14 @@ public class PassingExam extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Student student = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
+				Student student = StudentController.getInstance()
+						.getStudentByID(StudentTable.getInstance().getSelectedRow());
 				LocalDate date;
 				try {
 					date = DateHandler.stringToDate(txtDatum.getText());
 
 				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(PassingExam.this, "Pogresan format!", "Greska",
+					JOptionPane.showMessageDialog(PassingExam.this, "Pogresan format datuma!", "Greska",
 							JOptionPane.WARNING_MESSAGE);
 					return;
 				}
@@ -138,19 +139,11 @@ public class PassingExam extends JDialog {
 				currentGrade.setExamDate(date);
 				student.getPassedExams().add(currentGrade);
 
-				DefaultTableModel model = (DefaultTableModel) PassedSubject.getInstance().getTabelica().getModel();
-
-				for (int i = 0; i < model.getRowCount(); i++)
-					model.removeRow(i);
-
-				for (Grade g : student.getPassedExams()) {
-
-					Object[] row = { g.getSubject().getSubjectCode(), g.getSubject().getSubjectName(),
-							g.getSubject().getEspb(), g.getValue(), g.getExamDate() };
-					model.addRow(row);
-				}
-				
+				currentSubject.getDidntPassSubject().remove(student);
+				currentSubject.getPassedSubject().add(student);
+				AbstractTableModelPassedTableModel model = (AbstractTableModelPassedTableModel) PassedSubject.getInstance().getTabelica().getModel();
 				model.fireTableDataChanged();
+				
 				AbstractTableModelNotPassedTableModel modelNotP = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
 				modelNotP.fireTableDataChanged();
 

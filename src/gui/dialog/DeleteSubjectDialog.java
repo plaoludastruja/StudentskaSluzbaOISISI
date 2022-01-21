@@ -15,6 +15,10 @@ import javax.swing.JPanel;
 import controller.ProfessorController;
 import controller.SubjectController;
 import gui.MainFrame;
+import model.BazaStudent;
+import model.BazaSubject;
+import model.Student;
+import model.Subject;
 
 public class DeleteSubjectDialog extends JDialog{
 

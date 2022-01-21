@@ -100,7 +100,7 @@ public class AddNotPassedSubject extends JDialog {
 					Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 					
 					s.getOtherExams().add(predmet);
-
+					predmet.getDidntPassSubject().add(s);
 					notPassedTableModel.removeRow(tabelica.getSelectedRow());	
 					AbstractTableModelNotPassedTableModel model = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
 					model.fireTableDataChanged();

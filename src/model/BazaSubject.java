@@ -12,6 +12,7 @@ import gui.MainFrame;
 import gui.ProfessorTable;
 import gui.StudentTable;
 import gui.SubjectTable;
+import gui.dialog.AddEditSubjectDialog;
 import gui.dialog.AddNotPassedSubject;
 import model.Subject.Semester;
 
@@ -164,6 +165,7 @@ public class BazaSubject {
 		Professor p = ProfessorController.getInstance().getProfessortByID(ProfessorTable.getInstance().getSelectedRow());				
 		p.getListofSubjects();
 		Subject predmet = p.getListofSubjects().get(row);
+		
 		switch (column) {
 		case 0:
 			return predmet.getSubjectCode();
@@ -175,6 +177,27 @@ public class BazaSubject {
 			return predmet.getSubjectYear()+"";
 		case 4:
 			return predmet.getSubjectSemester()+"";
+		default:
+			return null;
+		}
+
+	}
+	
+	public String getValueAtPassed(int row, int column) {
+
+		Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
+		Grade grade = s.getPassedExams().get(row);
+		switch (column) {
+		case 0:
+			return grade.getSubject().getSubjectCode();
+		case 1:
+			return grade.getSubject().getSubjectName();
+		case 2:
+			return grade.getSubject().getEspb() + "";
+		case 3:
+			return grade.getSubject().getSubjectYear() + "";
+		case 4:
+			return grade.getSubject().getSubjectSemester() + "";
 		default:
 			return null;
 		}
@@ -198,21 +221,16 @@ public class BazaSubject {
 	
 	public void addSubject(Subject noviPredmet) {
 		this.predmeti.add(noviPredmet);
+		noviPredmet.getProfessor().getListofSubjects().add(noviPredmet);
+		
 
 	}
 	
-	/*public void deleteSubject(String code) {
-		for (Subject i : predmeti) {
-			if (i.getSubjectCode() == code ) {
-				predmeti.remove(i);
-				break;
-			}
-		}
-	}*/
 	
 	public void deleteSubject(String code) { // brise red u tabeli
 		for(Subject i : predmeti) {
 			if(i.getSubjectCode().equals(code)) {
+				i.getProfessor().getListofSubjects().remove(i);
 				predmeti.remove(i);
 				break;
 			}
@@ -223,7 +241,7 @@ public class BazaSubject {
 
 
 	public void changeSubject(Subject izmjenaPredmet) {
-		
+		//izmjenaPredmet.getProfessor().getListofSubjects().add(izmjenaPredmet);
 		for (Subject i : predmeti) {
 			
 			if (i.getSubjectCode().equals(BazaSubject.getInstance().getSubjectFromList(SubjectTable.getInstance().getSelectedRow()).getSubjectCode())) {
@@ -234,10 +252,10 @@ public class BazaSubject {
 				i.setSubjectYear(izmjenaPredmet.getSubjectYear());
 				i.setProfessor(izmjenaPredmet.getProfessor());
 				i.setEspb(izmjenaPredmet.getEspb());
-
-				
+				i.getProfessor().getListofSubjects().add(i);
 			}
 		}
+	
 	}
 	
 	

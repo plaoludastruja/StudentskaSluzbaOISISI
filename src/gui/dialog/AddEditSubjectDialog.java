@@ -41,6 +41,7 @@ import model.Subject.Semester;
 public class AddEditSubjectDialog extends JDialog {
 
 	public static JTextField txtSifraPredmeta, txtNazivPredmeta, txtEspb;
+	public static JComboBox txtProfesor;
 
 	public AddEditSubjectDialog(Frame parent, String title, boolean modal, boolean add) {
 		super(parent, title, modal);
@@ -73,14 +74,14 @@ public class AddEditSubjectDialog extends JDialog {
 		txtNazivPredmeta = new JTextField();
 		JComboBox txtSemestar = new JComboBox(Semester.values());
 		JComboBox txtGodina = new JComboBox();
-		JComboBox txtProfesor = new JComboBox();
+		txtProfesor = new JComboBox();
 		txtEspb = new JTextField();
 
 		Icon iconPlus = new ImageIcon("images" + File.separator + "menubar" + File.separator + "plus.png");
 		JButton plus = new JButton(iconPlus);
 		plus.setPreferredSize(new Dimension(20, 20));
 
-		Icon iconMinus = new ImageIcon("images" + File.separator + "menubar" + File.separator + "minus.jpg");
+		Icon iconMinus = new ImageIcon("images" + File.separator + "menubar" + File.separator + "close.png");
 		JButton minus = new JButton(iconMinus);
 		minus.setPreferredSize(new Dimension(20, 20));
 

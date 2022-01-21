@@ -24,8 +24,9 @@ public class SubjectTable extends JTable{
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+		this.setAutoCreateRowSorter(true);
 		this.setModel(new AbstractTableModelSubject());
+		this.getTableHeader().setReorderingAllowed(false);
 	}
 	
 	
