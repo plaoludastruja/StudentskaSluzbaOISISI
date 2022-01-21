@@ -41,7 +41,7 @@ public class DepartmentBossDialog extends JDialog {
 	public DepartmentBossDialog() {
 		
 		//super(parent, title, modal);
-		setTitle("Dodavanje sefa katedre");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("dodajSef"));
 		setModal(true);
 		setSize(400, 300);
 		setLocationRelativeTo(null);
@@ -49,7 +49,7 @@ public class DepartmentBossDialog extends JDialog {
 		
 		JPanel departmentPanel = new JPanel(new BorderLayout());
 		JPanel dugme = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JButton dodaj = new JButton("Dodaj sefa katedre");
+		JButton dodaj = new JButton(MainFrame.getInstance().getResourceBundle().getString("dodajSef"));
 
         
 		deparmentBossTable = new JTable();
@@ -64,9 +64,9 @@ public class DepartmentBossDialog extends JDialog {
         deparmentBossTable.setModel(departmentBossTableModel);
         
         Vector<String> kolone = new Vector<String>();
-		kolone.add("ImeProfesora");
-		kolone.add("PrezimeProfesora");
-		kolone.add("IDProfesora");
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("lblIme"));
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("lblPrezime"));
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("lblBrojLicne"));
 		departmentBossTableModel.setColumnIdentifiers(kolone);
 		
 		List<Professor> prof = ProfessorController.getInstance().getProfesori();

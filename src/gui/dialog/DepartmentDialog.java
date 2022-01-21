@@ -49,7 +49,7 @@ public class DepartmentDialog extends JDialog{
 		
 		JPanel departmentPanel = new JPanel(new BorderLayout());
 		JPanel dugme = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JButton dodaj = new JButton("Dodaj sefa katedre");
+		JButton dodaj = new JButton(MainFrame.getInstance().getResourceBundle().getString("dodajSef"));
 
         
         deparmentTable = new JTable();

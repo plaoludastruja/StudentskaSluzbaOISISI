@@ -48,9 +48,9 @@ public class NotPassedSubject extends JPanel {
 		JPanel notPassedSubject = new JPanel(new BorderLayout());
 
 		JPanel dugme = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JButton dodaj = new JButton("Dodaj");
-		JButton obrisi = new JButton("Obrisi");
-		JButton polaganje = new JButton("Polaganje");
+		JButton dodaj = new JButton(MainFrame.getInstance().getResourceBundle().getString("dodaj"));
+		JButton obrisi = new JButton(MainFrame.getInstance().getResourceBundle().getString("obrisi"));
+		JButton polaganje = new JButton(MainFrame.getInstance().getResourceBundle().getString("polaganje"));
 		dugme.add(dodaj);
 		dugme.add(obrisi);
 		dugme.add(polaganje);
@@ -77,7 +77,7 @@ public class NotPassedSubject extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AddNotPassedSubject addNotPassedSubject = new AddNotPassedSubject(MainFrame.getInstance(),"Dodavanje predmeta", true);
+				AddNotPassedSubject addNotPassedSubject = new AddNotPassedSubject(MainFrame.getInstance(),MainFrame.getInstance().getResourceBundle().getString("dodajPredmet"), true);
 				addNotPassedSubject.setVisible(true);
 
 			}
@@ -89,7 +89,7 @@ public class NotPassedSubject extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				if (tabelica.getSelectedRow() != -1) {
-					DeleteNotPassedSubject deleteNotPassedSubject = new DeleteNotPassedSubject(MainFrame.getInstance(),"Uklanjanje predmeta", true);
+					DeleteNotPassedSubject deleteNotPassedSubject = new DeleteNotPassedSubject(MainFrame.getInstance(),MainFrame.getInstance().getResourceBundle().getString("ukloniPredmet"), true);
 					deleteNotPassedSubject.setVisible(true);
 				}
 			}
@@ -105,7 +105,7 @@ public class NotPassedSubject extends JPanel {
 				}
 			Student student = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
 			Subject grade = student.getOtherExams().get(idx);
-			PassingExam passingDialog = new PassingExam(MainFrame.getInstance(), "Unos ocene", true);
+			PassingExam passingDialog = new PassingExam(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("unosOcjena"), true);
 			passingDialog.setSubject(grade);
 			passingDialog.setVisible(true);
 

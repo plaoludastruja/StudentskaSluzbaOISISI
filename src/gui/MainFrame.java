@@ -23,7 +23,17 @@ public class MainFrame extends JFrame{
 
 	private ResourceBundle resourceBundle;
 	private MenuBar menu;
+	private ToolBar toolbar;
+	private StatusBar statusbar;
 	
+	public ResourceBundle getResourceBundle() {
+		return resourceBundle;
+	}
+
+	public void setResourceBundle(ResourceBundle resourceBundle) {
+		this.resourceBundle = resourceBundle;
+	}
+
 	private static MainFrame instance = null;
 	
 	public static MainFrame getInstance() {
@@ -37,20 +47,22 @@ public class MainFrame extends JFrame{
 
 		//
 		SerializableController.getInstance().deserijalizacija();
+		Locale.setDefault(new Locale("sr", "RS"));
+		resourceBundle = ResourceBundle.getBundle("gui.MessageResources.MessageResources", Locale.getDefault());
 		// inicijalne postavke prozora
 		this.initPosition();
 		// menu
 		menu = new MenuBar();
 		this.setJMenuBar(menu);
 		// toolbar
-		ToolBar toolbar = new ToolBar();
+		toolbar = new ToolBar();
 		add(toolbar,BorderLayout.NORTH);
 		// tabbedpane
 		//TabbedPane tabbedPane = new TabbedPane();
 		TabbedPaneMainFrame.getInstance();
 		add(TabbedPaneMainFrame.getInstance(),BorderLayout.CENTER);
 //		//statusbar
-		StatusBar statusbar = new StatusBar();
+		statusbar = new StatusBar();
 		add(statusbar, BorderLayout.SOUTH);
 		TabbedPaneMainFrame.getInstance().addChangeListener(new ChangeListener() {
 			
@@ -70,8 +82,8 @@ public class MainFrame extends JFrame{
 		validate();
 		
 		// lokalizacija
-		Locale.setDefault(new Locale("sr", "RS"));
-		resourceBundle = ResourceBundle.getBundle("gui.MessageResources.MessageResources", Locale.getDefault());
+		
+		
 //		UIManager.put("OptionPane.yesButtonText", resourceBundle.getObject("yesOption"));
 //		UIManager.put("OptionPane.noButtonText", resourceBundle.getObject("noOption"));
 //		UIManager.put("OptionPane.okButtonText", resourceBundle.getObject("okOption"));
@@ -85,9 +97,11 @@ public class MainFrame extends JFrame{
 	public void changeLanguage() {
 
 		resourceBundle = ResourceBundle.getBundle("gui.MessageResources.MessageResources", Locale.getDefault());
-		//setTitle(resourceBundle.getString("naslovAplikacije"));
-		//menu.initComponents();
-		//statusBar.initComponents();
+		setTitle(resourceBundle.getString("naslovAplikacije"));
+		//Locale.setDefault(new Locale("sr", "RS"));
+		menu.initComponents();
+		toolbar.initComponents();
+		statusbar.initComponents();
 
 //		UIManager.put("OptionPane.yesButtonText", resourceBundle.getObject("yesOption"));
 //		UIManager.put("OptionPane.noButtonText", resourceBundle.getObject("noOption"));
@@ -110,7 +124,7 @@ public class MainFrame extends JFrame{
 		int screenHeight = screenSize.height;
 		int screenWidth = screenSize.width;
 		setSize(screenWidth * 3 / 4, screenHeight * 3 / 4);
-		setTitle("Studentska sluzba");
+		setTitle(resourceBundle.getString("naslovAplikacije"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);

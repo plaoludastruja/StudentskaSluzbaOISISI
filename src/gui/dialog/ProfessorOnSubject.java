@@ -66,11 +66,8 @@ public class ProfessorOnSubject extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AddSubjectToProfessor addSubjectToProfessor = new AddSubjectToProfessor(MainFrame.getInstance(), "Dodaj predmeta", true);
+				AddSubjectToProfessor addSubjectToProfessor = new AddSubjectToProfessor(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("dodajPredmet"), true);
 				addSubjectToProfessor.setVisible(true);
-				
-				//AddNotPassedSubject addNotPassedSubject = new AddNotPassedSubject(MainFrame.getInstance(), "Dodavanje predmeta", true);
-	
 			}
 		});
         
@@ -80,7 +77,7 @@ public class ProfessorOnSubject extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(profSubTable.getSelectedRow()!=-1) {
-					DeleteSubjectToProfessor deleteSubjectToProfessor = new DeleteSubjectToProfessor(MainFrame.getInstance(), "Uklanjanje predmeta", true);
+					DeleteSubjectToProfessor deleteSubjectToProfessor = new DeleteSubjectToProfessor(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("ukloniPredmet"), true);
 					deleteSubjectToProfessor.setVisible(true);
 					
 					

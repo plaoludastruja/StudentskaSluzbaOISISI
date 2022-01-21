@@ -11,10 +11,13 @@ import java.io.File;
 import java.util.Locale;
 
 import javax.swing.Box;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
@@ -31,10 +34,13 @@ import listener.EditEntity;
 import listener.SearchEntity;
 import model.BazaProfessor;
 
+
 public class ToolBar extends JToolBar {
 
 	Color toolbarBg = new Color(193, 223, 230);
-
+	private JButton btnNew, btnEdit, btnDelete, btnSearch;
+	private JCheckBox srpski, engleski;
+	
 	public static JTextField searchField;
 	public ToolBar() {
 
@@ -43,14 +49,17 @@ public class ToolBar extends JToolBar {
 		setBackground(toolbarBg);
 
 // ************************************* //
-		JButton btnNew = new JButton();
-		JButton btnEdit = new JButton();
-		JButton btnDelete = new JButton();
+		btnNew = new JButton();
+		btnEdit = new JButton();
+		btnDelete = new JButton();
 		searchField = new JTextField(20);
-		JButton btnSearch = new JButton();
+		btnSearch = new JButton();
 		
-		JButton srpski = new JButton();
-		JButton engleski = new JButton();
+		srpski = new JCheckBox();
+		engleski = new JCheckBox();
+		
+		
+		
 
 // ************************************* //	
 		btnNew.setToolTipText("Dodaj novi entitet");
@@ -66,6 +75,7 @@ public class ToolBar extends JToolBar {
 		srpski.setToolTipText("Srpski jezik");
 		srpski.setBackground(toolbarBg);
 		srpski.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "srpski.png"));
+		srpski.setSelected(true);
 		srpski.setBorderPainted(false);
 
 // ************************************* //
@@ -90,7 +100,7 @@ public class ToolBar extends JToolBar {
 		btnSearch.setIcon(new ImageIcon("images" + File.separator + "toolbar" + File.separator + "search.png"));
 
 // ************************************* //	
-
+		
 		btnNew.addActionListener(new AddEntity());
 		btnDelete.addActionListener(new DeleteEntity());
 		btnEdit.addActionListener(new EditEntity());
@@ -129,7 +139,9 @@ public class ToolBar extends JToolBar {
 		});
 			
 		
-
+		ButtonGroup bg=new ButtonGroup(); 
+		bg.add(srpski);
+		bg.add(engleski);
 		
 
 
@@ -149,4 +161,16 @@ public class ToolBar extends JToolBar {
 		add(btnSearch);
 
 	}
+	
+	public void initComponents() {
+		btnNew.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("btnNew"));
+		btnEdit.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("btnEdit"));
+		btnDelete.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("btnDelete"));
+		btnSearch.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("btnSearch"));
+		srpski.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("srpski"));
+		engleski.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("engleski"));
+		searchField.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("searchField"));
+		searchField.setText(MainFrame.getInstance().getResourceBundle().getString("searchFieldText"));
+	}
+
 }

@@ -45,8 +45,9 @@ public class AddNotPassedSubject extends JDialog {
 		
 		JPanel notPassedSubject = new JPanel(new BorderLayout());
 		JPanel dugme = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JButton dodaj = new JButton("Dodaj");
-        JButton odustani = new JButton("Odustani");
+		
+		JButton dodaj = new JButton(MainFrame.getInstance().getResourceBundle().getString("dodaj"));
+        JButton odustani = new JButton(MainFrame.getInstance().getResourceBundle().getString("odustani"));
         tabelica = new JTable();
 		
 		tabelica.setRowSelectionAllowed(true);
@@ -59,8 +60,8 @@ public class AddNotPassedSubject extends JDialog {
 		tabelica.setModel(notPassedTableModel);
 		
 		Vector<String> kolone = new Vector<String>();
-		kolone.add("SifraPredmeta");
-		kolone.add("ImePredmeta");
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("sifra1"));
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("naziv1"));
 		notPassedTableModel.setColumnIdentifiers(kolone);
 		
 		

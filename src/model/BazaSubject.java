@@ -8,6 +8,7 @@ import java.util.List;
 import controller.ProfessorController;
 import controller.StudentController;
 import controller.SubjectController;
+import gui.MainFrame;
 import gui.ProfessorTable;
 import gui.StudentTable;
 import gui.SubjectTable;
@@ -38,11 +39,11 @@ public class BazaSubject {
 		searchedDone = false;
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("Šifra predmeta");
-		this.kolone.add("Naziv predmeta");
+		this.kolone.add("Šifra");
+		this.kolone.add("naziv");
 		this.kolone.add("ESPB");
 		this.kolone.add("Godina");
-		this.kolone.add("Semester");
+		this.kolone.add("Semestar");
 
 		this.predmeti = new ArrayList<Subject>();
 //		Professor prof = BazaProfessor.getInstance().getProfesori().get(0);

@@ -16,15 +16,15 @@ public class AddEntity implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		switch (TabbedPaneMainFrame.getInstance().getSelectedIndex()) {
 			case 0:	// STUDENT
-				AddEditStudentDialog addStudentDialog = new AddEditStudentDialog(MainFrame.getInstance(), "Dodavanje studenta", true, true);
+				AddEditStudentDialog addStudentDialog = new AddEditStudentDialog(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("dodavanjestudenta"), true, true);
 				addStudentDialog.setVisible(true);
 				break;
 			case 1:	// PROFESOR
-				AddProfessorDialog addProfessorDialog = new AddProfessorDialog(MainFrame.getInstance(), "Dodavanje profesora", true);
+				AddProfessorDialog addProfessorDialog = new AddProfessorDialog(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("dodavanjeprofesora"), true);
 				addProfessorDialog.setVisible(true);
 				break;
 			case 2:	// PREDMET
-				AddEditSubjectDialog addSubjectDialog = new AddEditSubjectDialog(MainFrame.getInstance(), "Dodavanje predmeta", true, true);
+				AddEditSubjectDialog addSubjectDialog = new AddEditSubjectDialog(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("dodavanjepredmeta"), true, true);
 				addSubjectDialog.setVisible(true);
 				break;
 			default:

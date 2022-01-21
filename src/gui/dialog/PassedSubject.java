@@ -28,6 +28,7 @@ import gui.AbstractTableModelNotPassedTableModel;
 import gui.AbstractTableModelProfessor;
 import gui.AbstractTableModelStudent;
 import gui.AbstractTableModelSubject;
+import gui.MainFrame;
 import gui.ProfessorTable;
 //import gui.NotPassedTableModel;
 import gui.StudentTable;
@@ -59,7 +60,7 @@ public class PassedSubject extends JPanel {
 		JPanel passedSubject = new JPanel(new BorderLayout());
 
 		JPanel dugme = new JPanel(new BorderLayout());
-		JButton ponisti = new JButton("Ponisti ocjenu");
+		JButton ponisti = new JButton(MainFrame.getInstance().getResourceBundle().getString("ponistiOcjenu"));
 		dugme.add(ponisti, BorderLayout.WEST);
 
 		tabelica = new JTable();
@@ -71,11 +72,11 @@ public class PassedSubject extends JPanel {
 		DefaultTableModel passedTableModel = new DefaultTableModel();
 		Vector<String> kolone = new Vector<String>();
 
-		kolone.add("SifraPredmeta");
-		kolone.add("ImePredmeta");
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("sifra1"));
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("naziv1"));
 		kolone.add("ESPB");
-		kolone.add("Ocjena");
-		kolone.add("Datum");
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("ocjena"));
+		kolone.add(MainFrame.getInstance().getResourceBundle().getString("datum"));
 
 		passedTableModel.setColumnIdentifiers(kolone);
 		tabelica.setModel(passedTableModel);
@@ -115,7 +116,7 @@ public class PassedSubject extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da uklonite predmet?", "Uklanjanje predmeta",
+				if (JOptionPane.showConfirmDialog(null, MainFrame.getInstance().getResourceBundle().getString("ukloniPredmetSigurni"), MainFrame.getInstance().getResourceBundle().getString("ukloniPredmet"),
 				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				    // yes option
 				} else {
@@ -159,9 +160,6 @@ public class PassedSubject extends JPanel {
 
 		JPanel pnlProsjek = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JLabel lblProsjek = new JLabel("Prosjek ocjena: " + Double.toString(avgGrade));
-		//lblProsjek.setText("Prosjek ocjena: " + Double.toString(avgGrade));
-//		System.out.println(avgGrade);
-//		System.out.println(sumEspb);
 		pnlProsjek.add(lblProsjek);
 
 		JPanel pnlEspb = new JPanel(new FlowLayout(FlowLayout.RIGHT));

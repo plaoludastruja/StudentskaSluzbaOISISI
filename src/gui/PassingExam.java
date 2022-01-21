@@ -58,10 +58,10 @@ public class PassingExam extends JDialog {
 		JPanel panDatum = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel panDugmad = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-		lblSifra = new JLabel("Sifra*");
-		lblNaziv = new JLabel("Naziv*");
-		lblOcena = new JLabel("Ocena*");
-		lblDatum = new JLabel("Datum*");
+		lblSifra = new JLabel(MainFrame.getInstance().getResourceBundle().getString("sifra"));
+		lblNaziv = new JLabel(MainFrame.getInstance().getResourceBundle().getString("naziv"));
+		lblOcena = new JLabel(MainFrame.getInstance().getResourceBundle().getString("ocjena1"));
+		lblDatum = new JLabel(MainFrame.getInstance().getResourceBundle().getString("datum1"));
 
 		String niz[] = {"6", "7", "8", "9", "10" };
 
@@ -70,8 +70,8 @@ public class PassingExam extends JDialog {
 		gradeList = new JComboBox<String>(niz);
 		txtDatum = new JTextField();
 
-		potvrdiBtn = new JButton("Potvrdi");
-		odustaniBtn = new JButton("Odustani");
+		potvrdiBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("potvrdi"));
+		odustaniBtn = new JButton(MainFrame.getInstance().getResourceBundle().getString("odustani"));
 
 		lblSifra.setPreferredSize(dim);
 		lblNaziv.setPreferredSize(dim);

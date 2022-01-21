@@ -75,8 +75,8 @@ public class AddProfessorOnSubjectDialog extends JDialog {
 		panDugmad = new JPanel();
 		flowLayout = (FlowLayout) panDugmad.getLayout();
 		flowLayout.setHgap(30);
-		btnPotvrdi = new JButton("Potvrdi");
-		btnOdustani = new JButton("Odustani");
+		btnPotvrdi = new JButton(MainFrame.getInstance().getResourceBundle().getString("potvrdi"));
+		btnOdustani = new JButton(MainFrame.getInstance().getResourceBundle().getString("odustani"));
 
 		panDugmad.add(btnPotvrdi);
 		panDugmad.add(btnOdustani);

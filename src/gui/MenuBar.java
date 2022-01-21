@@ -20,27 +20,29 @@ import listener.EditEntity;
 
 public class MenuBar extends JMenuBar {
 	
+	JMenu file, open, edit, help;
+	JMenuItem mbnew, save, close, studenti, predmeti, profesori, katedre, edit1, delete, help1, about;
 	public MenuBar() {
 
 // ************************************* //	
-		JMenu file = new JMenu("File");
-		JMenuItem mbnew = new JMenuItem("New", KeyEvent.VK_N);
-		JMenuItem save = new JMenuItem("Save", KeyEvent.VK_S);
-		JMenu open = new JMenu("Open");
-		JMenuItem close = new JMenuItem("Close", KeyEvent.VK_C);
+		file = new JMenu("File");
+		mbnew = new JMenuItem("New", KeyEvent.VK_N);
+		save = new JMenuItem("Save", KeyEvent.VK_S);
+		open = new JMenu("Open");
+		close = new JMenuItem("Close", KeyEvent.VK_C);
 		
-		JMenuItem studenti = new JMenuItem("Studenti", KeyEvent.VK_S);
-		JMenuItem predmeti = new JMenuItem("Predmeti", KeyEvent.VK_P);
-		JMenuItem profesori = new JMenuItem("Profesori", KeyEvent.VK_F);
-		JMenuItem katedre = new JMenuItem("Katedre", KeyEvent.VK_K);
+		studenti = new JMenuItem("Studenti", KeyEvent.VK_S);
+		predmeti = new JMenuItem("Predmeti", KeyEvent.VK_P);
+		profesori = new JMenuItem("Profesori", KeyEvent.VK_F);
+		 katedre = new JMenuItem("Katedre", KeyEvent.VK_K);
 		
-		JMenu edit = new JMenu("Edit");
-		JMenuItem edit1 = new JMenuItem("Edit", KeyEvent.VK_E);
-		JMenuItem delete = new JMenuItem("Delete", KeyEvent.VK_D);
+		edit = new JMenu("Edit");
+		edit1 = new JMenuItem("Edit", KeyEvent.VK_E);
+		delete = new JMenuItem("Delete", KeyEvent.VK_D);
 		
-		JMenu help = new JMenu("Help");
-		JMenuItem help1 = new JMenuItem("Help", KeyEvent.VK_H);		
-		JMenuItem about = new JMenuItem("About", KeyEvent.VK_A);
+		help = new JMenu("Help");
+		help1 = new JMenuItem("Help", KeyEvent.VK_H);		
+		about = new JMenuItem("About", KeyEvent.VK_A);
 		
 // ************************************* //		
 		file.setMnemonic(KeyEvent.VK_F);
@@ -153,5 +155,25 @@ public class MenuBar extends JMenuBar {
 		add(help);
 		
 		}
+	public void initComponents() {
+		
+		file.setText(MainFrame.getInstance().getResourceBundle().getString("file"));
+		open.setText(MainFrame.getInstance().getResourceBundle().getString("open"));
+		edit.setText(MainFrame.getInstance().getResourceBundle().getString("edit"));
+		help.setText(MainFrame.getInstance().getResourceBundle().getString("help"));
+		
+		mbnew.setText(MainFrame.getInstance().getResourceBundle().getString("mbnew"));
+		save.setText(MainFrame.getInstance().getResourceBundle().getString("save"));
+		close.setText(MainFrame.getInstance().getResourceBundle().getString("close"));
+		studenti.setText(MainFrame.getInstance().getResourceBundle().getString("studenti"));
+		predmeti.setText(MainFrame.getInstance().getResourceBundle().getString("predmeti"));
+		profesori.setText(MainFrame.getInstance().getResourceBundle().getString("profesori"));
+		katedre.setText(MainFrame.getInstance().getResourceBundle().getString("katedre"));
+		edit1.setText(MainFrame.getInstance().getResourceBundle().getString("edit1"));
+		delete.setText(MainFrame.getInstance().getResourceBundle().getString("delete"));
+		help1.setText(MainFrame.getInstance().getResourceBundle().getString("help1"));
+		about.setText(MainFrame.getInstance().getResourceBundle().getString("about"));
+		
+	}
 
 }
