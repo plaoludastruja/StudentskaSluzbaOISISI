@@ -12,6 +12,7 @@ import gui.MainFrame;
 import gui.ProfessorTable;
 import gui.StudentTable;
 import gui.SubjectTable;
+import gui.dialog.AddEditSubjectDialog;
 import gui.dialog.AddNotPassedSubject;
 import model.Subject.Semester;
 
@@ -164,6 +165,7 @@ public class BazaSubject {
 		Professor p = ProfessorController.getInstance().getProfessortByID(ProfessorTable.getInstance().getSelectedRow());				
 		p.getListofSubjects();
 		Subject predmet = p.getListofSubjects().get(row);
+		
 		switch (column) {
 		case 0:
 			return predmet.getSubjectCode();
@@ -175,6 +177,27 @@ public class BazaSubject {
 			return predmet.getSubjectYear()+"";
 		case 4:
 			return predmet.getSubjectSemester()+"";
+		default:
+			return null;
+		}
+
+	}
+	
+	public String getValueAtPassed(int row, int column) {
+
+		Student s = StudentController.getInstance().getStudentByID(StudentTable.getInstance().getSelectedRow());
+		Grade grade = s.getPassedExams().get(row);
+		switch (column) {
+		case 0:
+			return grade.getSubject().getSubjectCode();
+		case 1:
+			return grade.getSubject().getSubjectName();
+		case 2:
+			return grade.getSubject().getEspb() + "";
+		case 3:
+			return grade.getSubject().getSubjectYear() + "";
+		case 4:
+			return grade.getSubject().getSubjectSemester() + "";
 		default:
 			return null;
 		}
@@ -198,6 +221,7 @@ public class BazaSubject {
 	
 	public void addSubject(Subject noviPredmet) {
 		this.predmeti.add(noviPredmet);
+		ProfessorController.getInstance().getProfesori().get(AddEditSubjectDialog.txtProfesor.getSelectedIndex()).getListofSubjects().add(noviPredmet);
 
 	}
 	

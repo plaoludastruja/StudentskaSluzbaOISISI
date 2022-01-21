@@ -23,9 +23,12 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import controller.ProfessorController;
 import controller.StudentController;
 import gui.AbstractTableModelNotPassedTableModel;
+import gui.AbstractTableModelPassedTableModel;
 import gui.AbstractTableModelProfessor;
+import gui.AbstractTableModelProfessorOnSubject;
 import gui.AbstractTableModelStudent;
 import gui.AbstractTableModelSubject;
 import gui.MainFrame;
@@ -36,6 +39,7 @@ import gui.SubjectTable;
 import listener.EditEntity;
 import model.BazaSubject;
 import model.Grade;
+import model.Professor;
 import model.Student;
 import model.Subject;
 
@@ -69,17 +73,7 @@ public class PassedSubject extends JPanel {
 		tabelica.getTableHeader();
 		tabelica.setSelectionBackground(Color.LIGHT_GRAY);
 		
-		DefaultTableModel passedTableModel = new DefaultTableModel();
-		Vector<String> kolone = new Vector<String>();
-
-		kolone.add(MainFrame.getInstance().getResourceBundle().getString("sifra1"));
-		kolone.add(MainFrame.getInstance().getResourceBundle().getString("naziv1"));
-		kolone.add("ESPB");
-		kolone.add(MainFrame.getInstance().getResourceBundle().getString("ocjena"));
-		kolone.add(MainFrame.getInstance().getResourceBundle().getString("datum"));
-
-		passedTableModel.setColumnIdentifiers(kolone);
-		tabelica.setModel(passedTableModel);
+		tabelica.setModel(new AbstractTableModelPassedTableModel());
 
 		JScrollPane tabela = new JScrollPane(tabelica);
 
@@ -98,7 +92,7 @@ public class PassedSubject extends JPanel {
 		for (Grade grade : stud.getPassedExams()) {
 			Object[] row = { grade.getSubject().getSubjectCode(), grade.getSubject().getSubjectName(),
 					grade.getSubject().getEspb(), grade.getValue(), grade.getExamDate() };
-			passedTableModel.addRow(row);
+			//passedTableModel.addRow(row);
 			
 			sumGrade += grade.getValue();
 			//++countGrade;
@@ -115,42 +109,67 @@ public class PassedSubject extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				if (JOptionPane.showConfirmDialog(null, MainFrame.getInstance().getResourceBundle().getString("ukloniPredmetSigurni"), MainFrame.getInstance().getResourceBundle().getString("ukloniPredmet"),
-				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-				    // yes option
-				} else {
-				    return;
-				}
-
 				int idx = tabelica.getSelectedRow();
 				if (idx == -1) {
+					JOptionPane.showMessageDialog(PassedSubject.this, "Izaberite predmet!", "Greska",
+							JOptionPane.WARNING_MESSAGE);
 					return;
 				}
+
+				if (JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da uklonite predmet?",
+						"Uklanjanje predmeta", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+				} else {
+					return;
+				}
+
+				Subject predmet = BazaSubject.getInstance().getSubjectByCode(tabelica.getValueAt(tabelica.getSelectedRow(), 0).toString());
+				Professor p = ProfessorController.getInstance().getProfessortByID(ProfessorTable.getInstance().getSelectedRow());	
+					//p.getListofSubjects().remove(predmet);
+				//stud.getPassedExams().get
 				Grade grade = passedExams.get(idx);
 				passedExams.remove(idx);
 				stud.getOtherExams().add(grade.getSubject());
-				DefaultTableModel model = (DefaultTableModel) tabelica.getModel();
-				model.removeRow(0);
-
-				
-				for (int i = 0; i < model.getRowCount(); i++)
-					model.removeRow(i);
-
-				Student student = StudentController.getInstance()
-						.getStudentByID(StudentTable.getInstance().getSelectedRow());
-				
-				for (Grade g : student.getPassedExams()) {
-
-					Object[] row = { g.getSubject().getSubjectCode(), g.getSubject().getSubjectName(),
-							g.getSubject().getEspb(), g.getValue(), g.getExamDate() };
-					model.addRow(row);
-				}
+				AbstractTableModelPassedTableModel model = (AbstractTableModelPassedTableModel) tabelica.getModel();
 				model.fireTableDataChanged();
-				//NotPassedTableModel modelNotP = (NotPassedTableModel) NotPassedSubject.getInstance().getTable().getModel();
+
 				AbstractTableModelNotPassedTableModel modelNotP = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
 
 				modelNotP.fireTableDataChanged();
+//				if (JOptionPane.showConfirmDialog(null, MainFrame.getInstance().getResourceBundle().getString("ukloniPredmetSigurni"), MainFrame.getInstance().getResourceBundle().getString("ukloniPredmet"),
+//				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+//				    // yes option
+//				} else {
+//				    return;
+//				}
+//
+//				int idx = tabelica.getSelectedRow();
+//				if (idx == -1) {
+//					return;
+//				}
+//				Grade grade = passedExams.get(idx);
+//				passedExams.remove(idx);
+//				stud.getOtherExams().add(grade.getSubject());
+//				DefaultTableModel model = (DefaultTableModel) tabelica.getModel();
+//				model.removeRow(0);
+//
+//				
+//				for (int i = 0; i < model.getRowCount(); i++)
+//					model.removeRow(i);
+//
+//				Student student = StudentController.getInstance()
+//						.getStudentByID(StudentTable.getInstance().getSelectedRow());
+//				
+//				for (Grade g : student.getPassedExams()) {
+//
+//					Object[] row = { g.getSubject().getSubjectCode(), g.getSubject().getSubjectName(),
+//							g.getSubject().getEspb(), g.getValue(), g.getExamDate() };
+//					model.addRow(row);
+//				}
+//				model.fireTableDataChanged();
+//				//NotPassedTableModel modelNotP = (NotPassedTableModel) NotPassedSubject.getInstance().getTable().getModel();
+//				AbstractTableModelNotPassedTableModel modelNotP = (AbstractTableModelNotPassedTableModel) NotPassedSubject.notPassedTableModel;
+//
+//				modelNotP.fireTableDataChanged();
 			}
 
 		});
